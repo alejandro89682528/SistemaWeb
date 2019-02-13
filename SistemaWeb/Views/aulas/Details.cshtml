@@ -1,0 +1,68 @@
+﻿@model SistemaWeb.Contexto.aula
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Ubicasion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ubicasion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ac)
+        </dd>
+
+        <dt>
+            Capacidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidad)
+        </dd>
+
+        <dt>
+            Equipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.n_equipo)
+        </dd>
+
+        <dt>
+           Departamento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dpto.nombre)
+        </dd>
+
+        <dt>
+            Tipo de aula
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoaula.nombre_tipo)
+        </dd>
+
+    </dl>
+</div>
+

@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sistema_horarioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="anolectivo">
+    <Key>
+      <PropertyRef Name="cod_ano" />
+    </Key>
+    <Property Name="cod_ano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ano" Type="varchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aula">
+    <Key>
+      <PropertyRef Name="cod_aula" />
+    </Key>
+    <Property Name="cod_aula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="ubicasion" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="ac" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+    <Property Name="n_equipo" Type="int" />
+    <Property Name="cod_tipoaula" Type="int" Nullable="false" />
+    <Property Name="cod_dpto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="carrera">
+    <Key>
+      <PropertyRef Name="cod_carrera" />
+    </Key>
+    <Property Name="cod_carrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="tipo_carrera" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="modalidad" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="cod_dpto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dpto">
+    <Key>
+      <PropertyRef Name="cod_dpto" />
+    </Key>
+    <Property Name="cod_dpto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cod_faculta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="exportarcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="inss" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="cod_dpto" Type="int" />
+    <Property Name="cod_asignatura" Type="int" />
+    <Property Name="grupo" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="anolectivo" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="tipo_ciclo" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="tipo_grupo" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="faculta">
+    <Key>
+      <PropertyRef Name="cod_faculta" />
+    </Key>
+    <Property Name="cod_faculta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="80" Nullable="false" />
+  </EntityType>
+  <EntityType Name="grupo">
+    <Key>
+      <PropertyRef Name="cod_grupo" />
+    </Key>
+    <Property Name="cod_grupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+    <Property Name="tipo_ciclo" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="cod_asig" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="horario">
+    <Key>
+      <PropertyRef Name="cod_horario" />
+    </Key>
+    <Property Name="cod_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_periodo" Type="int" />
+    <Property Name="fecha_ini" Type="varchar" MaxLength="45" />
+    <Property Name="cod_asig" Type="int" Nullable="false" />
+    <Property Name="cod_aula" Type="int" Nullable="false" />
+    <Property Name="cod_grupo" Type="int" Nullable="false" />
+    <Property Name="inss" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="cod_materia" />
+    </Key>
+    <Property Name="cod_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pensum">
+    <Key>
+      <PropertyRef Name="cod_asig" />
+    </Key>
+    <Property Name="cod_asig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="N_credito" Type="int" Nullable="false" />
+    <Property Name="ciclo" Type="int" Nullable="false" />
+    <Property Name="anio_est" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="prerrequisito1" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="prerrequisito2" Type="varchar" MaxLength="100" />
+    <Property Name="cod_plan" Type="int" Nullable="false" />
+    <Property Name="cod_materia" Type="int" Nullable="false" />
+    <Property Name="total_horas" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="periodo">
+    <Key>
+      <PropertyRef Name="cod_periodo" />
+    </Key>
+    <Property Name="cod_periodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="periodo" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plans">
+    <Key>
+      <PropertyRef Name="cod_plan" />
+    </Key>
+    <Property Name="cod_plan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="total_credito" Type="int" Nullable="false" />
+    <Property Name="fecha_ini" Type="date" />
+    <Property Name="fecha_fin" Type="date" />
+    <Property Name="Nciclos" Type="int" />
+    <Property Name="cod_carrera" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="profesores">
+    <Key>
+      <PropertyRef Name="inss" />
+    </Key>
+    <Property Name="inss" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="telefono" Type="int" Nullable="false" />
+    <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="foto_ruta" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cod_dpto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tipoaula">
+    <Key>
+      <PropertyRef Name="cod_tipoaula" />
+    </Key>
+    <Property Name="cod_tipoaula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre_tipo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="correo" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="apellido" />
+      <PropertyRef Name="pass" />
+    </Key>
+    <Property Name="correo" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="foto" Type="varchar" MaxLength="45" />
+    <Property Name="pass" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <Association Name="cod_dpto">
+    <End Role="dpto" Type="Self.dpto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="carrera" Type="Self.carrera" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="carrera">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cod_dptos">
+    <End Role="dpto" Type="Self.dpto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aula" Type="Self.aula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="aula">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="cod_faculta">
+    <End Role="faculta" Type="Self.faculta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="dpto" Type="Self.dpto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="faculta">
+        <PropertyRef Name="cod_faculta" />
+      </Principal>
+      <Dependent Role="dpto">
+        <PropertyRef Name="cod_faculta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aula_tipoaula">
+    <End Role="tipoaula" Type="Self.tipoaula" Multiplicity="1" />
+    <End Role="aula" Type="Self.aula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoaula">
+        <PropertyRef Name="cod_tipoaula" />
+      </Principal>
+      <Dependent Role="aula">
+        <PropertyRef Name="cod_tipoaula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_exportarcion_dpto">
+    <End Role="dpto" Type="Self.dpto" Multiplicity="0..1" />
+    <End Role="exportarcion" Type="Self.exportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="exportarcion">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_exportarcion_profesores">
+    <End Role="profesores" Type="Self.profesores" Multiplicity="1" />
+    <End Role="exportarcion" Type="Self.exportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="inss" />
+      </Principal>
+      <Dependent Role="exportarcion">
+        <PropertyRef Name="inss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_grupo_pensum">
+    <End Role="pensum" Type="Self.pensum" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="grupo" Type="Self.grupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pensum">
+        <PropertyRef Name="cod_asig" />
+      </Principal>
+      <Dependent Role="grupo">
+        <PropertyRef Name="cod_asig" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_aula">
+    <End Role="aula" Type="Self.aula" Multiplicity="1" />
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aula">
+        <PropertyRef Name="cod_aula" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cod_aula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_grupo">
+    <End Role="grupo" Type="Self.grupo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grupo">
+        <PropertyRef Name="cod_grupo" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cod_grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_pensum">
+    <End Role="pensum" Type="Self.pensum" Multiplicity="1" />
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pensum">
+        <PropertyRef Name="cod_asig" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cod_asig" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_periodo">
+    <End Role="periodo" Type="Self.periodo" Multiplicity="0..1" />
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="periodo">
+        <PropertyRef Name="cod_periodo" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cod_periodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_profesores">
+    <End Role="profesores" Type="Self.profesores" Multiplicity="1" />
+    <End Role="horario" Type="Self.horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesores">
+        <PropertyRef Name="inss" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="inss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pensum_materia">
+    <End Role="materia" Type="Self.materia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="pensum" Type="Self.pensum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia">
+        <PropertyRef Name="cod_materia" />
+      </Principal>
+      <Dependent Role="pensum">
+        <PropertyRef Name="cod_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pensum_Plans">
+    <End Role="Plans" Type="Self.Plans" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="pensum" Type="Self.pensum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plans">
+        <PropertyRef Name="cod_plan" />
+      </Principal>
+      <Dependent Role="pensum">
+        <PropertyRef Name="cod_plan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Plans_carrera">
+    <End Role="carrera" Type="Self.carrera" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Plans" Type="Self.Plans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carrera">
+        <PropertyRef Name="cod_carrera" />
+      </Principal>
+      <Dependent Role="Plans">
+        <PropertyRef Name="cod_carrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_dpto">
+    <End Role="dpto" Type="Self.dpto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="profesores" Type="Self.profesores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="profesores">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="sistema_horarioModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="anolectivo" EntityType="Self.anolectivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="aula" EntityType="Self.aula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="carrera" EntityType="Self.carrera" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dpto" EntityType="Self.dpto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="exportarcion" EntityType="Self.exportarcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="faculta" EntityType="Self.faculta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="horario" EntityType="Self.horario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pensum" EntityType="Self.pensum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="periodo" EntityType="Self.periodo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profesores" EntityType="Self.profesores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipoaula" EntityType="Self.tipoaula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Usuarios].[correo] AS [correo], 
+    [Usuarios].[nombre] AS [nombre], 
+    [Usuarios].[apellido] AS [apellido], 
+    [Usuarios].[foto] AS [foto], 
+    [Usuarios].[pass] AS [pass]
+    FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="cod_dpto" Association="Self.cod_dpto">
+      <End Role="dpto" EntitySet="dpto" />
+      <End Role="carrera" EntitySet="carrera" />
+    </AssociationSet>
+    <AssociationSet Name="cod_dptos" Association="Self.cod_dptos">
+      <End Role="dpto" EntitySet="dpto" />
+      <End Role="aula" EntitySet="aula" />
+    </AssociationSet>
+    <AssociationSet Name="cod_faculta" Association="Self.cod_faculta">
+      <End Role="faculta" EntitySet="faculta" />
+      <End Role="dpto" EntitySet="dpto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aula_tipoaula" Association="Self.FK_aula_tipoaula">
+      <End Role="tipoaula" EntitySet="tipoaula" />
+      <End Role="aula" EntitySet="aula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_exportarcion_dpto" Association="Self.FK_exportarcion_dpto">
+      <End Role="dpto" EntitySet="dpto" />
+      <End Role="exportarcion" EntitySet="exportarcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_exportarcion_profesores" Association="Self.FK_exportarcion_profesores">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="exportarcion" EntitySet="exportarcion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_grupo_pensum" Association="Self.FK_grupo_pensum">
+      <End Role="pensum" EntitySet="pensum" />
+      <End Role="grupo" EntitySet="grupo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_aula" Association="Self.FK_horario_aula">
+      <End Role="aula" EntitySet="aula" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_grupo" Association="Self.FK_horario_grupo">
+      <End Role="grupo" EntitySet="grupo" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_pensum" Association="Self.FK_horario_pensum">
+      <End Role="pensum" EntitySet="pensum" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_periodo" Association="Self.FK_horario_periodo">
+      <End Role="periodo" EntitySet="periodo" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_profesores" Association="Self.FK_horario_profesores">
+      <End Role="profesores" EntitySet="profesores" />
+      <End Role="horario" EntitySet="horario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pensum_materia" Association="Self.FK_pensum_materia">
+      <End Role="materia" EntitySet="materia" />
+      <End Role="pensum" EntitySet="pensum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pensum_Plans" Association="Self.FK_pensum_Plans">
+      <End Role="Plans" EntitySet="Plans" />
+      <End Role="pensum" EntitySet="pensum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Plans_carrera" Association="Self.FK_Plans_carrera">
+      <End Role="carrera" EntitySet="carrera" />
+      <End Role="Plans" EntitySet="Plans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_dpto" Association="Self.FK_profesores_dpto">
+      <End Role="dpto" EntitySet="dpto" />
+      <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

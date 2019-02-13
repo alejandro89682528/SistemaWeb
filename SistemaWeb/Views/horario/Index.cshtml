@@ -1,0 +1,28 @@
+﻿@model SistemaWeb.Contexto.horario
+@{
+    ViewBag.Title = "Horario";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Generacion de Horario</title>
+</head>
+<body>
+    <div>
+
+        <h2>Generacion de horario</h2>
+
+        <div class="form-group">
+            Departamento
+            <div class="col-md-10">
+                @Html.DropDownList("cod_dpto", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cod_dpto, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

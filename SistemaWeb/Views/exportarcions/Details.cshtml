@@ -1,0 +1,82 @@
+﻿@model SistemaWeb.Contexto.exportarcion
+
+@{
+    ViewBag.Title = "detalles";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>exportarcion</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.inss)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.inss)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.grupo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.grupo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.total_estudiante)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.total_estudiante)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ano)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ano)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.semestre)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.semestre)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.grupo_teorico)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.grupo_teorico)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.grupo_practico)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.grupo_practico)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

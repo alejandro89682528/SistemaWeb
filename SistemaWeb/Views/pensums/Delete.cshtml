@@ -1,0 +1,77 @@
+﻿@model SistemaWeb.Contexto.pensum
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Esta seguro de eliminar el registro?</h3>
+<div>
+   
+    <dl class="dl-horizontal">
+        <dt>
+            Numero de credito
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.N_credito)
+        </dd>
+
+        <dt>
+            Ciclos
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ciclo)
+        </dd>
+
+        <dt>
+           Año de estudio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anio_est)
+        </dd>
+
+        <dt>
+           Prerrequisito 1
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prerrequisito1)
+        </dd>
+
+        <dt>
+            Prerrequisito 2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prerrequisito2)
+        </dd>
+
+        <dt>
+           Materia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.materia.nombre)
+        </dd>
+
+        <dt>
+           Plan de estudio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-success" /> 
+           
+        </div>
+    }
+</div>

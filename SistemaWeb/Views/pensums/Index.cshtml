@@ -1,0 +1,137 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.pensum>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pemsums</h2>
+
+<p>
+    <a href="#" data-toggle="modal" data-target="#modaldialog" onclick="loadData('/pensums/Create', 'contentdialog')"> <Span class="btn btn-success"> Crear nuevo </Span></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Numero de credito
+        </th>
+        <th>
+            Ciclos
+        </th>
+        <th>
+            Año de estudio
+        </th>
+        <th>
+            Prerrequisito 1
+        </th>
+        <th>
+            Prerrequisito 2
+        </th>
+        <th>
+            Materia
+        </th>
+        <th>
+            Plan de estudio
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.N_credito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ciclo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anio_est)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prerrequisito1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prerrequisito2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.materia.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plan.nombre)
+            </td>
+            <td>
+                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/pensums/Edit/@item.cod_asig', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
+                <a href="#" data-toggle="modal" data-target="#visualDetalle" onclick="loadData('/pensums/Details/@item.cod_asig', 'contentdetalle')">  <Span class='btn btn-info'> Detalles </Span></a>
+                <a href="#" data-toggle="modal" class='btn btn-danger' data-target="#visualEliminar" onclick="loadData('/pensums/Delete/@item.cod_asig', 'contenteliminar')">  <Span class='glyphicon glyphicon-th-list'></Span> Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+<div class="modal" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear nuevo pensums</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentdialog">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal" id="visualEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Actualizar pensums</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentedit">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="visualDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles de pensums</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentdetalle">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="visualEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contenteliminar">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+﻿@model SistemaWeb.Contexto.dpto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Faculta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.faculta.nombre)
+        </dd>
+
+    </dl>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+}

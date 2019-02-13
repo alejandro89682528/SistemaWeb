@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Sistema horario</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="pt-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("Menu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Opciones
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/Home/Index">Inicio</a>
+                        <a class="dropdown-item" href="/Home/About">Acerca de</a>
+                        <a class="dropdown-item" href="/Home/Contact">Contato</a>
+
+                    </div>
+                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nuevos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Facultas/Index">Facultades</a>
+                            <a class="dropdown-item" href="/carreras/Index">Agregar carreras</a>
+                            <a class="dropdown-item" href="/dptoes/Index">Departamentos</a>
+                            <a class="dropdown-item" href="/anolectivoes/Index">Agregar año</a>
+                            <a class="dropdown-item" href="/materias/Index">Agregar materia</a>
+                            <a class="dropdown-item" href="/tipoaulas/Index">Agregar tipo de aula</a>
+                            <a class="dropdown-item" href="/aulas/Index">Agregar aula</a>
+                            <a class="dropdown-item" href="/profesores/Index">Agregar profesor</a>
+                            <a class="dropdown-item" href="/plans/Index">Agregar Plan</a>
+                            <a class="dropdown-item" href="/pensums/Index">Agregar pemsul</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Inportar
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Import/index">Importar</a>
+                            <a class="dropdown-item" href="/exportarcions/index">Lista de importacion</a>
+                            <a class="dropdown-item" href="/horario/index">Generacion de Horario</a>
+                            <a class="dropdown-item" href="import.aspx">import window form</a>
+
+                        </div>
+                    </li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Sistema horario</p>
+        </footer>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        feather.replace();
+
+        function loadData(url, target_id) {
+            $("#" + target_id).html("<div class='text-center'><img src='/Images/loading.gif' /></div>");
+            $("#" + target_id).load(url);
+        }
+    </script>
+</body>
+</html>
+
+

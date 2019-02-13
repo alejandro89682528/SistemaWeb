@@ -1,0 +1,84 @@
+﻿@model SistemaWeb.Contexto.exportarcion
+
+@{
+    ViewBag.Title = "editar";
+}
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            
+            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+    
+            <div class="form-group">
+               Inss
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.inss, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.inss, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+               Grupo
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.grupo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.grupo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                Total de estudiante
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.total_estudiante, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.total_estudiante, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                Año
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.anolectivo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.anolectivo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+               Semestre
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tipo_ciclo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+               Grupo teorico
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.grupo_teorico, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.grupo_teorico, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+               Grupo practico
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.grupo_practico, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.grupo_practico, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-warning" />
+                </div>
+            </div>
+        </div>
+    }
+  

@@ -1,0 +1,51 @@
+﻿@model SistemaWeb.Contexto.exportarcion
+@{
+    ViewBag.Title = "Importar";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        <h2>Excel Import</h2>
+        
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                Departamento
+                <div class="col-md-10">
+                    @Html.DropDownList("cod_dpto", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cod_dpto, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                Semestre
+                <div class="col-md-10">
+                    @Html.DropDownList("tipo_ciclo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+            <div>
+                <input name="file" type="file" required />
+                <br />
+                <button type="submit">Import</button>
+            </div>
+        </form>
+
+        <br />
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
+        <br />
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@model SistemaWeb.Contexto.profesore
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Esta seguro que desea eliminar a?</h3>
+<div>
+    
+    <dl class="dl-horizontal">
+       
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            
+        </div>
+    }
+</div>

@@ -1,0 +1,26 @@
+﻿@model SistemaWeb.Contexto.anolectivo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Año lectivo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Año
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ano)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.cod_ano }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

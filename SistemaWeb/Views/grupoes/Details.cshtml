@@ -1,0 +1,50 @@
+﻿@model SistemaWeb.Contexto.grupo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>grupo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+           Capacidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidad)
+        </dd>
+
+        <dt>
+          Tipo de ciclo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_ciclo)
+        </dd>
+
+        <dt>
+           Asignatura
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pensum.anio_est)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.cod_grupo }) |
+    @Html.ActionLink("Regresar a la lista", "Index")
+</p>

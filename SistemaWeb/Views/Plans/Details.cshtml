@@ -1,0 +1,61 @@
+﻿@model SistemaWeb.Contexto.Plan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+           Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+           Total de credito
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_credito)
+        </dd>
+
+        <dt>
+            Fecha de inicio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ini)
+        </dd>
+
+        <dt>
+           Fecha de fin
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_fin)
+        </dd>
+
+        <dt>
+           Numero ciclo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nciclos)
+        </dd>
+
+        <dt>
+          Carrera
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carrera.nombre)
+        </dd>
+
+    </dl>
+</div>

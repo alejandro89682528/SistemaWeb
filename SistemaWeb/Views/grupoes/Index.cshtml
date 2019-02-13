@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.grupo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+           Capacidad
+        </th>
+        <th>
+           Tipo de ciclo
+        </th>
+        <th>
+           Asignatura
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.capacidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_ciclo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pensum.anio_est)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.cod_grupo }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.cod_grupo }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.cod_grupo })
+        </td>
+    </tr>
+}
+
+</table>

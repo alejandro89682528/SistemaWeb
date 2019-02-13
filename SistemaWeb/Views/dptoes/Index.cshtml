@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.dpto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Departamentos</h2>
+
+<p>
+    <a href="#" data-toggle="modal" data-target="#modaldialog" onclick="loadData('/Dptoes/Create', 'contentdialog')"> <Span class="btn btn-success"> Crear nuevo </Span></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Nombre")
+        </th>
+        <th>
+            @Html.Label("Faculta")
+
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.faculta.nombre)
+            </td>
+            <td>
+                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/Dptoes/Edit/@item.cod_dpto', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
+                <a href="#" data-toggle="modal" data-target="#visualDetalle" onclick="loadData('/Dptoes/Details/@item.cod_dpto', 'contentdetalle')">  <Span class='btn btn-info'> Detalles </Span></a>
+                <a href="#" data-toggle="modal" class='btn btn-danger' data-target="#visualEliminar" onclick="loadData('/Dptoes/Delete/@item.cod_dpto', 'contenteliminar')">  <Span class='glyphicon glyphicon-th-list'></Span> Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div class="modal" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear nuevo departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentdialog">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal" id="visualEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Actualizar departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentedit">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="visualDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles de departamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contentdetalle">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="visualEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contenteliminar">
+            </div>
+        </div>
+    </div>
+</div>
+

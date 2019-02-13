@@ -1,0 +1,56 @@
+﻿@model SistemaWeb.Contexto.grupo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Esta seguro de eliminar el registro?</h3>
+<div>
+    <h4>grupo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Nombre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+           Capacidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidad)
+        </dd>
+
+        <dt>
+           Tipo de ciclo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_ciclo)
+        </dd>
+
+        <dt>
+         Asignatura
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pensum.anio_est)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar a la lista", "Index")
+        </div>
+    }
+</div>

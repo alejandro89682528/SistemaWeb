@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sistema_horarioModelStoreContainer" CdmEntityContainer="sistema_horarioEntities3">
+    <EntitySetMapping Name="anolectivoes">
+      <EntityTypeMapping TypeName="sistema_horarioModel.anolectivo">
+        <MappingFragment StoreEntitySet="anolectivo">
+          <ScalarProperty Name="ano" ColumnName="ano" />
+          <ScalarProperty Name="cod_ano" ColumnName="cod_ano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aulas">
+      <EntityTypeMapping TypeName="sistema_horarioModel.aula">
+        <MappingFragment StoreEntitySet="aula">
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="cod_tipoaula" ColumnName="cod_tipoaula" />
+          <ScalarProperty Name="n_equipo" ColumnName="n_equipo" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="ac" ColumnName="ac" />
+          <ScalarProperty Name="ubicasion" ColumnName="ubicasion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_aula" ColumnName="cod_aula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carreras">
+      <EntityTypeMapping TypeName="sistema_horarioModel.carrera">
+        <MappingFragment StoreEntitySet="carrera">
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="modalidad" ColumnName="modalidad" />
+          <ScalarProperty Name="tipo_carrera" ColumnName="tipo_carrera" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dptoes">
+      <EntityTypeMapping TypeName="sistema_horarioModel.dpto">
+        <MappingFragment StoreEntitySet="dpto">
+          <ScalarProperty Name="cod_faculta" ColumnName="cod_faculta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facultas">
+      <EntityTypeMapping TypeName="sistema_horarioModel.faculta">
+        <MappingFragment StoreEntitySet="faculta">
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_faculta" ColumnName="cod_faculta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupoes">
+      <EntityTypeMapping TypeName="sistema_horarioModel.grupo">
+        <MappingFragment StoreEntitySet="grupo">
+          <ScalarProperty Name="cod_asig" ColumnName="cod_asig" />
+          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_grupo" ColumnName="cod_grupo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="horarios">
+      <EntityTypeMapping TypeName="sistema_horarioModel.horario">
+        <MappingFragment StoreEntitySet="horario">
+          <ScalarProperty Name="inss" ColumnName="inss" />
+          <ScalarProperty Name="cod_grupo" ColumnName="cod_grupo" />
+          <ScalarProperty Name="cod_aula" ColumnName="cod_aula" />
+          <ScalarProperty Name="cod_asig" ColumnName="cod_asig" />
+          <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+          <ScalarProperty Name="cod_periodo" ColumnName="cod_periodo" />
+          <ScalarProperty Name="cod_horario" ColumnName="cod_horario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materias">
+      <EntityTypeMapping TypeName="sistema_horarioModel.materia">
+        <MappingFragment StoreEntitySet="materia">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_materia" ColumnName="cod_materia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pensums">
+      <EntityTypeMapping TypeName="sistema_horarioModel.pensum">
+        <MappingFragment StoreEntitySet="pensum">
+          <ScalarProperty Name="total_horas" ColumnName="total_horas" />
+          <ScalarProperty Name="cod_materia" ColumnName="cod_materia" />
+          <ScalarProperty Name="cod_plan" ColumnName="cod_plan" />
+          <ScalarProperty Name="prerrequisito2" ColumnName="prerrequisito2" />
+          <ScalarProperty Name="prerrequisito1" ColumnName="prerrequisito1" />
+          <ScalarProperty Name="anio_est" ColumnName="anio_est" />
+          <ScalarProperty Name="ciclo" ColumnName="ciclo" />
+          <ScalarProperty Name="N_credito" ColumnName="N_credito" />
+          <ScalarProperty Name="cod_asig" ColumnName="cod_asig" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="periodoes">
+      <EntityTypeMapping TypeName="sistema_horarioModel.periodo">
+        <MappingFragment StoreEntitySet="periodo">
+          <ScalarProperty Name="periodo1" ColumnName="periodo" />
+          <ScalarProperty Name="cod_periodo" ColumnName="cod_periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plans">
+      <EntityTypeMapping TypeName="sistema_horarioModel.Plan">
+        <MappingFragment StoreEntitySet="Plans">
+          <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
+          <ScalarProperty Name="Nciclos" ColumnName="Nciclos" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
+          <ScalarProperty Name="total_credito" ColumnName="total_credito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_plan" ColumnName="cod_plan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesores">
+      <EntityTypeMapping TypeName="sistema_horarioModel.profesore">
+        <MappingFragment StoreEntitySet="profesores">
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="foto_ruta" ColumnName="foto_ruta" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="inss" ColumnName="inss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="sistema_horarioModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoaulas">
+      <EntityTypeMapping TypeName="sistema_horarioModel.tipoaula">
+        <MappingFragment StoreEntitySet="tipoaula">
+          <ScalarProperty Name="nombre_tipo" ColumnName="nombre_tipo" />
+          <ScalarProperty Name="cod_tipoaula" ColumnName="cod_tipoaula" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="sistema_horarioModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="sistema_horarioModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="sistema_horarioModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="sistema_horarioModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="sistema_horarioModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="sistema_horarioModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="sistema_horarioModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="sistema_horarioModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="exportarcions">
+      <EntityTypeMapping TypeName="sistema_horarioModel.exportarcion">
+        <MappingFragment StoreEntitySet="exportarcion">
+          <ScalarProperty Name="tipo_grupo" ColumnName="tipo_grupo" />
+          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
+          <ScalarProperty Name="anolectivo" ColumnName="anolectivo" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="cod_asignatura" ColumnName="cod_asignatura" />
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="inss" ColumnName="inss" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="sistema_horarioModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="sistema_horarioModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="sistema_horarioModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="sistema_horarioModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="sistema_horarioModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="sistema_horarioModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
