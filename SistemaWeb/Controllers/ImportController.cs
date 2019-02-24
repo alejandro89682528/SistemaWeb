@@ -22,6 +22,10 @@ namespace SistemaWeb.Controllers
 
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
         OleDbConnection Econ;
+
+        public object MessageBoxIcon { get; private set; }
+        public object MessageBox { get; private set; }
+
         //private sistema_horarioEntities3 db = new sistema_horarioEntities3();
         // GET: Import
         public ActionResult Index()
@@ -69,8 +73,9 @@ namespace SistemaWeb.Controllers
             OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
             Econ.Close();
             oda.Fill(ds);
-
             DataTable dt = ds.Tables[0];
+
+           
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
