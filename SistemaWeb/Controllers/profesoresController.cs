@@ -18,6 +18,8 @@ namespace SistemaWeb.Controllers
         // GET: profesores
         public async Task<ActionResult> Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var profesores = db.profesores.Include(p => p.dpto);
             return View(await profesores.ToListAsync());
         }

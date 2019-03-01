@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: Plans
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var plans = db.Plans.Include(p => p.carrera);
             return View(plans.ToList());
         }

@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: materias
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             return View(db.materias.ToList());
         }
 

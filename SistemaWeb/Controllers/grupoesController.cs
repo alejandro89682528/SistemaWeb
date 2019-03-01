@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: grupoes
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var grupoes = db.grupoes.Include(g => g.pensum);
             return View(grupoes.ToList());
         }

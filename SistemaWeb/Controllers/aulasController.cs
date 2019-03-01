@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: aulas
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var aulas = db.aulas.Include(a => a.dpto).Include(a => a.tipoaula);
             return View(aulas.ToList());
         }
