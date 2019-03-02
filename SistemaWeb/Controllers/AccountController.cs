@@ -142,6 +142,8 @@ namespace SistemaWeb.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             //ViewBag.Name = new SelectList(contexto.Roles.Where(u => !u.Name.Contains("Admin")).ToList(),"Name", "Name");
             ViewBag.Name = new SelectList(contexto.Roles.ToList(), "Name", "Name");
             return View();
@@ -154,6 +156,7 @@ namespace SistemaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, FormCollection form)
         {
+           
             if (ModelState.IsValid)
             {
 

@@ -48,7 +48,15 @@ namespace SistemaWeb.Controllers
             TempData["infoRol"] = rol;
             return View();
         }
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        public ActionResult Manager()
+        {
+            return View();
 
+        }
         private bool isAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -92,6 +100,7 @@ namespace SistemaWeb.Controllers
             return false;
 
         }
+
         
    
     }
