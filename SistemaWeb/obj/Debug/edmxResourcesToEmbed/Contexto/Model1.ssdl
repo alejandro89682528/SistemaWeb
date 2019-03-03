@@ -81,6 +81,12 @@
     <Property Name="cod_tipoaula" Type="int" Nullable="false" />
     <Property Name="cod_dpto" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="aulaDpto">
+          <Property Name="cod_aula" Type="int" />
+          <Property Name="cod_dpto" Type="int" />
+        </EntityType>-->
   <EntityType Name="carrera">
     <Key>
       <PropertyRef Name="cod_carrera" />
@@ -158,8 +164,8 @@
     <Property Name="cod_asig" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="N_credito" Type="int" Nullable="false" />
     <Property Name="ciclo" Type="int" Nullable="false" />
-    <Property Name="anio_est" Type="varchar" MaxLength="4" Nullable="false" />
-    <Property Name="prerrequisito1" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="anio_est" Type="varchar" MaxLength="4" />
+    <Property Name="prerrequisito1" Type="varchar" MaxLength="100" />
     <Property Name="prerrequisito2" Type="varchar" MaxLength="100" />
     <Property Name="cod_plan" Type="int" Nullable="false" />
     <Property Name="cod_materia" Type="int" Nullable="false" />
@@ -184,6 +190,12 @@
     <Property Name="Nciclos" Type="int" />
     <Property Name="cod_carrera" Type="int" Nullable="false" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'sistema_horario.dbo.profesorDepartameto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="profesorDepartameto">
+          <Property Name="cod_dpto" Type="int" />
+          <Property Name="inss" Type="varchar" MaxLength="45" />
+        </EntityType>-->
   <EntityType Name="profesores">
     <Key>
       <PropertyRef Name="inss" />
@@ -283,6 +295,12 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDpto', pero no se encuentra la tabla.
+        <Association Name="FK_aulaDpto_aula" />-->
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDpto', pero no se encuentra la tabla.
+        <Association Name="FK_aulaDpto_dpto" />-->
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -481,6 +499,12 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profesorDepartameto', pero no se encuentra la tabla.
+        <Association Name="FK_profesorDepartameto_dpto" />-->
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profesorDepartameto', pero no se encuentra la tabla.
+        <Association Name="FK_profesorDepartameto_profesores" />-->
   <Association Name="FK_profesores_dpto">
     <End Role="dpto" Type="Self.dpto" Multiplicity="1">
       <OnDelete Action="Cascade" />

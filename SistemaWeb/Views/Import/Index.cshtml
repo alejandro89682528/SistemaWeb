@@ -14,7 +14,7 @@
     <div>
 
         <h2>Excel Import</h2>
-        
+
 
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -34,18 +34,43 @@
                 </div>
 
             </div>
+
+
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript">
+                function Confirm() {
+                    var input = $("<input />");
+                    input.attr("type", "hidden").attr("name", "confirm_value");
+                    if (confirm("Se an encontrado datos del departamento  Desea Eliminar los datos del departamento existente?")) {
+                        input.val("Yes");
+                    } else {
+                        input.val("No");
+                    }
+                    $("form")[0].appendChild(input[0]);
+                }
+            </script>
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+            $(function () {
+              alert("@ViewBag.Message")
+            });
+                </script>
+            }
             <div>
                 <input name="file" type="file" required />
                 <br />
                 <button type="submit">Import</button>
             </div>
+
+
         </form>
 
-        <br />
-        <asp:GridView ID="GridView1" runat="server">
-        </asp:GridView>
-        <br />
+
 
     </div>
+
+
+   
 </body>
 </html>
