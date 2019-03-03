@@ -96,7 +96,11 @@ namespace SistemaWeb.Models
         
 
     }
-   
+    public class InsercionUsuariosRoles
+    {
+        public int SelectedId { get; set; }
+        
+    }
 
     public class ResetPasswordViewModel
     {
