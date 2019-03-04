@@ -40,7 +40,8 @@ namespace SistemaWeb.Controllers
         public ActionResult Create()
         {
             ViewBag.cod_materia = new SelectList(db.materias, "cod_materia", "nombre");
-            ViewBag.cod_plan = new SelectList(db.Plans, "cod_plan", "nombre");
+           // ViewBag.prerrequisito1 = new SelectList(db.materias, "nombre", "nombre");
+            ViewBag.cod_plan = new SelectList(db.Plans, "cod_plan",  "nombre");
             return PartialView();
         }
 
@@ -49,7 +50,7 @@ namespace SistemaWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_asig,N_credito,ciclo,anio_est,prerrequisito1,prerrequisito2,cod_plan,cod_materia")] pensum pensum)
+        public ActionResult Create([Bind(Include = "cod_asig,N_credito,ciclo,anio_est,prerrequisito1,prerrequisito2,cod_plan,cod_materia, total_horas")] pensum pensum)
         {
             if (ModelState.IsValid)
             {
@@ -85,8 +86,8 @@ namespace SistemaWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_asig,N_credito,ciclo,anio_est,prerrequisito1,prerrequisito2,cod_plan,cod_materia")] pensum pensum)
-        {
+        public ActionResult Edit([Bind(Include = "cod_asig,N_credito,ciclo,anio_est,prerrequisito1,prerrequisito2,cod_plan,cod_materia,total_horas")] pensum pensum)
+        { 
             if (ModelState.IsValid)
             {
                 db.Entry(pensum).State = EntityState.Modified;

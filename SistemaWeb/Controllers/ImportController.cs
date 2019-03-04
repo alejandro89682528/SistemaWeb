@@ -37,14 +37,15 @@ namespace SistemaWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file, string cod_dpto, string tipo_ciclo)
+        public ActionResult Index(HttpPostedFileBase file, string cod_dpto, string tipo_ciclo, string confirm_value)
         {
             string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
             string filepath = "/excelfolder/" + filename;
             file.SaveAs(Path.Combine(Server.MapPath("/excelfolder"), filename));
             var id = Int32.Parse(cod_dpto);
             var ciclo = tipo_ciclo;
-            InsertExceldata(filepath, filename, id, ciclo);
+            var confirmacion = confirm_value;
+            InsertExceldata(filepath, filename, id, ciclo, confirmacion);
 
             return Index();
         }
@@ -56,27 +57,36 @@ namespace SistemaWeb.Controllers
 
         }
 
-        private void InsertExceldata(string fileepath, string filename, int id, String ciclo )
+        private void InsertExceldata(string fileepath, string filename, int id, String ciclo, String confirmacion )
         {
+
+
             string fullpath = Server.MapPath("/excelfolder/") + filename;
             ExcelConn(fullpath);
             //string query = string.Format("Select * from [{0}]", "Sheet1$"); Hoja1$
             string query = string.Format("Select * from [Hoja1$]");
             //string[] elemento = new string[] { "Select * from [Hoja1$]" };
             //lista.Add("Select * from [Hoja1$]");
-
-
             OleDbCommand Ecom = new OleDbCommand(query, Econ);
             Econ.Open();
-
             DataSet ds = new DataSet();
             OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
             Econ.Close();
             oda.Fill(ds);
             DataTable dt = ds.Tables[0];
 
-           
+            
 
+            if (confirmacion == "Yes")
+            {
+
+                ViewBag.Message = "You clicked YES!";
+            }
+            else
+            {
+                ViewBag.Message = "You clicked NO!";
+            }
+            
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 
@@ -113,7 +123,7 @@ namespace SistemaWeb.Controllers
                 //return View(dpto);
                 con.Close();
 
-            }
+            } 
                 /*
                 SqlBulkCopy objbulk = new SqlBulkCopy(con);
                 objbulk.DestinationTableName = "exportarcion";

@@ -231,8 +231,8 @@
     <Property Name="cod_asig" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="N_credito" Type="Int32" Nullable="false" />
     <Property Name="ciclo" Type="Int32" Nullable="false" />
-    <Property Name="anio_est" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="prerrequisito1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="anio_est" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="prerrequisito1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="prerrequisito2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="cod_plan" Type="Int32" Nullable="false" />
     <Property Name="cod_materia" Type="Int32" Nullable="false" />
