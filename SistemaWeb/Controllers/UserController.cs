@@ -11,9 +11,11 @@ namespace SistemaWeb.Controllers
 {
     public class UserController : Controller
     {
+        int rol = 9;
         // GET: User
         public ActionResult Index()
         {
+            
             if (User.Identity.IsAuthenticated)
             {
 
@@ -21,27 +23,40 @@ namespace SistemaWeb.Controllers
                 if (isAdminUser())
                 {
                     ViewBag.displayMenu = "Admin";
+                    rol = 0;
                 }
                 else if (isManager())
                 {
                     var usuario = User.Identity;
                     ViewBag.Name = usuario.Name;
                     ViewBag.displayMenu = "Manager";
+                    rol = 1;
+
                 }
                 else
                 {
                     var usuario = User.Identity;
                     ViewBag.Name = usuario.Name;
                     ViewBag.displayMenu = "Usuario";
+                    rol = 2;
                 }
             }
             else
             {
                 ViewBag.Name = "El usuario no se ha logeado todavia";
             }
+            TempData["infoRol"] = rol;
             return View();
         }
+        public ActionResult Admin()
+        {
+            return View();
+        }
+        public ActionResult Manager()
+        {
+            return View();
 
+        }
         private bool isAdminUser()
         {
             if (User.Identity.IsAuthenticated)
@@ -85,6 +100,8 @@ namespace SistemaWeb.Controllers
             return false;
 
         }
+
+        
    
     }
 }

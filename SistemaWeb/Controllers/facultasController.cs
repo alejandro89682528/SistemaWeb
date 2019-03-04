@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SistemaWeb.Contexto;
 
+
 namespace SistemaWeb.Controllers
 {
     public class facultasController : Controller
@@ -17,6 +18,9 @@ namespace SistemaWeb.Controllers
         // GET: facultas
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
+
             return View(db.facultas.ToList());
         }
 

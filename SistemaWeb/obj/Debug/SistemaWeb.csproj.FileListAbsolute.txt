@@ -262,19 +262,135 @@ D:\monografia\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.CoreCompileInput
 D:\monografia\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.CopyComplete
 D:\monografia\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.dll
 D:\monografia\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.pdb
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.CrystalReports.Engine.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportSource.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.Shared.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.Controllers.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.Prompting.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
-C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\stdole.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\ApplicationInsights.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\SistemaWeb.dll.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\SistemaWeb.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\SistemaWeb.pdb
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csc.exe
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csc.exe.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csc.rsp
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csi.exe
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csi.exe.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\csi.rsp
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.AppContext.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Console.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.IO.Compression.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.IO.Pipes.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Claims.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.ValueTuple.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\vbc.exe
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\vbc.exe.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\vbc.rsp
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\VBCSCompiler.exe
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Antlr3.Runtime.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\EntityFramework.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\EntityFramework.SqlServer.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.Web.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Newtonsoft.Json.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Owin.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Helpers.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Mvc.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Optimization.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Razor.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.Razor.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\WebGrease.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Helpers.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Mvc.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Optimization.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.Razor.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Web.WebPages.Razor.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Newtonsoft.Json.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Antlr3.Runtime.pdb
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\EntityFramework.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\EntityFramework.SqlServer.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.AI.Web.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.Razor.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\EntityFramework.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csprojAssemblyReference.cache
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.CoreCompileInputs.cache
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.CopyComplete
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.dll
+C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.pdb

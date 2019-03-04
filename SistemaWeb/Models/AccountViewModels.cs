@@ -88,12 +88,18 @@ namespace SistemaWeb.Models
         [Display(Name = "Usuarios")]
         public string UserName { get; set; }
 
-        public override string ToString()
+        /*public override string ToString()
         {
 
             return UserRoles;
-        }
+        }*/
+        
 
+    }
+    public class InsercionUsuariosRoles
+    {
+        public int SelectedId { get; set; }
+        
     }
 
     public class ResetPasswordViewModel

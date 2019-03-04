@@ -10,13 +10,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SistemaWeb.Models;
+using SistemaWeb.Contexto;
 
 namespace SistemaWeb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        ApplicationDbContext contexto = new ApplicationDbContext();
+        private sistema_horarioEntities3 db = new sistema_horarioEntities3();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -142,8 +143,10 @@ namespace SistemaWeb.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             //ViewBag.Name = new SelectList(contexto.Roles.Where(u => !u.Name.Contains("Admin")).ToList(),"Name", "Name");
-            ViewBag.Name = new SelectList(contexto.Roles.ToList(), "Name", "Name");
+            ViewBag.role = new SelectList(db.AspNetRoles, "Id", "Name");
             return View();
         }
 
@@ -154,6 +157,7 @@ namespace SistemaWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, FormCollection form)
         {
+           
             if (ModelState.IsValid)
             {
 
@@ -165,6 +169,7 @@ namespace SistemaWeb.Controllers
                     var resultado = UserManager.AddToRole(user.Id, selectedRol);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+                   
 
 
                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771

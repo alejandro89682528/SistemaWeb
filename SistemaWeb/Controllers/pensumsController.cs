@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: pensums
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var pensums = db.pensums.Include(p => p.materia).Include(p => p.Plan);
             return View(pensums.ToList());
         }

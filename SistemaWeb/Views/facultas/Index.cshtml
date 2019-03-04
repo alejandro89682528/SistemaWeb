@@ -1,9 +1,20 @@
 ﻿@model IEnumerable<SistemaWeb.Contexto.faculta>
 
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    Layout = "~/Views/Shared/_LayoutManager.cshtml";
-    ViewBag.Title = "Index";
+    if(ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if(ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if(ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    
 }
 
 <h2>Lista de facultades</h2>

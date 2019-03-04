@@ -1,25 +1,29 @@
 ﻿@{
     ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
-@if (ViewBag.displayMenu == "Admin")
-{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    <h1>Welcome Admin <strong>@ViewBag.Name</strong> Este modulo sera implemetado pronto</h1>
+    if (ViewBag.displayMenu == "Admin")
+    {
 
 
 
+        { Response.Redirect("~/User/Admin", false); }
+
+
+    }
+    else if (ViewBag.displayMenu == "Manager")
+    {
+
+        { Response.Redirect("~/User/Manager", false); }
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        
+    }
+
 }
-else if (ViewBag.displayMenu == "Manager")
-{
-    Layout = "~/Views/Shared/_LayoutManager.cshtml";
-    <h1>Welcome Manager <strong>@ViewBag.Name</strong> Este modulo sera implemetado pronto</h1>
-}
-else
-{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    <h2>Welcome usuario <strong>@ViewBag.Name</strong> Este modulo sera implemetado pronto</h2>
-}
+
+
+<h2>Welcome usuario <strong>@ViewBag.Name</strong> Este modulo sera implemetado pronto</h2>
 
 

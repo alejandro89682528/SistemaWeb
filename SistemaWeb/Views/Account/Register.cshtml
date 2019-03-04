@@ -1,6 +1,22 @@
 ﻿@model SistemaWeb.Models.RegisterViewModel
+
 @{
     ViewBag.Title = "Registrarse";
+
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -39,7 +55,7 @@
         @Html.Label("User Role", new { @class = "col-md-2 control-label" })
         <div>
 
-            @Html.DropDownList("Name", (SelectList)ViewBag.Name, new { @id = "cb-roles" })
+            @Html.DropDownList("usuario", null, htmlAttributes: new { @class = "form-control" })
 
         </div>
     </div>

@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: dptoes
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var dptoes = db.dptoes.Include(d => d.faculta);
             return View(dptoes.ToList());
         }

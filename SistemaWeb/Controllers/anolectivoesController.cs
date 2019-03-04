@@ -17,6 +17,8 @@ namespace SistemaWeb.Controllers
         // GET: anolectivoes
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             return View(db.anolectivoes.ToList());
         }
 

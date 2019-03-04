@@ -17,6 +17,9 @@ namespace SistemaWeb.Controllers
         // GET: tipoaulas
         public ActionResult Index()
         {
+            
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             return View(db.tipoaulas.ToList());
         }
 
