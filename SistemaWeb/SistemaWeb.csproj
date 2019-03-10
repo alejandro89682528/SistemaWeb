@@ -298,6 +298,7 @@
     <Compile Include="Controllers\horarioController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\materiareporteController.cs" />
     <Compile Include="Controllers\materiasController.cs" />
     <Compile Include="Controllers\pensumsController.cs" />
     <Compile Include="Controllers\PlansController.cs" />
@@ -512,10 +513,12 @@
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
     <Content Include="Views\User\Manager.cshtml" />
+    <Content Include="Views\materiareporte\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="excelfolder\" />
+    <Folder Include="reportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

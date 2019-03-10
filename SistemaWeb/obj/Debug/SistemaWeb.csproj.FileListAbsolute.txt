@@ -394,3 +394,19 @@ C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\
 C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.CopyComplete
 C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.dll
 C:\Users\Vera Cortez\Documents\Development\tesis\swv3\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.pdb
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportSource.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.Shared.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Alejandro\source\repos\SistemaWeb\SistemaWeb\bin\stdole.dll
