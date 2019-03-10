@@ -6,52 +6,52 @@
     <title>@ViewBag.Title - Sistema horario</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/contet/luis.css")
 
 </head>
 <body class="pt-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        @Html.ActionLink("Inicio", "Admin", "User", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mas Informacion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
+                        <a class="dropdown-item" href="/Home/About">Acerca de</a>
+                        <a class="dropdown-item" href="/Home/Contact">Contato</a>
 
+                    </div>
+                </li>
                 @if (Request.IsAuthenticated)
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Nuevos
+                            Catalogo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Facultas/Index">Facultades</a>
-                            <a class="dropdown-item" href="/carreras/Index">Agregar carreras</a>
+                            <a class="dropdown-item" href="/carreras/Index">carreras</a>
                             <a class="dropdown-item" href="/dptoes/Index">Departamentos</a>
-                            <a class="dropdown-item" href="/anolectivoes/Index">Agregar año</a>
-                            <a class="dropdown-item" href="/materias/Index">Agregar materia</a>
-                            <a class="dropdown-item" href="/tipoaulas/Index">Agregar tipo de aula</a>
-                            <a class="dropdown-item" href="/aulas/Index">Agregar aula</a>
-                            <a class="dropdown-item" href="/profesores/Index">Agregar profesor</a>
-                            <a class="dropdown-item" href="/plans/Index">Agregar Plan</a>
-                            <a class="dropdown-item" href="/pensums/Index">Agregar pemsul</a>
+                            <a class="dropdown-item" href="/anolectivoes/Index">año electivo</a>
+                            <a class="dropdown-item" href="/materias/Index">materia</a>
+                            <a class="dropdown-item" href="/tipoaulas/Index">Tipo de aula</a>
+                            <a class="dropdown-item" href="/aulas/Index">Aula</a>
+                            <a class="dropdown-item" href="/profesores/Index">Profesor</a>
+                            <a class="dropdown-item" href="/plans/Index">Plan de estudio</a>
+                            <a class="dropdown-item" href="/pensums/Index">Pensum</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Configuracion
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/profesores/OrganizarProfesores">Organizar Profesores</a>
-                            <!--<a class="dropdown-item" href="/Home/About">Gestionar Aulas</a>-->
-                            <!--<a class="dropdown-item" href="/Home/Contact">Contato</a>-->
 
-                        </div>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Inportar
+                            Importar
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Import/index">Importar</a>
@@ -61,9 +61,24 @@
 
                         </div>
                     </li>
-                    <li>@Html.ActionLink("Usuarios", "Register", "Account", new { area = "" }, new { @id = "link-usuarios" })</li>
 
-                    <!--<li>Html.ActionLink("Registrar como nuevo usuario", "Register")</li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="">Profesor y año electivo</a>
+                            <a class="dropdown-item" href="">Departamento</a>
+                            <a class="dropdown-item" href="">Aula y año</a>
+                            <a class="dropdown-item" href="">Carrera , año electivo y  ciclo</a>
+                            <a class="dropdown-item" href="">Componentes</a>
+                            <a class="dropdown-item" href="">General</a>
+                            <a class="dropdown-item" href="">% de uso de uso de aula</a>
+                            <a class="dropdown-item" href="">Uso de aula x horas</a>
+                            <a class="dropdown-item" href="">Aulas libres x hora</a>
+
+                        </div>
+                    </li>
                 }
             </ul>
             @Html.Partial("_LoginPartial")

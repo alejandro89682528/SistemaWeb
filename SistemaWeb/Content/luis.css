@@ -1,0 +1,36 @@
+﻿.pt-0 {
+}
+
+#navbar navbar-expand-lg navbar-dark bg-dark {
+    background: #ff0000;
+}
+
+#navbarSupportedContent { /*color de los botones*/
+    border: 1px solid black;
+    border-radius: 5px 5px 5px 5px;
+    background: #808080;
+    text-align: center;
+}
+
+.align-content-center { /*color de los botones*/
+    border: 1px solid black;
+    border-radius: 5px 5px 5px 5px;
+    background: #4d8cd0;
+}
+
+div.jumbotron {
+    border: 5px outset #4d8cd0;
+    background-color: #4d8cd0;
+}
+
+
+
+.dropdown-menu {
+    border: 2px solid black;
+    border-radius: 20px 20px 20px 20px;
+}
+
+article {
+    border: 1px solid black;
+    border-radius: 1px 1px 1px 1px;
+    background: #4d8cd0;
