@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetMateria" targetNamespace="http://tempuri.org/DataSetMateria.xsd" xmlns:mstns="http://tempuri.org/DataSetMateria.xsd" xmlns="http://tempuri.org/DataSetMateria.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetMateria" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetMateria" msprop:Generator_UserDSName="DataSetMateria">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="materia" msprop:Generator_TableClassName="materiaDataTable" msprop:Generator_TableVarName="tablemateria" msprop:Generator_TablePropName="materia" msprop:Generator_RowDeletingName="materiaRowDeleting" msprop:Generator_RowChangingName="materiaRowChanging" msprop:Generator_RowEvHandlerName="materiaRowChangeEventHandler" msprop:Generator_RowDeletedName="materiaRowDeleted" msprop:Generator_UserTableName="materia" msprop:Generator_RowChangedName="materiaRowChanged" msprop:Generator_RowEvArgName="materiaRowChangeEvent" msprop:Generator_RowClassName="materiaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cod_materia" msprop:Generator_ColumnVarNameInTable="columncod_materia" msprop:Generator_ColumnPropNameInRow="cod_materia" msprop:Generator_ColumnPropNameInTable="cod_materiaColumn" msprop:Generator_UserColumnName="cod_materia" type="xs:int" minOccurs="0" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

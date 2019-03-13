@@ -21,7 +21,7 @@ namespace SistemaWeb.Controllers
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
             var profesores = db.profesores.Include(p => p.dpto);
-            return View(await profesores.ToListAsync());
+            return View(await profesores.ToListAsync());            
         }
 
         // GET: profesores/Details/5

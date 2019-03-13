@@ -319,6 +319,17 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportes\CrystalReport1Materia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1Materia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="reportes\DataSetMateria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMateria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -377,6 +388,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="libman.json" />
+    <Content Include="reportes\DataSetMateria.xsc">
+      <DependentUpon>DataSetMateria.xsd</DependentUpon>
+    </Content>
+    <None Include="reportes\DataSetMateria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMateria.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="reportes\DataSetMateria.xss">
+      <DependentUpon>DataSetMateria.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -519,7 +541,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="excelfolder\" />
-    <Folder Include="reportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -533,6 +554,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="reportes\CrystalReport1Materia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1Materia.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

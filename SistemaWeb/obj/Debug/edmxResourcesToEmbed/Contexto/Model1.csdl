@@ -273,8 +273,8 @@
     <Property Name="nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
     <Property Name="apellido" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
     <Property Name="telefono" Type="Int32" Nullable="false" />
-    <Property Name="direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="foto_ruta" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="foto_ruta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="cod_dpto" Type="Int32" Nullable="false" />
     <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="profesore" ToRole="dpto" />
     <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="profesore" ToRole="horario" />
