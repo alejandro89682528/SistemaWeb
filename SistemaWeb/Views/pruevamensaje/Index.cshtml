@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data"> 
+        
+        <input type="submit" value="Submit" onclick="Confirm()" />
+        
+        </form>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            function Confirm() {
+                var input = $("<input />");
+                input.attr("type", "hidden").attr("name", "confirm_value");
+                if (confirm("Do you want to save data?")) {
+                    input.val("Yes");
+                } else {
+                    input.val("No");
+                }
+                $("form")[0].appendChild(input[0]);
+            }
+        </script>
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+            $(function () {
+              alert("@ViewBag.Message")
+            });
+            </script>
+        }
+</body>
+</html>

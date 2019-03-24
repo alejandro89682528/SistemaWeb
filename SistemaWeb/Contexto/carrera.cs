@@ -18,6 +18,7 @@ namespace SistemaWeb.Contexto
         public carrera()
         {
             this.Plans = new HashSet<Plan>();
+            this.inportarcions = new HashSet<inportarcion>();
         }
     
         public int cod_carrera { get; set; }
@@ -29,5 +30,7 @@ namespace SistemaWeb.Contexto
         public virtual dpto dpto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plan> Plans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
     }
 }

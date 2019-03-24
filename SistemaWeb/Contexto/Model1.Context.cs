@@ -38,16 +38,17 @@ namespace SistemaWeb.Contexto
         public virtual DbSet<pensum> pensums { get; set; }
         public virtual DbSet<periodo> periodoes { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
-        public virtual DbSet<profesore> profesores { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tipoaula> tipoaulas { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<exportarcion> exportarcions { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<inportarcion> inportarcions { get; set; }
+        public virtual DbSet<profesore> profesores { get; set; }
+        public virtual DbSet<dia> dias { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

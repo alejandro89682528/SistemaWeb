@@ -76,25 +76,25 @@ namespace SistemaWeb.Controllers
             DataTable dt = ds.Tables[0];
 
             
-
+            
             if (confirmacion == "Yes")
             {
 
-                ViewBag.Message = "You clicked YES!";
+                ViewBag.Message = "as seleccionado si!";
             }
             else
             {
-                ViewBag.Message = "You clicked NO!";
+                ViewBag.Message = "as seleccionado NO!";
             }
-            
+          
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 
-                String inss = dt.Rows[i].ItemArray[0].ToString();
+                String profesor = dt.Rows[i].ItemArray[0].ToString();
                 string asignatura = dt.Rows[i].ItemArray[1].ToString();
-                string grupo = dt.Rows[i].ItemArray[2].ToString();
-                int cantidad = Convert.ToInt32(dt.Rows[i].ItemArray[3].ToString());
-                int anoestudio = Convert.ToInt32(dt.Rows[i].ItemArray[4].ToString());
+                string carrera = dt.Rows[i].ItemArray[2].ToString();
+                string grupo = dt.Rows[i].ItemArray[3].ToString();
+                string hora_grupo = dt.Rows[i].ItemArray[4].ToString();
                 string tipogrupo = dt.Rows[i].ItemArray[5].ToString();
 
                 SqlCommand cmd = new SqlCommand();
@@ -106,14 +106,42 @@ namespace SistemaWeb.Controllers
                 sqlDA = new SqlDataAdapter(cmd);
                 sqlDA.Fill(dataTable);
                 con.Close();
-               
                 int cod_materia = Convert.ToInt32(dataTable.Rows[0].ItemArray[0].ToString());
 
+                //consulta de profesores con nombre y apellido concatenado
+                /*  SELECT inss FROM profesores
+                    WHERE nombre +' ' + apellido = 'francisco zepeda'; */
+
+            SqlCommand cmd1 = new SqlCommand();
+                DataTable dataTable1 = new DataTable();
+                SqlDataAdapter sqlDA1; con.Open();
+                cmd1.CommandText = "SELECT inss FROM profesores WHERE nombre +' ' + apellido = '" + profesor + "'; ";
+                cmd1.CommandType = CommandType.Text;
+                cmd1.Connection = con;
+                sqlDA1 = new SqlDataAdapter(cmd1);
+                sqlDA1.Fill(dataTable1);
+                con.Close();
+                string inss = dataTable1.Rows[0].ItemArray[0].ToString();
+
+                // consulta carrera
+
+                SqlCommand cmd3 = new SqlCommand();
+                DataTable dataTable3 = new DataTable();
+                SqlDataAdapter sqlDA3; con.Open();
+                cmd3.CommandText = "select cod_carrera from carrera where nombre = '" + carrera +"';";
+                cmd3.CommandType = CommandType.Text;
+                cmd3.Connection = con;
+                sqlDA3 = new SqlDataAdapter(cmd3);
+                sqlDA3.Fill(dataTable3);
+                con.Close();
+                int cod_carrera = Convert.ToInt32(dataTable3.Rows[0].ItemArray[0].ToString());
+
+                //insercion
                 SqlCommand cmd2;
                 SqlDataAdapter sqlDA2 = new SqlDataAdapter();
                 con.Open();
                 String sql = "";
-                sql = "INSERT INTO exportarcion (inss, cod_dpto, cod_asignatura, grupo, cantidad, anolectivo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', "+ id +", " + cod_materia + ", '" + grupo + "', " + cantidad + ", '" + anoestudio + "', '"+ ciclo +"', '" + tipogrupo + "')";
+                sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', "+ id +", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '"+ ciclo +"', '" + tipogrupo + "')";
                 //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                 cmd2 = new SqlCommand(sql, con);
                 sqlDA2.InsertCommand = new SqlCommand(sql, con);

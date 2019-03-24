@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="sistema_horarioModel.pensum" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="sistema_horarioModel.periodo" Width="1.5" PointX="5.25" PointY="10.5" />
         <EntityTypeShape EntityType="sistema_horarioModel.Plan" Width="1.5" PointX="0.75" PointY="5.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.profesore" Width="1.5" PointX="5.25" PointY="12.875" />
         <EntityTypeShape EntityType="sistema_horarioModel.sysdiagram" Width="1.5" PointX="7.75" PointY="8.75" />
         <EntityTypeShape EntityType="sistema_horarioModel.tipoaula" Width="1.5" PointX="3" PointY="6.375" />
         <EntityTypeShape EntityType="sistema_horarioModel.Usuario" Width="1.5" PointX="9.75" PointY="0.75" />
@@ -26,17 +25,12 @@
         <AssociationConnector Association="sistema_horarioModel.cod_dpto" />
         <AssociationConnector Association="sistema_horarioModel.FK_Plans_carrera" />
         <AssociationConnector Association="sistema_horarioModel.cod_faculta" />
-        <AssociationConnector Association="sistema_horarioModel.FK_profesores_dpto" />
         <AssociationConnector Association="sistema_horarioModel.FK_grupo_pensum" />
         <AssociationConnector Association="sistema_horarioModel.FK_horario_grupo" />
         <AssociationConnector Association="sistema_horarioModel.FK_horario_pensum" />
         <AssociationConnector Association="sistema_horarioModel.FK_horario_periodo" />
-        <AssociationConnector Association="sistema_horarioModel.FK_horario_profesores" />
         <AssociationConnector Association="sistema_horarioModel.FK_pensum_materia" />
         <AssociationConnector Association="sistema_horarioModel.FK_pensum_Plans" />
-        <EntityTypeShape EntityType="sistema_horarioModel.exportarcion" Width="1.5" PointX="7.5" PointY="13" />
-        <AssociationConnector Association="sistema_horarioModel.FK_exportarcion_dpto" />
-        <AssociationConnector Association="sistema_horarioModel.FK_exportarcion_profesores" />
         <EntityTypeShape EntityType="sistema_horarioModel.C__MigrationHistory" Width="1.5" PointX="10.375" PointY="9.75" />
         <EntityTypeShape EntityType="sistema_horarioModel.AspNetRole" Width="1.5" PointX="10.375" PointY="5.5" />
         <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserClaim" Width="1.5" PointX="14.875" PointY="6.625" />
@@ -45,6 +39,15 @@
         <AssociationConnector Association="sistema_horarioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="sistema_horarioModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="sistema_horarioModel.inportarcion" Width="1.5" PointX="8.875" PointY="12.75" />
+        <EntityTypeShape EntityType="sistema_horarioModel.profesore" Width="1.5" PointX="5.75" PointY="13.5" />
+        <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_carrera" />
+        <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_dpto" />
+        <AssociationConnector Association="sistema_horarioModel.FK_profesores_dpto" />
+        <AssociationConnector Association="sistema_horarioModel.FK_horario_profesores" />
+        <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_materia" />
+        <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_profesores" />
+        <EntityTypeShape EntityType="sistema_horarioModel.dia" Width="1.5" PointX="12.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

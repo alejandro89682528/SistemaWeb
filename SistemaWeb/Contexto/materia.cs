@@ -18,6 +18,7 @@ namespace SistemaWeb.Contexto
         public materia()
         {
             this.pensums = new HashSet<pensum>();
+            this.inportarcions = new HashSet<inportarcion>();
         }
     
         public int cod_materia { get; set; }
@@ -25,5 +26,7 @@ namespace SistemaWeb.Contexto
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pensum> pensums { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
     }
 }

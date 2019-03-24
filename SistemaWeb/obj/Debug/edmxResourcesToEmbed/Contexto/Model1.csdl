@@ -12,7 +12,6 @@
     <EntitySet Name="pensums" EntityType="sistema_horarioModel.pensum" />
     <EntitySet Name="periodoes" EntityType="sistema_horarioModel.periodo" />
     <EntitySet Name="Plans" EntityType="sistema_horarioModel.Plan" />
-    <EntitySet Name="profesores" EntityType="sistema_horarioModel.profesore" />
     <EntitySet Name="sysdiagrams" EntityType="sistema_horarioModel.sysdiagram" />
     <EntitySet Name="tipoaulas" EntityType="sistema_horarioModel.tipoaula" />
     <EntitySet Name="Usuarios" EntityType="sistema_horarioModel.Usuario" />
@@ -40,10 +39,6 @@
       <End Role="faculta" EntitySet="facultas" />
       <End Role="dpto" EntitySet="dptoes" />
     </AssociationSet>
-    <AssociationSet Name="FK_profesores_dpto" Association="sistema_horarioModel.FK_profesores_dpto">
-      <End Role="dpto" EntitySet="dptoes" />
-      <End Role="profesore" EntitySet="profesores" />
-    </AssociationSet>
     <AssociationSet Name="FK_grupo_pensum" Association="sistema_horarioModel.FK_grupo_pensum">
       <End Role="pensum" EntitySet="pensums" />
       <End Role="grupo" EntitySet="grupoes" />
@@ -58,10 +53,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_horario_periodo" Association="sistema_horarioModel.FK_horario_periodo">
       <End Role="periodo" EntitySet="periodoes" />
-      <End Role="horario" EntitySet="horarios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_horario_profesores" Association="sistema_horarioModel.FK_horario_profesores">
-      <End Role="profesore" EntitySet="profesores" />
       <End Role="horario" EntitySet="horarios" />
     </AssociationSet>
     <AssociationSet Name="FK_pensum_materia" Association="sistema_horarioModel.FK_pensum_materia">
@@ -102,15 +93,6 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="exportarcions" EntityType="sistema_horarioModel.exportarcion" />
-    <AssociationSet Name="FK_exportarcion_dpto" Association="sistema_horarioModel.FK_exportarcion_dpto">
-      <End Role="dpto" EntitySet="dptoes" />
-      <End Role="exportarcion" EntitySet="exportarcions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_exportarcion_profesores" Association="sistema_horarioModel.FK_exportarcion_profesores">
-      <End Role="profesore" EntitySet="profesores" />
-      <End Role="exportarcion" EntitySet="exportarcions" />
-    </AssociationSet>
     <EntitySet Name="C__MigrationHistory" EntityType="sistema_horarioModel.C__MigrationHistory" />
     <EntitySet Name="AspNetRoles" EntityType="sistema_horarioModel.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="sistema_horarioModel.AspNetUserClaim" />
@@ -128,6 +110,33 @@
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="inportarcions" EntityType="sistema_horarioModel.inportarcion" />
+    <EntitySet Name="profesores" EntityType="sistema_horarioModel.profesore" />
+    <AssociationSet Name="FK_inportarcion_carrera" Association="sistema_horarioModel.FK_inportarcion_carrera">
+      <End Role="carrera" EntitySet="carreras" />
+      <End Role="inportarcion" EntitySet="inportarcions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inportarcion_dpto" Association="sistema_horarioModel.FK_inportarcion_dpto">
+      <End Role="dpto" EntitySet="dptoes" />
+      <End Role="inportarcion" EntitySet="inportarcions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_profesores_dpto" Association="sistema_horarioModel.FK_profesores_dpto">
+      <End Role="dpto" EntitySet="dptoes" />
+      <End Role="profesore" EntitySet="profesores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_profesores" Association="sistema_horarioModel.FK_horario_profesores">
+      <End Role="profesore" EntitySet="profesores" />
+      <End Role="horario" EntitySet="horarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inportarcion_materia" Association="sistema_horarioModel.FK_inportarcion_materia">
+      <End Role="materia" EntitySet="materias" />
+      <End Role="inportarcion" EntitySet="inportarcions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inportarcion_profesores" Association="sistema_horarioModel.FK_inportarcion_profesores">
+      <End Role="profesore" EntitySet="profesores" />
+      <End Role="inportarcion" EntitySet="inportarcions" />
+    </AssociationSet>
+    <EntitySet Name="dias" EntityType="sistema_horarioModel.dia" />
   </EntityContainer>
   <EntityType Name="anolectivo">
     <Key>
@@ -163,6 +172,7 @@
     <Property Name="cod_dpto" Type="Int32" Nullable="false" />
     <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.cod_dpto" FromRole="carrera" ToRole="dpto" />
     <NavigationProperty Name="Plans" Relationship="sistema_horarioModel.FK_Plans_carrera" FromRole="carrera" ToRole="Plan" />
+    <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_carrera" FromRole="carrera" ToRole="inportarcion" />
   </EntityType>
   <EntityType Name="dpto">
     <Key>
@@ -174,8 +184,8 @@
     <NavigationProperty Name="aulas" Relationship="sistema_horarioModel.cod_dptos" FromRole="dpto" ToRole="aula" />
     <NavigationProperty Name="carreras" Relationship="sistema_horarioModel.cod_dpto" FromRole="dpto" ToRole="carrera" />
     <NavigationProperty Name="faculta" Relationship="sistema_horarioModel.cod_faculta" FromRole="dpto" ToRole="faculta" />
+    <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_dpto" FromRole="dpto" ToRole="inportarcion" />
     <NavigationProperty Name="profesores" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="dpto" ToRole="profesore" />
-    <NavigationProperty Name="exportarcions" Relationship="sistema_horarioModel.FK_exportarcion_dpto" FromRole="dpto" ToRole="exportarcion" />
   </EntityType>
   <EntityType Name="faculta">
     <Key>
@@ -223,6 +233,7 @@
     <Property Name="cod_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="pensums" Relationship="sistema_horarioModel.FK_pensum_materia" FromRole="materia" ToRole="pensum" />
+    <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_materia" FromRole="materia" ToRole="inportarcion" />
   </EntityType>
   <EntityType Name="pensum">
     <Key>
@@ -263,22 +274,6 @@
     <Property Name="cod_carrera" Type="Int32" Nullable="false" />
     <NavigationProperty Name="carrera" Relationship="sistema_horarioModel.FK_Plans_carrera" FromRole="Plan" ToRole="carrera" />
     <NavigationProperty Name="pensums" Relationship="sistema_horarioModel.FK_pensum_Plans" FromRole="Plan" ToRole="pensum" />
-  </EntityType>
-  <EntityType Name="profesore">
-    <Key>
-      <PropertyRef Name="inss" />
-    </Key>
-    <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="cedula" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="apellido" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
-    <Property Name="telefono" Type="Int32" Nullable="false" />
-    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="foto_ruta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="cod_dpto" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="profesore" ToRole="dpto" />
-    <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="profesore" ToRole="horario" />
-    <NavigationProperty Name="exportarcions" Relationship="sistema_horarioModel.FK_exportarcion_profesores" FromRole="profesore" ToRole="exportarcion" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -391,20 +386,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_profesores_dpto">
-    <End Type="sistema_horarioModel.dpto" Role="dpto" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="dpto">
-        <PropertyRef Name="cod_dpto" />
-      </Principal>
-      <Dependent Role="profesore">
-        <PropertyRef Name="cod_dpto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_grupo_pensum">
     <End Type="sistema_horarioModel.pensum" Role="pensum" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -457,18 +438,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_horario_profesores">
-    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="1" />
-    <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="profesore">
-        <PropertyRef Name="inss" />
-      </Principal>
-      <Dependent Role="horario">
-        <PropertyRef Name="inss" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_pensum_materia">
     <End Type="sistema_horarioModel.materia" Role="materia" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -508,46 +477,6 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="exportarcion">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-    <Property Name="cod_dpto" Type="Int32" />
-    <Property Name="cod_asignatura" Type="Int32" />
-    <Property Name="grupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="cantidad" Type="Int32" Nullable="false" />
-    <Property Name="anolectivo" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-    <Property Name="tipo_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_exportarcion_dpto" FromRole="exportarcion" ToRole="dpto" />
-    <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_exportarcion_profesores" FromRole="exportarcion" ToRole="profesore" />
-  </EntityType>
-  <Association Name="FK_exportarcion_dpto">
-    <End Type="sistema_horarioModel.dpto" Role="dpto" Multiplicity="0..1" />
-    <End Type="sistema_horarioModel.exportarcion" Role="exportarcion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="dpto">
-        <PropertyRef Name="cod_dpto" />
-      </Principal>
-      <Dependent Role="exportarcion">
-        <PropertyRef Name="cod_dpto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_exportarcion_profesores">
-    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="1" />
-    <End Type="sistema_horarioModel.exportarcion" Role="exportarcion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="profesore">
-        <PropertyRef Name="inss" />
-      </Principal>
-      <Dependent Role="exportarcion">
-        <PropertyRef Name="inss" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="C__MigrationHistory">
     <Key>
       <PropertyRef Name="MigrationId" />
@@ -639,4 +568,119 @@
     <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
+  <EntityType Name="inportarcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="cod_dpto" Type="Int32" />
+    <Property Name="cod_asignatura" Type="Int32" />
+    <Property Name="cod_carrera" Type="Int32" Nullable="false" />
+    <Property Name="grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="hora_grupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="carrera" Relationship="sistema_horarioModel.FK_inportarcion_carrera" FromRole="inportarcion" ToRole="carrera" />
+    <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_inportarcion_dpto" FromRole="inportarcion" ToRole="dpto" />
+    <NavigationProperty Name="materia" Relationship="sistema_horarioModel.FK_inportarcion_materia" FromRole="inportarcion" ToRole="materia" />
+    <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_inportarcion_profesores" FromRole="inportarcion" ToRole="profesore" />
+  </EntityType>
+  <EntityType Name="profesore">
+    <Key>
+      <PropertyRef Name="inss" />
+    </Key>
+    <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="Int32" />
+    <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="foto_ruta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cod_dpto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="profesore" ToRole="dpto" />
+    <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="profesore" ToRole="horario" />
+    <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_profesores" FromRole="profesore" ToRole="inportarcion" />
+  </EntityType>
+  <Association Name="FK_inportarcion_carrera">
+    <End Type="sistema_horarioModel.carrera" Role="carrera" Multiplicity="1" />
+    <End Type="sistema_horarioModel.inportarcion" Role="inportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carrera">
+        <PropertyRef Name="cod_carrera" />
+      </Principal>
+      <Dependent Role="inportarcion">
+        <PropertyRef Name="cod_carrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inportarcion_dpto">
+    <End Type="sistema_horarioModel.dpto" Role="dpto" Multiplicity="0..1" />
+    <End Type="sistema_horarioModel.inportarcion" Role="inportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="inportarcion">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_profesores_dpto">
+    <End Type="sistema_horarioModel.dpto" Role="dpto" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dpto">
+        <PropertyRef Name="cod_dpto" />
+      </Principal>
+      <Dependent Role="profesore">
+        <PropertyRef Name="cod_dpto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_profesores">
+    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="1" />
+    <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesore">
+        <PropertyRef Name="inss" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="inss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inportarcion_materia">
+    <End Type="sistema_horarioModel.materia" Role="materia" Multiplicity="0..1" />
+    <End Type="sistema_horarioModel.inportarcion" Role="inportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia">
+        <PropertyRef Name="cod_materia" />
+      </Principal>
+      <Dependent Role="inportarcion">
+        <PropertyRef Name="cod_asignatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inportarcion_profesores">
+    <End Type="sistema_horarioModel.profesore" Role="profesore" Multiplicity="1" />
+    <End Type="sistema_horarioModel.inportarcion" Role="inportarcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesore">
+        <PropertyRef Name="inss" />
+      </Principal>
+      <Dependent Role="inportarcion">
+        <PropertyRef Name="inss" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="dia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dias" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

@@ -121,20 +121,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="profesores">
-      <EntityTypeMapping TypeName="sistema_horarioModel.profesore">
-        <MappingFragment StoreEntitySet="profesores">
-          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
-          <ScalarProperty Name="foto_ruta" ColumnName="foto_ruta" />
-          <ScalarProperty Name="direccion" ColumnName="direccion" />
-          <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="apellido" ColumnName="apellido" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="cedula" ColumnName="cedula" />
-          <ScalarProperty Name="inss" ColumnName="inss" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="sistema_horarioModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -189,21 +175,6 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="sistema_horarioModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="sistema_horarioModel.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="exportarcions">
-      <EntityTypeMapping TypeName="sistema_horarioModel.exportarcion">
-        <MappingFragment StoreEntitySet="exportarcion">
-          <ScalarProperty Name="tipo_grupo" ColumnName="tipo_grupo" />
-          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
-          <ScalarProperty Name="anolectivo" ColumnName="anolectivo" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="grupo" ColumnName="grupo" />
-          <ScalarProperty Name="cod_asignatura" ColumnName="cod_asignatura" />
-          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
-          <ScalarProperty Name="inss" ColumnName="inss" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="sistema_horarioModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -267,5 +238,42 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="inportarcions">
+      <EntityTypeMapping TypeName="sistema_horarioModel.inportarcion">
+        <MappingFragment StoreEntitySet="inportarcion">
+          <ScalarProperty Name="tipo_grupo" ColumnName="tipo_grupo" />
+          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
+          <ScalarProperty Name="hora_grupo" ColumnName="hora_grupo" />
+          <ScalarProperty Name="grupo" ColumnName="grupo" />
+          <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
+          <ScalarProperty Name="cod_asignatura" ColumnName="cod_asignatura" />
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="inss" ColumnName="inss" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesores">
+      <EntityTypeMapping TypeName="sistema_horarioModel.profesore">
+        <MappingFragment StoreEntitySet="profesores">
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="foto_ruta" ColumnName="foto_ruta" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="inss" ColumnName="inss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dias">
+      <EntityTypeMapping TypeName="sistema_horarioModel.dia">
+        <MappingFragment StoreEntitySet="dia">
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

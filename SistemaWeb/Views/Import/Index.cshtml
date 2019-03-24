@@ -1,4 +1,4 @@
-﻿@model SistemaWeb.Contexto.exportarcion
+﻿@model SistemaWeb.Contexto.inportarcion
 @{
     ViewBag.Title = "Importar";
 }
@@ -36,7 +36,7 @@
             </div>
 
 
-            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
             <script type="text/javascript">
                 function Confirm() {
                     var input = $("<input />");
@@ -57,11 +57,13 @@
             });
                 </script>
             }
-            <div>
-                <input name="file" type="file" required />
-                <br />
-                <button type="submit">Import</button>
-            </div>
+                <div>
+                    <input name="file" type="file" required />
+                    <br />
+
+                    <input type="submit" value="Import" onclick="Confirm()" />
+
+                </div>
 
 
         </form>

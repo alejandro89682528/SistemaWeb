@@ -19,7 +19,16 @@ namespace SistemaWeb.Controllers
         {
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
-            return View(db.materias.ToList());
+           return View(db.materias.ToList());
+            
+            /* return View(from materias in db.materias
+                         orderby
+                           materias.nombre
+                         select new
+                         {
+                             cod_materia = materias.cod_materia,
+                             nombre = materias.nombre
+                         });*/
         }
 
         // GET: materias/Details/5
