@@ -293,6 +293,7 @@
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\aulasController.cs" />
     <Compile Include="Controllers\carrerasController.cs" />
+    <Compile Include="Controllers\diasController.cs" />
     <Compile Include="Controllers\dptoesController.cs" />
     <Compile Include="Controllers\facultasController.cs" />
     <Compile Include="Controllers\grupoesController.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="Controllers\materiareporteController.cs" />
     <Compile Include="Controllers\materiasController.cs" />
     <Compile Include="Controllers\pensumsController.cs" />
+    <Compile Include="Controllers\periodoesController.cs" />
     <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Controllers\profesoresController.cs" />
     <Compile Include="Controllers\pruevamensajeController.cs" />
@@ -535,6 +537,16 @@
     <Content Include="Views\User\Manager.cshtml" />
     <Content Include="Views\materiareporte\Index.cshtml" />
     <Content Include="Views\pruevamensaje\Index.cshtml" />
+    <Content Include="Views\dias\Create.cshtml" />
+    <Content Include="Views\dias\Delete.cshtml" />
+    <Content Include="Views\dias\Details.cshtml" />
+    <Content Include="Views\dias\Edit.cshtml" />
+    <Content Include="Views\dias\Index.cshtml" />
+    <Content Include="Views\periodoes\Create.cshtml" />
+    <Content Include="Views\periodoes\Delete.cshtml" />
+    <Content Include="Views\periodoes\Details.cshtml" />
+    <Content Include="Views\periodoes\Edit.cshtml" />
+    <Content Include="Views\periodoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

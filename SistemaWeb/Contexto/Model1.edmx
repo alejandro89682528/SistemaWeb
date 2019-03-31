@@ -136,6 +136,7 @@
           </Key>
           <Property Name="cod_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="cod_periodo" Type="int" />
+          <Property Name="cod_dias" Type="int" />
           <Property Name="fecha_ini" Type="varchar" MaxLength="45" />
           <Property Name="cod_asig" Type="int" Nullable="false" />
           <Property Name="cod_aula" Type="int" Nullable="false" />
@@ -152,7 +153,7 @@
           <Property Name="cod_asignatura" Type="int" />
           <Property Name="cod_carrera" Type="int" Nullable="false" />
           <Property Name="grupo" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="hora_grupo" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="hora_grupo" Type="int" Nullable="false" />
           <Property Name="tipo_ciclo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="tipo_grupo" Type="varchar" MaxLength="10" />
         </EntityType>
@@ -182,7 +183,7 @@
             <PropertyRef Name="cod_periodo" />
           </Key>
           <Property Name="cod_periodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="periodo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="periodo" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Plans">
           <Key>
@@ -241,8 +242,6 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene defin
           <Property Name="foto" Type="varchar" MaxLength="45" />
           <Property Name="pass" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <Association Name="cod_dpto">
           <End Role="dpto" Type="Self.dpto" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -914,6 +913,7 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene de
           <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_horario_pensum" FromRole="horario" ToRole="pensum" />
           <NavigationProperty Name="periodo" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="horario" ToRole="periodo" />
           <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="horario" ToRole="profesore" />
+          <Property Name="cod_dias" Type="Int32" />
         </EntityType>
         <EntityType Name="materia">
           <Key>
@@ -947,7 +947,7 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene de
             <PropertyRef Name="cod_periodo" />
           </Key>
           <Property Name="cod_periodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="periodo1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="periodo1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="periodo" ToRole="horario" />
         </EntityType>
         <EntityType Name="Plan">
@@ -1267,7 +1267,7 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene de
           <Property Name="cod_asignatura" Type="Int32" />
           <Property Name="cod_carrera" Type="Int32" Nullable="false" />
           <Property Name="grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="hora_grupo" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="hora_grupo" Type="Int32" Nullable="false" />
           <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="tipo_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="carrera" Relationship="sistema_horarioModel.FK_inportarcion_carrera" FromRole="inportarcion" ToRole="carrera" />
@@ -1444,6 +1444,7 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene de
           <EntitySetMapping Name="horarios">
             <EntityTypeMapping TypeName="sistema_horarioModel.horario">
               <MappingFragment StoreEntitySet="horario">
+                <ScalarProperty Name="cod_dias" ColumnName="cod_dias" />
                 <ScalarProperty Name="inss" ColumnName="inss" />
                 <ScalarProperty Name="cod_grupo" ColumnName="cod_grupo" />
                 <ScalarProperty Name="cod_aula" ColumnName="cod_aula" />

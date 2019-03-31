@@ -75,7 +75,7 @@ namespace SistemaWeb.Controllers
             oda.Fill(ds);
             DataTable dt = ds.Tables[0];
 
-            
+            /*
             
             if (confirmacion == "Yes")
             {
@@ -85,7 +85,7 @@ namespace SistemaWeb.Controllers
             else
             {
                 ViewBag.Message = "as seleccionado NO!";
-            }
+            } */
           
             for (int i = 0; i < dt.Rows.Count; i++)
             {

@@ -258,7 +258,7 @@
       <PropertyRef Name="cod_periodo" />
     </Key>
     <Property Name="cod_periodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="periodo1" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="periodo1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="periodo" ToRole="horario" />
   </EntityType>
   <EntityType Name="Plan">
