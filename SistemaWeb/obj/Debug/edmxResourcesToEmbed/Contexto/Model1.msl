@@ -67,6 +67,7 @@
     <EntitySetMapping Name="horarios">
       <EntityTypeMapping TypeName="sistema_horarioModel.horario">
         <MappingFragment StoreEntitySet="horario">
+          <ScalarProperty Name="cod_dias" ColumnName="cod_dias" />
           <ScalarProperty Name="inss" ColumnName="inss" />
           <ScalarProperty Name="cod_grupo" ColumnName="cod_grupo" />
           <ScalarProperty Name="cod_aula" ColumnName="cod_aula" />

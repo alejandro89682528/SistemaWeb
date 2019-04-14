@@ -81,12 +81,6 @@
     <Property Name="cod_tipoaula" Type="int" Nullable="false" />
     <Property Name="cod_dpto" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="aulaDpto">
-          <Property Name="cod_aula" Type="int" />
-          <Property Name="cod_dpto" Type="int" />
-        </EntityType>-->
   <EntityType Name="carrera">
     <Key>
       <PropertyRef Name="cod_carrera" />
@@ -137,6 +131,7 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
     </Key>
     <Property Name="cod_horario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="cod_periodo" Type="int" />
+    <Property Name="cod_dias" Type="int" />
     <Property Name="fecha_ini" Type="varchar" MaxLength="45" />
     <Property Name="cod_asig" Type="int" Nullable="false" />
     <Property Name="cod_aula" Type="int" Nullable="false" />
@@ -153,7 +148,7 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
     <Property Name="cod_asignatura" Type="int" />
     <Property Name="cod_carrera" Type="int" Nullable="false" />
     <Property Name="grupo" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="hora_grupo" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="hora_grupo" Type="int" Nullable="false" />
     <Property Name="tipo_ciclo" Type="varchar" MaxLength="2" Nullable="false" />
     <Property Name="tipo_grupo" Type="varchar" MaxLength="10" />
   </EntityType>
@@ -197,12 +192,6 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
     <Property Name="Nciclos" Type="int" />
     <Property Name="cod_carrera" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'sistema_horario.dbo.profesorDepartameto' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="profesorDepartameto">
-          <Property Name="cod_dpto" Type="int" />
-          <Property Name="inss" Type="varchar" MaxLength="45" />
-        </EntityType>-->
   <EntityType Name="profesores">
     <Key>
       <PropertyRef Name="inss" />
@@ -302,12 +291,6 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene defin
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDpto', pero no se encuentra la tabla.
-        <Association Name="FK_aulaDpto_aula" />-->
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDpto', pero no se encuentra la tabla.
-        <Association Name="FK_aulaDpto_dpto" />-->
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -530,12 +513,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDp
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profesorDepartameto', pero no se encuentra la tabla.
-        <Association Name="FK_profesorDepartameto_dpto" />-->
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profesorDepartameto', pero no se encuentra la tabla.
-        <Association Name="FK_profesorDepartameto_profesores" />-->
   <Association Name="FK_profesores_dpto">
     <End Role="dpto" Type="Self.dpto" Multiplicity="1">
       <OnDelete Action="Cascade" />
