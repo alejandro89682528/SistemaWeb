@@ -14,12 +14,6 @@ namespace SistemaWeb.Contexto
     
     public partial class grupo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public grupo()
-        {
-            this.horarios = new HashSet<horario>();
-        }
-    
         public int cod_grupo { get; set; }
         public string nombre { get; set; }
         public int capacidad { get; set; }
@@ -27,7 +21,5 @@ namespace SistemaWeb.Contexto
         public int cod_asig { get; set; }
     
         public virtual pensum pensum { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<horario> horarios { get; set; }
     }
 }

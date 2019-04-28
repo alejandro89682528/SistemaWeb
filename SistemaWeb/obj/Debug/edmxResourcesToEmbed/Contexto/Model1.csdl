@@ -43,10 +43,6 @@
       <End Role="pensum" EntitySet="pensums" />
       <End Role="grupo" EntitySet="grupoes" />
     </AssociationSet>
-    <AssociationSet Name="FK_horario_grupo" Association="sistema_horarioModel.FK_horario_grupo">
-      <End Role="grupo" EntitySet="grupoes" />
-      <End Role="horario" EntitySet="horarios" />
-    </AssociationSet>
     <AssociationSet Name="FK_horario_pensum" Association="sistema_horarioModel.FK_horario_pensum">
       <End Role="pensum" EntitySet="pensums" />
       <End Role="horario" EntitySet="horarios" />
@@ -207,7 +203,6 @@
     <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="cod_asig" Type="Int32" Nullable="false" />
     <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_grupo_pensum" FromRole="grupo" ToRole="pensum" />
-    <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="grupo" ToRole="horario" />
   </EntityType>
   <EntityType Name="horario">
     <Key>
@@ -218,10 +213,9 @@
     <Property Name="fecha_ini" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="cod_asig" Type="Int32" Nullable="false" />
     <Property Name="cod_aula" Type="Int32" Nullable="false" />
-    <Property Name="cod_grupo" Type="Int32" Nullable="false" />
+    <Property Name="cod_grupo" Type="String" Nullable="false" MaxLength="5" />
     <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="aula" Relationship="sistema_horarioModel.FK_horario_aula" FromRole="horario" ToRole="aula" />
-    <NavigationProperty Name="grupo" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="horario" ToRole="grupo" />
     <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_horario_pensum" FromRole="horario" ToRole="pensum" />
     <NavigationProperty Name="periodo" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="horario" ToRole="periodo" />
     <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="horario" ToRole="profesore" />
@@ -398,20 +392,6 @@
       </Principal>
       <Dependent Role="grupo">
         <PropertyRef Name="cod_asig" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_horario_grupo">
-    <End Type="sistema_horarioModel.grupo" Role="grupo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="grupo">
-        <PropertyRef Name="cod_grupo" />
-      </Principal>
-      <Dependent Role="horario">
-        <PropertyRef Name="cod_grupo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
