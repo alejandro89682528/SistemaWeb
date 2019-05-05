@@ -159,49 +159,68 @@ namespace SistemaWeb.Controllers
                         String tipo_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
                         int cod_pemsul = Convert.ToInt32(dataTable1.Rows[i].ItemArray[8].ToString());
                     
-                    //for para control de periodos 
-                    if (hora_grupo > 0) {
-                        
+                    //si y while pára controlar periodos
+                    if (hora_grupo !=  0)
+                    {
+
                         while (control_periodos < dataTable2.Rows.Count)
                         {
                             int id_periodo = Convert.ToInt32(dataTable2.Rows[control_periodos].ItemArray[0].ToString());
                             String periodo = dataTable2.Rows[control_periodos].ItemArray[1].ToString();
-                                                       
-                            //insercion
-                            SqlCommand cmdI;
-                            SqlDataAdapter sqlDAI = new SqlDataAdapter();
-                            con.Open();
-                            String sql = "";
 
-                            sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + grupo + "', '" + id_periodo + "', '14/04/2019', '" + inss + "')";
-                            //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
-                            cmdI = new SqlCommand(sql, con);
-                            sqlDAI.InsertCommand = new SqlCommand(sql, con);
-                            sqlDAI.InsertCommand.ExecuteNonQuery();
-                            cmdI.Dispose();
+                            // codigo de verificasion de aulas 
+                            
+                            SqlCommand cmd6 = new SqlCommand();
+                            DataTable dataTable6 = new DataTable();
+                            SqlDataAdapter sqlDA6; con.Open();
+                            cmd6.CommandText = "select *from horario h, periodo p, dia d, pensum pm where h.cod_periodo = p.cod_periodo and h.cod_dias = d.id and h.cod_asig = pm.cod_asig and h.cod_dias ="+ id_dias + " and h.cod_aula ="+ cod_aulas + " and h.cod_periodo ="+ id_periodo + ";";
+                            cmd6.CommandType = CommandType.Text;
+                            cmd6.Connection = con;
+                            sqlDA6 = new SqlDataAdapter(cmd6);
+                            sqlDA6.Fill(dataTable6);
                             con.Close();
-                            hora_grupo--;
-                            total_hora--;
-
-                            if ((control_periodos % 2) != 0)
+                            
+                            if (dataTable6.Rows.Count == 0 )
                             {
+                                //insercion
+                                SqlCommand cmdI;
+                                SqlDataAdapter sqlDAI = new SqlDataAdapter();
+                                con.Open();
+                                String sql = "";
+
+                                sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + grupo + "', '" + id_periodo + "', '14/04/2019', '" + inss + "')";
+                                //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
+                                cmdI = new SqlCommand(sql, con);
+                                sqlDAI.InsertCommand = new SqlCommand(sql, con);
+                                sqlDAI.InsertCommand.ExecuteNonQuery();
+                                cmdI.Dispose();
+                                con.Close();
+                                hora_grupo--;
+                                total_hora--;
+
+                                if ((control_periodos % 2) != 0)
+                                {
+                                    control_periodos++;
+                                    break;
+
+                                }
+                                if ((control_periodos + 1) == dataTable2.Rows.Count)
+                                {
+
+                                    //int control_periodo_finalisar = control_periodos + 1;
+
+                                    control_periodos = 0;
+
+                                    break;
+
+                                }
+
                                 control_periodos++;
-                                break;
-
                             }
-                            if ((control_periodos + 1) == dataTable2.Rows.Count)
+                            else
                             {
-
-                                //int control_periodo_finalisar = control_periodos + 1;
-
-                                control_periodos = 0;
-
                                 break;
-
                             }
-
-                            control_periodos++;
-
                         }
                     }
                     
