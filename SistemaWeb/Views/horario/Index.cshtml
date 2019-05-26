@@ -1,4 +1,4 @@
-﻿@model SistemaWeb.Contexto.horario_generacion
+﻿@model SistemaWeb.Contexto.horariogeneracion
 @{
     ViewBag.Title = "Horario";
 }
@@ -36,11 +36,14 @@
 
             <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-            <div>
-                @using (Html.BeginForm())
-                {
+            <div class="form-group">
+                seleccionar fecha de inicio
+                <div class="col-md-10">
+
                     @Html.EditorFor(model => model.fecha_ini, new { htmlAttribute = new { @class = "datepicker" } })
-                }
+                </div>
+
+
 
                 <link href="~/Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
 

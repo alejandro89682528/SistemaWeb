@@ -55,7 +55,7 @@ namespace SistemaWeb.Controllers
             SqlCommand cmd1 = new SqlCommand();
             DataTable dataTable1 = new DataTable();
             SqlDataAdapter sqlDA1; con.Open();
-            cmd1.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig from pensum p, inportarcion i where  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "' order by p.ciclo, i.grupo;";
+            cmd1.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig from pensum p, exportarcion i where  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "' order by p.ciclo, i.grupo;";
             // cmd1.CommandText = "select * from inportarcion where cod_carrera='" + idCarrera + "';";
             cmd1.CommandType = CommandType.Text;
             cmd1.Connection = con;
@@ -104,7 +104,7 @@ namespace SistemaWeb.Controllers
             SqlCommand cmd4 = new SqlCommand();
             DataTable dataTable4 = new DataTable();
             SqlDataAdapter sqlDA4; con.Open();
-            cmd4.CommandText = "select sum(hora_grupo) from inportarcion  where tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "';";
+            cmd4.CommandText = "select sum(hora_grupo) from exportarcion  where tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "';";
             cmd4.CommandType = CommandType.Text;
             cmd4.Connection = con;
             sqlDA4 = new SqlDataAdapter(cmd4);

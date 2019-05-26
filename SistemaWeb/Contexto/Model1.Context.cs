@@ -37,20 +37,18 @@ namespace SistemaWeb.Contexto
         public virtual DbSet<carrera> carreras { get; set; }
         public virtual DbSet<dia> dias { get; set; }
         public virtual DbSet<dpto> dptoes { get; set; }
+        public virtual DbSet<exportarcion> exportarcions { get; set; }
         public virtual DbSet<faculta> facultas { get; set; }
         public virtual DbSet<grupo> grupoes { get; set; }
         public virtual DbSet<horario> horarios { get; set; }
-        public virtual DbSet<horario_generacion> horario_generacion { get; set; }
-        public virtual DbSet<inportarcion> inportarcions { get; set; }
+        public virtual DbSet<horariogeneracion> horariogeneracions { get; set; }
         public virtual DbSet<materia> materias { get; set; }
         public virtual DbSet<pensum> pensums { get; set; }
         public virtual DbSet<periodo> periodoes { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<profesore> profesores { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tipoaula> tipoaulas { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<componente> componentes { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
