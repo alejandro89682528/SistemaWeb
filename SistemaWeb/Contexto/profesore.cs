@@ -17,23 +17,23 @@ namespace SistemaWeb.Contexto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public profesore()
         {
-            this.exportarcions = new HashSet<exportarcion>();
             this.horarios = new HashSet<horario>();
+            this.inportarcions = new HashSet<inportarcion>();
         }
     
         public string inss { get; set; }
         public string cedula { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
-        public int telefono { get; set; }
+        public Nullable<int> telefono { get; set; }
         public string direccion { get; set; }
         public string foto_ruta { get; set; }
         public int cod_dpto { get; set; }
     
         public virtual dpto dpto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<exportarcion> exportarcions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<horario> horarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
     }
 }

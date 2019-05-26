@@ -141,7 +141,7 @@ namespace SistemaWeb.Controllers
                 SqlDataAdapter sqlDA2 = new SqlDataAdapter();
                 con.Open();
                 String sql = "";
-                sql = "INSERT INTO exportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', "+ id +", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '"+ ciclo +"', '" + tipogrupo + "')";
+                sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', "+ id +", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '"+ ciclo +"', '" + tipogrupo + "')";
                 //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                 cmd2 = new SqlCommand(sql, con);
                 sqlDA2.InsertCommand = new SqlCommand(sql, con);

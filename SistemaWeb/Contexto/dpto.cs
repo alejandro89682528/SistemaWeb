@@ -19,7 +19,7 @@ namespace SistemaWeb.Contexto
         {
             this.aulas = new HashSet<aula>();
             this.carreras = new HashSet<carrera>();
-            this.exportarcions = new HashSet<exportarcion>();
+            this.inportarcions = new HashSet<inportarcion>();
             this.profesores = new HashSet<profesore>();
         }
     
@@ -33,7 +33,7 @@ namespace SistemaWeb.Contexto
         public virtual ICollection<carrera> carreras { get; set; }
         public virtual faculta faculta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<exportarcion> exportarcions { get; set; }
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<profesore> profesores { get; set; }
     }

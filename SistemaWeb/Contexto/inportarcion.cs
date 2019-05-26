@@ -12,21 +12,21 @@ namespace SistemaWeb.Contexto
     using System;
     using System.Collections.Generic;
     
-    public partial class horario
+    public partial class inportarcion
     {
-        public int cod_horario { get; set; }
-        public Nullable<int> cod_periodo { get; set; }
-        public Nullable<int> cod_dias { get; set; }
-        public string fecha_ini { get; set; }
-        public int cod_asig { get; set; }
-        public int cod_aula { get; set; }
-        public int cod_grupo { get; set; }
+        public int id { get; set; }
         public string inss { get; set; }
+        public Nullable<int> cod_dpto { get; set; }
+        public Nullable<int> cod_asignatura { get; set; }
+        public int cod_carrera { get; set; }
+        public string grupo { get; set; }
+        public int hora_grupo { get; set; }
+        public string tipo_ciclo { get; set; }
+        public string tipo_grupo { get; set; }
     
-        public virtual aula aula { get; set; }
-        public virtual grupo grupo { get; set; }
-        public virtual pensum pensum { get; set; }
-        public virtual periodo periodo { get; set; }
+        public virtual carrera carrera { get; set; }
+        public virtual dpto dpto { get; set; }
+        public virtual materia materia { get; set; }
         public virtual profesore profesore { get; set; }
     }
 }

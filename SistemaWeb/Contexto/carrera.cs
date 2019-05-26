@@ -17,6 +17,7 @@ namespace SistemaWeb.Contexto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public carrera()
         {
+            this.inportarcions = new HashSet<inportarcion>();
             this.Plans = new HashSet<Plan>();
         }
     
@@ -27,6 +28,8 @@ namespace SistemaWeb.Contexto
         public int cod_dpto { get; set; }
     
         public virtual dpto dpto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Plan> Plans { get; set; }
     }

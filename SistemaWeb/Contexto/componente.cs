@@ -12,19 +12,8 @@ namespace SistemaWeb.Contexto
     using System;
     using System.Collections.Generic;
     
-    public partial class exportarcion
+    public partial class componente
     {
-        public int id { get; set; }
-        public string inss { get; set; }
-        public Nullable<int> cod_dpto { get; set; }
-        public Nullable<int> cod_asignatura { get; set; }
-        public string grupo { get; set; }
-        public int cantidad { get; set; }
-        public string anolectivo { get; set; }
-        public string tipo_ciclo { get; set; }
-        public string tipo_grupo { get; set; }
-    
-        public virtual dpto dpto { get; set; }
-        public virtual profesore profesore { get; set; }
+        public string nombre { get; set; }
     }
 }
