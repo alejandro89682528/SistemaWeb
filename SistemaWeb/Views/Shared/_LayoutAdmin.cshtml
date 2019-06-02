@@ -87,28 +87,49 @@
         </div>
     </nav>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Sistema horario</p>
-        </footer>
-    </div>
+    <!--caruucell-->
+    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#mycarousel" data-slide-to="1"></li>
+            <li data-target="#mycarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/Content/1.jpg" alt="First slide" width="100%" />
+                <div class="container">
+                    <div class="carousel-caption">
+                        <div class="banner-caja">
+                            <h1>Bienvenidos al sitio web </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Sistema horario</p>
+            </footer>
+        </div>
 
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 
-    <script type="text/javascript">
-        feather.replace();
+        <script type="text/javascript">
+            feather.replace();
 
-        function loadData(url, target_id) {
-            $("#" + target_id).html("<div class='text-center'><img src='/Images/loading.gif' /></div>");
-            $("#" + target_id).load(url);
-        }
-    </script>
+            function loadData(url, target_id) {
+                $("#" + target_id).html("<div class='text-center'><img src='/Images/loading.gif' /></div>");
+                $("#" + target_id).load(url);
+            }
+        </script>
 </body>
 </html>
 

@@ -34,8 +34,8 @@ namespace SistemaWeb
                 //Here we create a Admin super user who will maintain the website                  
 
                 var user = new ApplicationUser();
-                user.UserName = "Vera";
-                user.Email = "veracortez8195@hotmail.com";
+                user.UserName = "luis";
+                user.Email = "luiscaballero9628@gmail.com";
 
                 string userPWD = "Gachiamr09.10";
 

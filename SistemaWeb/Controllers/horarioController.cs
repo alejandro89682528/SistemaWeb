@@ -261,7 +261,7 @@ namespace SistemaWeb.Controllers
                                 total_hora--;
 
 
-                                ViewBag.Message = "total de oras" + total_hora;
+                               
 
                                 if ((control_periodos % 2) != 0)
                                 {
