@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
+
 namespace SistemaWeb.Models
 {
     public class ExternalLoginConfirmationViewModel
@@ -39,6 +41,7 @@ namespace SistemaWeb.Models
         public bool RememberMe { get; set; }
     }
 
+    //[Authorize]
     public class ForgotViewModel
     {
         [Required]
@@ -61,6 +64,7 @@ namespace SistemaWeb.Models
         public bool RememberMe { get; set; }
     }
 
+    [System.Web.Mvc.Authorize]
     public class RegisterViewModel
     {
 
@@ -81,9 +85,10 @@ namespace SistemaWeb.Models
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        /*[Required]
         [Display(Name = "Roles")]
         public string UserRoles { get; set; }
+        */
         [Required]
         [Display(Name = "Usuarios")]
         public string UserName { get; set; }

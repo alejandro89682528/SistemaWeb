@@ -11,6 +11,7 @@ using SistemaWeb.Contexto;
 
 namespace SistemaWeb.Controllers
 {
+    [Authorize]
     public class facultasController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();

@@ -10,6 +10,7 @@ using System.IO;
 
 namespace SistemaWeb.Controllers
 {
+    [Authorize]
     public class materiareporteController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();

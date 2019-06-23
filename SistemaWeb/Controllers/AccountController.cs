@@ -140,7 +140,8 @@ namespace SistemaWeb.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize]
+        //[AllowAnonymous]
         public ActionResult Register()
         {
             ViewBag.displayRole = TempData["infoRol"];
@@ -152,8 +153,9 @@ namespace SistemaWeb.Controllers
 
         //
         // POST: /Account/Register
+
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, FormCollection form)
         {
@@ -165,8 +167,8 @@ namespace SistemaWeb.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    string selectedRol = form["cb-roles"].ToString();
-                    var resultado = UserManager.AddToRole(user.Id, selectedRol);
+                    //string selectedRol = form["cb-roles"].ToString();
+                    //var resultado = UserManager.AddToRole(user.Id, selectedRol);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                    
