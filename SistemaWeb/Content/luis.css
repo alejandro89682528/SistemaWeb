@@ -1,6 +1,7 @@
-﻿.pt-0 {
-}
+﻿body {
+    background-image: url('~/Content/fondo.jpg');
 
+}
 #navbar navbar-expand-lg navbar-dark bg-dark {
     background: #ff0000;
 }
