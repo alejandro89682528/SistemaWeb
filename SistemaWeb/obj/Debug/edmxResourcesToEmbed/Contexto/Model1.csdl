@@ -82,8 +82,13 @@
     <EntitySet Name="Plans" EntityType="sistema_horarioModel.Plan" />
     <EntitySet Name="profesores" EntityType="sistema_horarioModel.profesore" />
     <EntitySet Name="tipoaulas" EntityType="sistema_horarioModel.tipoaula" />
+    <EntitySet Name="usuarios_roles" EntityType="sistema_horarioModel.usuarios_roles" />
     <EntitySet Name="Usuarios" EntityType="sistema_horarioModel.Usuario" />
     <EntitySet Name="componentes" EntityType="sistema_horarioModel.componente" />
+    <AssociationSet Name="FK_usuarios_roles_AspNetRoles" Association="sistema_horarioModel.FK_usuarios_roles_AspNetRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="usuarios_roles" EntitySet="usuarios_roles" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="sistema_horarioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -91,6 +96,10 @@
     <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_roles_AspNetUsers" Association="sistema_horarioModel.FK_usuarios_roles_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="usuarios_roles" EntitySet="usuarios_roles" />
     </AssociationSet>
     <AssociationSet Name="cod_dptos" Association="sistema_horarioModel.cod_dptos">
       <End Role="dpto" EntitySet="dptoes" />
@@ -131,10 +140,6 @@
     <AssociationSet Name="FK_grupo_pensum" Association="sistema_horarioModel.FK_grupo_pensum">
       <End Role="pensum" EntitySet="pensums" />
       <End Role="grupo" EntitySet="grupoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_horario_grupo" Association="sistema_horarioModel.FK_horario_grupo">
-      <End Role="grupo" EntitySet="grupoes" />
-      <End Role="horario" EntitySet="horarios" />
     </AssociationSet>
     <AssociationSet Name="FK_horario_pensum" Association="sistema_horarioModel.FK_horario_pensum">
       <End Role="pensum" EntitySet="pensums" />
@@ -214,6 +219,7 @@
     </Key>
     <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="usuarios_roles" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetRoles" FromRole="AspNetRole" ToRole="usuarios_roles" />
     <NavigationProperty Name="AspNetUsers" Relationship="sistema_horarioModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
   </EntityType>
   <EntityType Name="AspNetUserClaim">
@@ -255,6 +261,7 @@
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="sistema_horarioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="usuarios_roles" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetUsers" FromRole="AspNetUser" ToRole="usuarios_roles" />
     <NavigationProperty Name="AspNetRoles" Relationship="sistema_horarioModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
   <EntityType Name="aula">
@@ -326,7 +333,6 @@
     <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="cod_asig" Type="Int32" Nullable="false" />
     <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_grupo_pensum" FromRole="grupo" ToRole="pensum" />
-    <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="grupo" ToRole="horario" />
   </EntityType>
   <EntityType Name="horario">
     <Key>
@@ -338,10 +344,9 @@
     <Property Name="fecha_ini" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
     <Property Name="cod_asig" Type="Int32" Nullable="false" />
     <Property Name="cod_aula" Type="Int32" Nullable="false" />
-    <Property Name="cod_grupo" Type="Int32" Nullable="false" />
+    <Property Name="cod_grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="aula" Relationship="sistema_horarioModel.FK_horario_aula" FromRole="horario" ToRole="aula" />
-    <NavigationProperty Name="grupo" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="horario" ToRole="grupo" />
     <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_horario_pensum" FromRole="horario" ToRole="pensum" />
     <NavigationProperty Name="periodo" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="horario" ToRole="periodo" />
     <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="horario" ToRole="profesore" />
@@ -446,6 +451,16 @@
     <Property Name="nombre_tipo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="aulas" Relationship="sistema_horarioModel.FK_aula_tipoaula" FromRole="tipoaula" ToRole="aula" />
   </EntityType>
+  <EntityType Name="usuarios_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_user" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="id_rol" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetRoles" FromRole="usuarios_roles" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetUsers" FromRole="usuarios_roles" ToRole="AspNetUser" />
+  </EntityType>
   <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="correo" />
@@ -465,6 +480,18 @@
     </Key>
     <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
+  <Association Name="FK_usuarios_roles_AspNetRoles">
+    <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="0..1" />
+    <End Type="sistema_horarioModel.usuarios_roles" Role="usuarios_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="usuarios_roles">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -490,6 +517,18 @@
       </Principal>
       <Dependent Role="AspNetUserLogin">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_roles_AspNetUsers">
+    <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="sistema_horarioModel.usuarios_roles" Role="usuarios_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="usuarios_roles">
+        <PropertyRef Name="id_user" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -622,20 +661,6 @@
       </Principal>
       <Dependent Role="grupo">
         <PropertyRef Name="cod_asig" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_horario_grupo">
-    <End Type="sistema_horarioModel.grupo" Role="grupo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="grupo">
-        <PropertyRef Name="cod_grupo" />
-      </Principal>
-      <Dependent Role="horario">
-        <PropertyRef Name="cod_grupo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

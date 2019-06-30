@@ -18,6 +18,10 @@ namespace SistemaWeb.Controllers
         // GET: horario
         public ActionResult Index()
         {
+
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
+
             ViewBag.cod_dpto = new SelectList(db.dptoes, "cod_dpto", "nombre");
             ViewBag.cod_carrera = new SelectList(db.carreras, "cod_carrera", "nombre");
             ViewBag.tipo_ciclo = new SelectList("12");

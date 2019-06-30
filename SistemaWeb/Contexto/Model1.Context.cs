@@ -48,6 +48,7 @@ namespace SistemaWeb.Contexto
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<profesore> profesores { get; set; }
         public virtual DbSet<tipoaula> tipoaulas { get; set; }
+        public virtual DbSet<usuarios_roles> usuarios_roles { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<componente> componentes { get; set; }
     

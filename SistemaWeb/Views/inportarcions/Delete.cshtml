@@ -1,0 +1,88 @@
+﻿@model SistemaWeb.Contexto.inportarcion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>inportarcion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_ciclo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_ciclo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carrera.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carrera.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dpto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dpto.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.materia.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.materia.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profesore.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profesore.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -141,7 +141,7 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
     <Property Name="fecha_ini" Type="varchar" MaxLength="45" />
     <Property Name="cod_asig" Type="int" Nullable="false" />
     <Property Name="cod_aula" Type="int" Nullable="false" />
-    <Property Name="cod_grupo" Type="int" Nullable="false" />
+    <Property Name="cod_grupo" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="inss" Type="varchar" MaxLength="45" Nullable="false" />
   </EntityType>
   <EntityType Name="horariogeneracion">
@@ -247,6 +247,14 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.Usuarios' no tiene defin
     <Property Name="apellido" Type="varchar" MaxLength="45" Nullable="false" />
     <Property Name="foto" Type="varchar" MaxLength="45" />
     <Property Name="pass" Type="varchar" MaxLength="45" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuarios_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_user" Type="nvarchar" MaxLength="128" />
+    <Property Name="id_rol" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -398,20 +406,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDp
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_horario_grupo">
-    <End Role="grupo" Type="Self.grupo" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="horario" Type="Self.horario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="grupo">
-        <PropertyRef Name="cod_grupo" />
-      </Principal>
-      <Dependent Role="horario">
-        <PropertyRef Name="cod_grupo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_horario_pensum">
     <End Role="pensum" Type="Self.pensum" Multiplicity="1" />
     <End Role="horario" Type="Self.horario" Multiplicity="*" />
@@ -558,6 +552,30 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_usuarios_roles_AspNetRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />
+    <End Role="usuarios_roles" Type="Self.usuarios_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="usuarios_roles">
+        <PropertyRef Name="id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuarios_roles_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="usuarios_roles" Type="Self.usuarios_roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="usuarios_roles">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="sistema_horarioModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="anolectivo" EntityType="Self.anolectivo" Schema="dbo" store:Type="Tables" />
@@ -581,6 +599,7 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
     <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="profesores" EntityType="Self.profesores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipoaula" EntityType="Self.tipoaula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios_roles" EntityType="Self.usuarios_roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Usuarios].[correo] AS [correo], 
@@ -635,10 +654,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
       <End Role="aula" EntitySet="aula" />
       <End Role="horario" EntitySet="horario" />
     </AssociationSet>
-    <AssociationSet Name="FK_horario_grupo" Association="Self.FK_horario_grupo">
-      <End Role="grupo" EntitySet="grupo" />
-      <End Role="horario" EntitySet="horario" />
-    </AssociationSet>
     <AssociationSet Name="FK_horario_pensum" Association="Self.FK_horario_pensum">
       <End Role="pensum" EntitySet="pensum" />
       <End Role="horario" EntitySet="horario" />
@@ -682,6 +697,14 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
     <AssociationSet Name="FK_profesores_dpto" Association="Self.FK_profesores_dpto">
       <End Role="dpto" EntitySet="dpto" />
       <End Role="profesores" EntitySet="profesores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_roles_AspNetRoles" Association="Self.FK_usuarios_roles_AspNetRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="usuarios_roles" EntitySet="usuarios_roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuarios_roles_AspNetUsers" Association="Self.FK_usuarios_roles_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="usuarios_roles" EntitySet="usuarios_roles" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -232,6 +232,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="usuarios_roles">
+      <EntityTypeMapping TypeName="sistema_horarioModel.usuarios_roles">
+        <MappingFragment StoreEntitySet="usuarios_roles">
+          <ScalarProperty Name="id_rol" ColumnName="id_rol" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="sistema_horarioModel.Usuario">
         <MappingFragment StoreEntitySet="Usuarios">

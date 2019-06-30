@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.usuarios_roles>
+
+@{
+   
+}
+
+<h2>Lista de usuarios y roles</h2>
+
+<p>
+    <a href="#" data-toggle="modal" data-target="#modaldialog" onclick="loadData('/Facultas/Create', 'contentdialog')"> <Span class="btn btn-success"> Crear nuevo </Span></a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre de usuarios
+        </th>
+        <th>
+            Rol
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_user)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_rol)
+            </td>
+            
+            <td>
+                
+            </td>
+
+        </tr>
+    }
+
+</table>
+

@@ -1,5 +1,19 @@
-﻿@model SistemaWeb.Contexto.exportarcion
+﻿@model SistemaWeb.Contexto.inportarcion
 @{
+
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
     ViewBag.Title = "Importar";
 }
 
@@ -38,8 +52,10 @@
 
             <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
             <script type="text/javascript">
+
                 function Confirm() {
                     var input = $("<input />");
+
                     input.attr("type", "hidden").attr("name", "confirm_value");
                     if (confirm("Se an encontrado datos del departamento  Desea Eliminar los datos del departamento existente?")) {
                         input.val("Yes");
@@ -57,13 +73,14 @@
             });
                 </script>
             }
-                <div>
-                    <input name="file" type="file" required />
-                    <br />
+            <div>
+                <input name="file" type="file" required />
+                <br />
+                <br />
 
-                    <input type="submit" value="Import" onclick="Confirm()" />
+                <input type="submit" value="Import" onclick="Confirm()" />
 
-                </div>
+            </div>
 
 
         </form>
@@ -73,6 +90,6 @@
     </div>
 
 
-   
+
 </body>
 </html>

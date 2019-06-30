@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.inportarcion>
+
+@{
+
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.grupo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_grupo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_ciclo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_grupo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.carrera.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dpto.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.materia.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profesore.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.grupo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_grupo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_ciclo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_grupo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.carrera.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dpto.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.materia.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profesore.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

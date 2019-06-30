@@ -1,0 +1,82 @@
+﻿@model SistemaWeb.Contexto.inportarcion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>inportarcion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_ciclo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_ciclo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carrera.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carrera.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dpto.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dpto.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.materia.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.materia.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profesore.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profesore.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
