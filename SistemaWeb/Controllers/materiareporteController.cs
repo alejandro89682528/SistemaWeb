@@ -22,6 +22,7 @@ namespace SistemaWeb.Controllers
 
         public ActionResult Export()
         {
+            
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/reportes/CrystalReport1Materia.rpt")));
             rd.SetDataSource(db.materias.ToList());

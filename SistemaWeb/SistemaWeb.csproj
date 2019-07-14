@@ -315,6 +315,7 @@
     <Compile Include="Controllers\grupoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\horarioController.cs" />
+    <Compile Include="Controllers\Horario_listaController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\inportarcionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -662,6 +663,7 @@
     <Content Include="Views\inportarcions\Details.cshtml" />
     <Content Include="Views\inportarcions\Edit.cshtml" />
     <Content Include="Views\inportarcions\Index.cshtml" />
+    <Content Include="Views\Horario_lista\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
