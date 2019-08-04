@@ -315,6 +315,7 @@
     <Compile Include="Controllers\grupoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\horarioController.cs" />
+    <Compile Include="Controllers\horariosController.cs" />
     <Compile Include="Controllers\Horario_listaController.cs" />
     <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\inportarcionsController.cs" />
@@ -326,7 +327,9 @@
     <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Controllers\profesoresController.cs" />
     <Compile Include="Controllers\pruevamensajeController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\tipoaulasController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\user_rolesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -340,6 +343,7 @@
       <DependentUpon>import.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -664,6 +668,21 @@
     <Content Include="Views\inportarcions\Edit.cshtml" />
     <Content Include="Views\inportarcions\Index.cshtml" />
     <Content Include="Views\Horario_lista\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\Create.cshtml" />
+    <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\UsersAdmin\Details.cshtml" />
+    <Content Include="Views\UsersAdmin\Edit.cshtml" />
+    <Content Include="Views\UsersAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\horarios\Create.cshtml" />
+    <Content Include="Views\horarios\Delete.cshtml" />
+    <Content Include="Views\horarios\Details.cshtml" />
+    <Content Include="Views\horarios\Edit.cshtml" />
+    <Content Include="Views\horarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

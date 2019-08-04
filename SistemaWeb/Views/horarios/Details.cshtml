@@ -1,0 +1,74 @@
+﻿@model SistemaWeb.Contexto.horario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>horario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_dias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_dias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ini)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ini)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_grupo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_grupo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aula.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aula.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pensum.anio_est)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pensum.anio_est)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.periodo.periodo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.periodo.periodo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profesore.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profesore.cedula)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_horario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

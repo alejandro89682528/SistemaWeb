@@ -1,0 +1,83 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.horario>
+
+@{
+    ViewBag.Title = "Index";
+
+
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_dias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_ini)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_grupo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aula.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pensum.anio_est)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.periodo.periodo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profesore.cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_dias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_ini)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_grupo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aula.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pensum.anio_est)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.periodo.periodo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profesore.cedula)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_horario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_horario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_horario })
+        </td>
+    </tr>
+}
+
+</table>

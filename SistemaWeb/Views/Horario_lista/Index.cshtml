@@ -1,4 +1,4 @@
-﻿@model SistemaWeb.Contexto.horario
+﻿@model SistemaWeb.Contexto.horariogeneracion
 @{
 
     if (ViewBag.displayRole == 0)
@@ -17,3 +17,60 @@
     ViewBag.Title = "Horario";
 }
 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listas de horarios</title>
+</head>
+<body>
+    <div>
+
+        <h2>Horarios</h2>
+        <form method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                Seleccionar departamento
+                <div class="col-md-10">
+                    @Html.DropDownList("cod_dpto", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                Seleccionar Carrera
+                <div class="col-md-10">
+                    @Html.DropDownList("cod_carrera", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                Semestre
+                <div class="col-md-10">
+                    @Html.DropDownList("tipo_ciclo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                Año de estudio
+                <div class="col-md-10">
+                    @Html.DropDownList("año_estudio", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div>
+                <button type="submit">Genarar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
