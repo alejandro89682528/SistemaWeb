@@ -344,6 +344,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\BusquedaListaHorario.cs" />
+    <Compile Include="Models\BusquedaListaHorarioviewModels.cs" />
+    <Compile Include="Models\HorarioViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -683,12 +686,14 @@
     <Content Include="Views\horarios\Details.cshtml" />
     <Content Include="Views\horarios\Edit.cshtml" />
     <Content Include="Views\horarios\Index.cshtml" />
+    <Content Include="Views\materias\BusquedaFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\App_LocalResources\" />
     <Folder Include="excelfolder\" />
+    <Folder Include="Views\BusquedaListaHorarioviewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

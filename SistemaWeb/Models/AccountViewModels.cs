@@ -93,6 +93,10 @@ namespace SistemaWeb.Models
         [Display(Name = "Usuarios")]
         public string UserName { get; set; }
 
+        [Required]
+        [Display(Name="Roles")]
+        public string Roledi { get; set; }
+
         /*public override string ToString()
         {
 

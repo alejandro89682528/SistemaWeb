@@ -42,11 +42,8 @@
             Seleccionar los roles
         </label>
         <div class="col-md-10">
-            @foreach (var item in (SelectList)ViewBag.RoleId)
-            {
-                <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
-                @Html.Label(item.Value, new { @class = "control-label" })
-            }
+            @Html.DropDownList("Roledi", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Roledi, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">

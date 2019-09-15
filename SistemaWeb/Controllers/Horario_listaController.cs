@@ -28,5 +28,16 @@ namespace SistemaWeb.Controllers
             ViewBag.tipo_ciclo = new SelectList("12");
             return View();
         }
+
+        public ActionResult BusquedaFilter(String nombre)
+        {
+            var Busquedamateria = from m in db.materias select m;
+            if (!String.IsNullOrEmpty(nombre))
+            {
+                Busquedamateria = Busquedamateria.Where(j => j.nombre.Contains(nombre));
+            }
+            return View(Busquedamateria);
+        }
+
     }
 }

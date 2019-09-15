@@ -8,12 +8,34 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWeb.Contexto;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using SistemaWeb.Models;
 
 namespace SistemaWeb.Controllers
 {
     public class AspNetUsersController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
+        
+        public AspNetUsersController()
+        {
+        }
+
+        public AspNetUsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            UserManager = userManager;
+            RoleManager = roleManager;
+        }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public RoleManager<IdentityRole> RoleManager { get; private set; }
+        public DbContext context { get; private set; }
+
+
+        //
+
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
@@ -37,8 +59,10 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: AspNetUsers/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
+            //Get the list of Roles
+            ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
             return View();
         }
 

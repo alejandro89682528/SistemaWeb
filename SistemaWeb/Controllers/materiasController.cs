@@ -16,12 +16,19 @@ namespace SistemaWeb.Controllers
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
 
         // GET: materias
-        public ActionResult Index()
+        public ActionResult Index(String nombre)
         {
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
-           return View(db.materias.ToList());
-            
+
+            var Busquedamateria = from m in db.materias select m;
+            if (!String.IsNullOrEmpty(nombre))
+            {
+                Busquedamateria = Busquedamateria.Where(j => j.nombre.Contains(nombre));
+            }
+            return View(Busquedamateria);
+            //return View(db.materias.ToList());
+
             /* return View(from materias in db.materias
                          orderby
                            materias.nombre
@@ -125,6 +132,16 @@ namespace SistemaWeb.Controllers
             db.materias.Remove(materia);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult BusquedaFilter(String nombre)
+        {
+            var Busquedamateria = from m in db.materias select m;
+            if(!String.IsNullOrEmpty(nombre))
+            {
+                Busquedamateria = Busquedamateria.Where(j => j.nombre.Contains(nombre));
+            }
+            return View(Busquedamateria);
         }
 
         protected override void Dispose(bool disposing)

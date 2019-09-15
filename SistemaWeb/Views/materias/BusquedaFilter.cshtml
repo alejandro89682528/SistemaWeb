@@ -1,0 +1,38 @@
+﻿@model IEnumerable<SistemaWeb.Contexto.materia>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        Nombre materia: @Html.TextBox("nombre") <br />
+        <input type="submit" value="Buscar" />
+    </p>
+
+}
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.cod_materia }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.cod_materia }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.cod_materia })
+                </td>
+            </tr>
+        }
+
+    </table>
