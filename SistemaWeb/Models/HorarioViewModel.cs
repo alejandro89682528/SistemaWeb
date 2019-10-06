@@ -20,14 +20,19 @@ namespace SistemaWeb.Models
         }
 
         public List<BusquedaListaHorario> Horario { get; set; }
-        public void BusquedaHorario(int cod_dpto, int cod_carrera, int año_estudio, String tipo_ciclo)
+        public void BusquedaHorario(int cod_dpto, int cod_carrera, int año_estudio, int tipo_ciclo)
         {
-            var consulta = from h in db.horarios join p in db.pensums on
-                           h.cod_asig equals p.cod_asig where db.dptoes
-                            
-                           }
+           /* var consulta = from h in db.horarios join p in db.pensums on
+                           h.cod_asig equals p.cod_asig join d in db.dptoes on                            
+                           where p.ciclo.Contains(tipo_ciclo)
+                          where d.cod_dpto.Contains(cod_dpto)
+                           
+                           select new
+                           {
+
+                           }; */
+        }
                            
                            
-                           }
+        }
     }
-}

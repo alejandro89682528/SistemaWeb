@@ -8,39 +8,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWeb.Contexto;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using SistemaWeb.Models;
 
 namespace SistemaWeb.Controllers
 {
     public class AspNetUsersController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
-        
-        public AspNetUsersController()
-        {
-        }
-
-        public AspNetUsersController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
-        {
-            UserManager = userManager;
-            RoleManager = roleManager;
-        }
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
-        public RoleManager<IdentityRole> RoleManager { get; private set; }
-        public DbContext context { get; private set; }
-
-
-        //
-
 
         // GET: AspNetUsers
         public async Task<ActionResult> Index()
         {
-            return View(await db.AspNetUsers.ToListAsync());
+            var aspNetUsers = db.AspNetUsers.Include(a => a.AspNetRole);
+            return View(await aspNetUsers.ToListAsync());
         }
 
         // GET: AspNetUsers/Details/5
@@ -59,19 +38,18 @@ namespace SistemaWeb.Controllers
         }
 
         // GET: AspNetUsers/Create
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
-            //Get the list of Roles
-            ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Id", "Name");
+            ViewBag.roll = new SelectList(db.AspNetRoles, "Id", "Name");
             return View();
         }
 
         // POST: AspNetUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Email,PasswordHash,PhoneNumber,UserName")] AspNetUser aspNetUser)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,roll")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -80,6 +58,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.roll = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUser.roll);
             return View(aspNetUser);
         }
 
@@ -95,15 +74,16 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.roll = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUser.roll);
             return View(aspNetUser);
         }
 
         // POST: AspNetUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,roll")] AspNetUser aspNetUser)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +91,7 @@ namespace SistemaWeb.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.roll = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUser.roll);
             return View(aspNetUser);
         }
 

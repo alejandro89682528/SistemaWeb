@@ -66,6 +66,7 @@
     <EntitySet Name="AspNetRoles" EntityType="sistema_horarioModel.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="sistema_horarioModel.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="sistema_horarioModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="sistema_horarioModel.AspNetUserRole" />
     <EntitySet Name="AspNetUsers" EntityType="sistema_horarioModel.AspNetUser" />
     <EntitySet Name="aulas" EntityType="sistema_horarioModel.aula" />
     <EntitySet Name="carreras" EntityType="sistema_horarioModel.carrera" />
@@ -85,6 +86,14 @@
     <EntitySet Name="usuarios_roles" EntityType="sistema_horarioModel.usuarios_roles" />
     <EntitySet Name="Usuarios" EntityType="sistema_horarioModel.Usuario" />
     <EntitySet Name="componentes" EntityType="sistema_horarioModel.componente" />
+    <AssociationSet Name="FK_AspNetUsers_AspNetRoles" Association="sistema_horarioModel.FK_AspNetUsers_AspNetRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
     <AssociationSet Name="FK_usuarios_roles_AspNetRoles" Association="sistema_horarioModel.FK_usuarios_roles_AspNetRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="usuarios_roles" EntitySet="usuarios_roles" />
@@ -96,6 +105,10 @@
     <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
     </AssociationSet>
     <AssociationSet Name="FK_usuarios_roles_AspNetUsers" Association="sistema_horarioModel.FK_usuarios_roles_AspNetUsers">
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -169,10 +182,6 @@
       <End Role="Plan" EntitySet="Plans" />
       <End Role="pensum" EntitySet="pensums" />
     </AssociationSet>
-    <AssociationSet Name="AspNetUserRoles" Association="sistema_horarioModel.AspNetUserRoles">
-      <End Role="AspNetRole" EntitySet="AspNetRoles" />
-      <End Role="AspNetUser" EntitySet="AspNetUsers" />
-    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -219,8 +228,9 @@
     </Key>
     <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="sistema_horarioModel.FK_AspNetUsers_AspNetRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetRole" ToRole="AspNetUserRole" />
     <NavigationProperty Name="usuarios_roles" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetRoles" FromRole="AspNetRole" ToRole="usuarios_roles" />
-    <NavigationProperty Name="AspNetUsers" Relationship="sistema_horarioModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
   </EntityType>
   <EntityType Name="AspNetUserClaim">
     <Key>
@@ -243,6 +253,16 @@
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AspNetUser" Relationship="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
   </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" FromRole="AspNetUserRole" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+  </EntityType>
   <EntityType Name="AspNetUser">
     <Key>
       <PropertyRef Name="Id" />
@@ -259,10 +279,12 @@
     <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
     <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="roll" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="sistema_horarioModel.FK_AspNetUsers_AspNetRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="sistema_horarioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="sistema_horarioModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserRole" />
     <NavigationProperty Name="usuarios_roles" Relationship="sistema_horarioModel.FK_usuarios_roles_AspNetUsers" FromRole="AspNetUser" ToRole="usuarios_roles" />
-    <NavigationProperty Name="AspNetRoles" Relationship="sistema_horarioModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
   </EntityType>
   <EntityType Name="aula">
     <Key>
@@ -480,6 +502,32 @@
     </Key>
     <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
+  <Association Name="FK_AspNetUsers_AspNetRoles">
+    <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="1" />
+    <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUser">
+        <PropertyRef Name="roll" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="sistema_horarioModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_usuarios_roles_AspNetRoles">
     <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="0..1" />
     <End Type="sistema_horarioModel.usuarios_roles" Role="usuarios_roles" Multiplicity="*" />
@@ -516,6 +564,20 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="sistema_horarioModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
         <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
@@ -751,9 +813,5 @@
         <PropertyRef Name="cod_plan" />
       </Dependent>
     </ReferentialConstraint>
-  </Association>
-  <Association Name="AspNetUserRoles">
-    <End Type="sistema_horarioModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-    <End Type="sistema_horarioModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
   </Association>
 </Schema>

@@ -45,9 +45,9 @@
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="id" />
     </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
@@ -67,6 +67,7 @@
     <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="roll" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="aula">
     <Key>
@@ -303,6 +304,18 @@ advertencia 6002: La tabla o vista 'sistema_horario.dbo.componentes' no tiene de
       </Principal>
       <Dependent Role="dpto">
         <PropertyRef Name="cod_faculta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="roll" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -625,6 +638,10 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
     <AssociationSet Name="cod_faculta" Association="Self.cod_faculta">
       <End Role="faculta" EntitySet="faculta" />
       <End Role="dpto" EntitySet="dpto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetRoles" Association="Self.FK_AspNetUsers_AspNetRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <AssociationSet Name="FK_aula_tipoaula" Association="Self.FK_aula_tipoaula">
       <End Role="tipoaula" EntitySet="tipoaula" />
