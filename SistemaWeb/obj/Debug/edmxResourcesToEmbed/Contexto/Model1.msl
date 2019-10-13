@@ -58,7 +58,6 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="sistema_horarioModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="roll" ColumnName="roll" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
           <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />

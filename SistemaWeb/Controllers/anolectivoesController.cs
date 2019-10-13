@@ -35,13 +35,13 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(anolectivo);
+            return PartialView(anolectivo);
         }
 
         // GET: anolectivoes/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: anolectivoes/Create
@@ -58,7 +58,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(anolectivo);
+            return PartialView(anolectivo);
         }
 
         // GET: anolectivoes/Edit/5
@@ -73,7 +73,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(anolectivo);
+            return PartialView(anolectivo);
         }
 
         // POST: anolectivoes/Edit/5
@@ -89,7 +89,7 @@ namespace SistemaWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(anolectivo);
+            return PartialView(anolectivo);
         }
 
         // GET: anolectivoes/Delete/5
@@ -104,7 +104,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(anolectivo);
+            return PartialView(anolectivo);
         }
 
         // POST: anolectivoes/Delete/5

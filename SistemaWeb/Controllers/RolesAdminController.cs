@@ -83,7 +83,7 @@ namespace SistemaWeb.Controllers
 
             ViewBag.Users = users;
             ViewBag.UserCount = users.Count();
-            return View(role);
+            return PartialView(role);
         }
 
         //
@@ -91,7 +91,7 @@ namespace SistemaWeb.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -111,7 +111,7 @@ namespace SistemaWeb.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View();
+            return PartialView();
         }
 
         //
@@ -129,7 +129,7 @@ namespace SistemaWeb.Controllers
                 return HttpNotFound();
             }
             RoleViewModel roleModel = new RoleViewModel { Id = role.Id, Name = role.Name };
-            return View(roleModel);
+            return PartialView(roleModel);
         }
 
         //
@@ -146,7 +146,7 @@ namespace SistemaWeb.Controllers
                 await RoleManager.UpdateAsync(role);
                 return RedirectToAction("Index");
             }
-            return View();
+            return PartialView();
         }
 
         //
@@ -163,7 +163,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(role);
+            return PartialView(role);
         }
 
         //
@@ -200,7 +200,7 @@ namespace SistemaWeb.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View();
+            return PartialView();
         }
     }
 }

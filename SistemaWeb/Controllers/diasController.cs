@@ -40,7 +40,7 @@ namespace SistemaWeb.Controllers
         // GET: dias/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: dias/Create
@@ -57,7 +57,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(dia);
+            return PartialView(dia);
         }
 
         // GET: dias/Edit/5
@@ -72,7 +72,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(dia);
+            return PartialView(dia);
         }
 
         // POST: dias/Edit/5
@@ -88,7 +88,7 @@ namespace SistemaWeb.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(dia);
+            return PartialView(dia);
         }
 
         // GET: dias/Delete/5
@@ -103,7 +103,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(dia);
+            return PartialView(dia);
         }
 
         // POST: dias/Delete/5

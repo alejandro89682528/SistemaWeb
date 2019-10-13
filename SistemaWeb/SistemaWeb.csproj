@@ -310,7 +310,6 @@
     <Compile Include="Controllers\anolectivoesController.cs" />
     <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\AspNetUserRolesController.cs" />
-    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\aulasController.cs" />
     <Compile Include="Controllers\carrerasController.cs" />
     <Compile Include="Controllers\diasController.cs" />
