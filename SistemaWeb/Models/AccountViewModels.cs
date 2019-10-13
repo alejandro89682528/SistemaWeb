@@ -88,21 +88,24 @@ namespace SistemaWeb.Models
         /*[Required]
         [Display(Name = "Roles")]
         public string UserRoles { get; set; }
-        */
+       */
+        
         [Required]
         [Display(Name = "Usuarios")]
         public string UserName { get; set; }
 
+        /*
+
         [Required]
         [Display(Name="Roles")]
         public string Roledi { get; set; }
-
+        */
         /*public override string ToString()
         {
 
             return UserRoles;
         }*/
-        
+
 
     }
     public class InsercionUsuariosRoles

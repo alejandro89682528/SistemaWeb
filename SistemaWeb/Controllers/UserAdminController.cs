@@ -80,7 +80,7 @@ namespace SistemaWeb.Controllers
         public async Task<ActionResult> Create()
         {
             //Get the list of Roles
-            ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
+            //ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
             //ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");
             return View();
         }
@@ -99,29 +99,29 @@ namespace SistemaWeb.Controllers
                 //Add User to the selected Roles 
                 if (adminresult.Succeeded)
                 {
-                    if (Roledi != null)
-                    {
-                        var result = await UserManager.AddToRolesAsync(user.Id, Roledi);
-                        if (!result.Succeeded)
-                        {
-                            ModelState.AddModelError("", result.Errors.First());
-                            ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
-                            //ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");
-                            return View();
-                        }
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", adminresult.Errors.First());
-                    ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
-                    //ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
-                    return View();
-
+                    /*                    if (Roledi != null)
+                                        {
+                                            var result = await UserManager.AddToRolesAsync(user.Id, Roledi);
+                                            if (!result.Succeeded)
+                                            {
+                                                //ModelState.AddModelError("", result.Errors.First());
+                                                //ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
+                                                //ViewBag.RoleId = new SelectList(await RoleManager.Roles.ToListAsync(), "Name", "Name");
+                                                return View();
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                       // ModelState.AddModelError("", adminresult.Errors.First());
+                                       // ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
+                                        //ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
+                                        return View();
+*/
                 }
                 return RedirectToAction("Index");
-            }
-            ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
+            } 
+           // ViewBag.Roledi = new SelectList(db.AspNetRoles, "Id", "Name");
             //ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
             return View();
         }

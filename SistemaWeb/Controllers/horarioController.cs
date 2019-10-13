@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace SistemaWeb.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class horarioController : Controller
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
