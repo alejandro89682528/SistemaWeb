@@ -8,7 +8,7 @@
     <title>@ViewBag.Title - Sistema horario</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/contet/luis.css")
+    @Styles.Render("~/Content/luis")
 
 
 
@@ -29,7 +29,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/Home/Index">Inicio</a>
                         <a class="dropdown-item" href="/Home/About">Acerca de</a>
-                        <a class="dropdown-item" href="/Home/Contact">Contato</a>
+                        <a class="dropdown-item" href="/Home/Contact">Contacto</a>
 
                     </div>
                 </li>
@@ -74,7 +74,7 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        
         <footer>
             <p>&copy; @DateTime.Now.Year - Sistema horario</p>
         </footer>

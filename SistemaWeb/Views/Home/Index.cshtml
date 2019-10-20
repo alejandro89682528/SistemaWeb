@@ -1,7 +1,21 @@
-﻿@{
-    ViewBag.Title = "Pagina principal";
-}
+﻿
 
+@{
+    ViewBag.Title = "Pagina principal";
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    ViewBag.Title = "Horario";
+}
 <img src="~/Content/1.jpg" class="mw-100" alt="...">
 
 
@@ -9,29 +23,49 @@
     <h1>SISTEMA DE GESTION DE HORARIO EN CARRERAS DE ING.SISTEMAS DE INFORMACION & ING.TELEMATICA</h1>
 </div>
 
-<div class="d-inline p-2 bg-dark text-white">___________________________________SISTEMA DE GESTION DE HORARIO EN CARRERAS DE ING.SISTEMAS & ING.TELEMATICA___________________________________</div>
-
 <div class="row">
-    <div class="col-md-4">
-        <div class="p-3 mb-2 bg-dark text-white">
-            <p>
-                Este sistema tiene el punto cable en crear horarios de manera automatica el cual a diriguido a la facultad de CIENCIAS Y TECNOLOGIA,
-                con el campo de prueba en las carreras de ING. EN SISTEMAS DE INFORMACION & ING. EN TELEMATICA. con el fin de demostrar que se pudo
-                lograr el punto de evitar los problemas antes mencionados en la defensa monogafica. este sistema esta funcional y escalable.
-            </p>
-            <p><a class="btn btn-default" href="https://www.unanleon.edu.ni/">Mas informacion sobre la UNAN-LEON &raquo;</a></p>
+    <div class="col-md-12">
+        <div class="p-3 bg-dark text-white">________________________________SISTEMA DE GESTION DE HORARIO EN CARRERAS DE ING.SISTEMAS & ING.TELEMATICA___________________________________</div>
+    </div>
+
+</div>
+
+
+
+<div class="row py-lg-4">
+    <div class="col-md-6">
+        <div class="p-3 mb-2 bg-dark  text-white">
+
+            <div>
+                <p>
+                    <br />
+                    <br />
+                    <br />
+                    Este sistema tiene como punto clave la creacion de horarios de manera automatica el cual a dirigido a la facultad de CIENCIAS Y TECNOLOGIA,
+                    con el campo de prueba en las carreras de ING. EN SISTEMAS DE INFORMACIóN & ING. EN TELEMATICA. con el fin de demostrar que se pudo
+                    lograr el punto de evitar los problemas antes mencionados en la defensa monogafica. este sistema esta funcional y escalable.
+                </p>
+                <p><a class="btn btn-default" href="https://www.unanleon.edu.ni/">Mas informacion sobre la UNAN-LEON &raquo;</a></p>
+
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="p-3 mb-2 bg-dark text-white">
-            <img src="~/Content/1.jpg" alt="First slide" width="100%" />
-            <p>
-                el sistema esta enfocado en realizar de manera rapida lo que va en conjunto con los horarios de
+            <img src="~/Content/1.jpg" alt="First slide" width="510" />
+            <p class="py-lg-2">
+                El sistema esta enfocado en realizar de manera rapida lo que va en conjunto con los horarios de
                 clases obviamente antes tienen que estar dadas por completo las inscripciones de componentes las cuales pueden realizar en el siguiente enlace
             </p>
-            <p><a class="btn btn-default" href="https://portalestudiantes.unanleon.edu.ni/">para estudiantes &raquo;</a></p>
+            <p><a class="btn btn-default" href="https://portalestudiantes.unanleon.edu.ni/">Estudiantes &raquo;</a></p>
+
         </div>
     </div>
-
+</div>
 

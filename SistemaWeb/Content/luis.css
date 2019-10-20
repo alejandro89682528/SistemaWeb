@@ -19,11 +19,6 @@
     background: #4d8cd0;
 }
 
-div.jumbotron {
-    border: 5px outset #4d8cd0;
-    background-color: #4d8cd0;
-}
-
 
 
 .dropdown-menu {
@@ -35,3 +30,4 @@ article {
     border: 1px solid black;
     border-radius: 1px 1px 1px 1px;
     background: #4d8cd0;
+}

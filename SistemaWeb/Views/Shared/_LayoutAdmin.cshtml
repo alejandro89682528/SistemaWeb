@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - Sistema horario</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/contet/luis.css")
+    @Styles.Render("~/Content/luis")
 
 </head>
 <body class="pt-0">
@@ -18,17 +18,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mas Informacion
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <a class="dropdown-item" href="/Home/About">Acerca de</a>
-                        <a class="dropdown-item" href="/Home/Contact">Contato</a>
-
-                    </div>
-                </li>
                 @if (Request.IsAuthenticated)
                 {
                     <li class="nav-item dropdown">
@@ -56,16 +46,16 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/Import/index">Importar</a>
                             <a class="dropdown-item" href="/inportarcions/index">Lista de importacion</a>
-                           
+
                         </div>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Horario
+                            Horario
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          
+
                             <a class="dropdown-item" href="/horario/index">Generacion de Horario</a>
                             <a class="dropdown-item" href="/horarios/index">lista parcial</a>
 
@@ -77,7 +67,7 @@
                             Reportes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/materiareporte/Index">reporte de materia de prueva</a>
+                            <a class="dropdown-item" href="/materiareporte/Index">reporte de materia de prueba</a>
                             <a class="dropdown-item" href="">Profesor y año electivo</a>
                             <a class="dropdown-item" href="">Departamento</a>
                             <a class="dropdown-item" href="">Aula y año</a>
@@ -101,6 +91,17 @@
                         </div>
                     </li>
                 }
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mas Informacion
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <a class="dropdown-item" href="/Home/About">Acerca de</a>
+                        <a class="dropdown-item" href="/Home/Contact">Contacto</a>
+
+                    </div>
+                </li>
             </ul>
             @Html.Partial("_LoginPartial")
 
@@ -111,8 +112,7 @@
 
 
         <div class="container body-content">
-            @RenderBody()
-            <hr />
+            @RenderBody()           
             <footer>
                 <p>&copy; @DateTime.Now.Year - Sistema horario</p>
             </footer>

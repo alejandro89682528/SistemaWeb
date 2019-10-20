@@ -10,11 +10,15 @@ namespace SistemaWeb.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             return View();
         }
 
         public ActionResult About()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             ViewBag.Message = "Your application description page.";
 
             return View();
@@ -22,6 +26,8 @@ namespace SistemaWeb.Controllers
 
         public ActionResult Contact()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             ViewBag.Message = "Your contact page.";
 
             return View();
