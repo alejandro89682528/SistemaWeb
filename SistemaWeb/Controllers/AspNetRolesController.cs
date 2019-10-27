@@ -19,6 +19,8 @@ namespace SistemaWeb.Controllers
         // GET: AspNetRoles
         public async Task<ActionResult> Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             return View(await db.AspNetRoles.ToListAsync());
         }
 
@@ -34,13 +36,13 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetRole);
+            return PartialView(aspNetRole);
         }
 
         // GET: AspNetRoles/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: AspNetRoles/Create
@@ -57,7 +59,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(aspNetRole);
+            return PartialView(aspNetRole);
         }
 
         // GET: AspNetRoles/Edit/5
@@ -72,7 +74,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetRole);
+            return PartialView(aspNetRole);
         }
 
         // POST: AspNetRoles/Edit/5
@@ -88,7 +90,7 @@ namespace SistemaWeb.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(aspNetRole);
+            return PartialView(aspNetRole);
         }
 
         // GET: AspNetRoles/Delete/5
@@ -103,7 +105,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetRole);
+            return PartialView(aspNetRole);
         }
 
         // POST: AspNetRoles/Delete/5

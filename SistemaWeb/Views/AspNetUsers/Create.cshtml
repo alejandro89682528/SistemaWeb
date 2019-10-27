@@ -4,16 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AspNetUser</h4>
-        <hr />
+       
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -24,7 +21,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+           Correo
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
@@ -32,7 +29,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EmailConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
+            Comfirmar Correo
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.EmailConfirmed)
@@ -42,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PasswordHash, htmlAttributes: new { @class = "control-label col-md-2" })
+            Contraseña
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
@@ -50,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SecurityStamp, htmlAttributes: new { @class = "control-label col-md-2" })
+            Seguridad
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SecurityStamp, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SecurityStamp, "", new { @class = "text-danger" })
@@ -58,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            Numero de Telefono
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
@@ -66,7 +63,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumberConfirmed, htmlAttributes: new { @class = "control-label col-md-2" })
+            Confirmacion de Telefono
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.PhoneNumberConfirmed)
@@ -112,7 +109,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+           Nombre de Usuario
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -120,24 +117,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.roll, "roll", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("roll", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.roll, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-outline-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

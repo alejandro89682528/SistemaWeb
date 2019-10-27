@@ -11,6 +11,7 @@ using SistemaWeb.Contexto;
 
 namespace SistemaWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AspNetUserRolesController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
@@ -18,6 +19,8 @@ namespace SistemaWeb.Controllers
         // GET: AspNetUserRoles
         public async Task<ActionResult> Index()
         {
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
             var aspNetUserRoles = db.AspNetUserRoles.Include(a => a.AspNetRole).Include(a => a.AspNetUser);
             return View(await aspNetUserRoles.ToListAsync());
         }
@@ -34,7 +37,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetUserRole);
+            return PartialView(aspNetUserRole);
         }
 
         // GET: AspNetUserRoles/Create
@@ -42,7 +45,7 @@ namespace SistemaWeb.Controllers
         {
             ViewBag.RoleId = new SelectList(db.AspNetRoles, "Id", "Name");
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email");
-            return View();
+            return PartialView();
         }
 
         // POST: AspNetUserRoles/Create
@@ -61,7 +64,7 @@ namespace SistemaWeb.Controllers
 
             ViewBag.RoleId = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUserRole.RoleId);
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", aspNetUserRole.UserId);
-            return View(aspNetUserRole);
+            return PartialView(aspNetUserRole);
         }
 
         // GET: AspNetUserRoles/Edit/5
@@ -78,7 +81,7 @@ namespace SistemaWeb.Controllers
             }
             ViewBag.RoleId = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUserRole.RoleId);
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", aspNetUserRole.UserId);
-            return View(aspNetUserRole);
+            return PartialView(aspNetUserRole);
         }
 
         // POST: AspNetUserRoles/Edit/5
@@ -96,7 +99,7 @@ namespace SistemaWeb.Controllers
             }
             ViewBag.RoleId = new SelectList(db.AspNetRoles, "Id", "Name", aspNetUserRole.RoleId);
             ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", aspNetUserRole.UserId);
-            return View(aspNetUserRole);
+            return PartialView(aspNetUserRole);
         }
 
         // GET: AspNetUserRoles/Delete/5
@@ -111,7 +114,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetUserRole);
+            return PartialView(aspNetUserRole);
         }
 
         // POST: AspNetUserRoles/Delete/5

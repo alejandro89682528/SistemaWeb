@@ -310,6 +310,7 @@
     <Compile Include="Controllers\anolectivoesController.cs" />
     <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\AspNetUserRolesController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\aulasController.cs" />
     <Compile Include="Controllers\carrerasController.cs" />
     <Compile Include="Controllers\diasController.cs" />
@@ -680,11 +681,6 @@
     <Content Include="Views\horarios\Edit.cshtml" />
     <Content Include="Views\horarios\Index.cshtml" />
     <Content Include="Views\materias\BusquedaFilter.cshtml" />
-    <Content Include="Views\AspNetUsers\Create.cshtml" />
-    <Content Include="Views\AspNetUsers\Delete.cshtml" />
-    <Content Include="Views\AspNetUsers\Details.cshtml" />
-    <Content Include="Views\AspNetUsers\Edit.cshtml" />
-    <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Delete.cshtml" />
     <Content Include="Views\AspNetRoles\Details.cshtml" />
@@ -695,6 +691,11 @@
     <Content Include="Views\AspNetUserRoles\Details.cshtml" />
     <Content Include="Views\AspNetUserRoles\Edit.cshtml" />
     <Content Include="Views\AspNetUserRoles\Index.cshtml" />
+    <Content Include="Views\AspNetUsers\Create.cshtml" />
+    <Content Include="Views\AspNetUsers\Delete.cshtml" />
+    <Content Include="Views\AspNetUsers\Details.cshtml" />
+    <Content Include="Views\AspNetUsers\Edit.cshtml" />
+    <Content Include="Views\AspNetUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
