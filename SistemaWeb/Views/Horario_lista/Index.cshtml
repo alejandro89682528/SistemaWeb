@@ -68,7 +68,7 @@
             </div>
 
             <div>
-                <button type="submit">Listar Horario</button>
+                @Html.ActionLink("BusquedaFilter", "Mostrar horario", new { depeto = Model.cod_dpto, carrera = Model.cod_carrera, ciclo = Model.semestr, año = Model.año }) |
             </div>
         </form>
     </div>

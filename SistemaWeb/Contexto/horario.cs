@@ -20,10 +20,11 @@ namespace SistemaWeb.Contexto
         public string fecha_ini { get; set; }
         public int cod_asig { get; set; }
         public int cod_aula { get; set; }
-        public string cod_grupo { get; set; }
+        public int cod_grupo { get; set; }
         public string inss { get; set; }
     
         public virtual aula aula { get; set; }
+        public virtual grupo grupo { get; set; }
         public virtual pensum pensum { get; set; }
         public virtual periodo periodo { get; set; }
         public virtual profesore profesore { get; set; }
