@@ -1,4 +1,4 @@
-﻿@model SistemaWeb.Contexto.horariogeneracion
+﻿@model SistemaWeb.Contexto.lista_horario
 @{
 
     if (ViewBag.displayRole == 0)
@@ -29,13 +29,13 @@
     <div>
 
         <h2>Listar Horarios</h2>
-        <form method="post" enctype="multipart/form-data">
+        <form action="/Horario_lista/BusquedaFilter" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 Seleccionar departamento
                 <div class="col-md-10">
                     @Html.DropDownList("cod_dpto", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.cod_dpto, "", new { @class = "text-danger" })
                 </div>
 
             </div>
@@ -62,13 +62,14 @@
                 Año de estudio
                 <div class="col-md-10">
                     @Html.DropDownList("año_estudio", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.año_estudio, "", new { @class = "text-danger" })
                 </div>
 
             </div>
 
             <div>
-                @Html.ActionLink("BusquedaFilter", "Mostrar horario", new { depeto = Model.cod_dpto, carrera = Model.cod_carrera, ciclo = Model.semestr, año = Model.año }) |
+                
+                <input type="submit" value="Generar horario" />
             </div>
         </form>
     </div>

@@ -41,15 +41,14 @@ namespace SistemaWeb.Contexto
         public virtual DbSet<faculta> facultas { get; set; }
         public virtual DbSet<grupo> grupoes { get; set; }
         public virtual DbSet<horario> horarios { get; set; }
-        public virtual DbSet<horario_vista> horario_vista { get; set; }
         public virtual DbSet<horariogeneracion> horariogeneracions { get; set; }
         public virtual DbSet<inportarcion> inportarcions { get; set; }
+        public virtual DbSet<lista_horario> lista_horario { get; set; }
         public virtual DbSet<materia> materias { get; set; }
         public virtual DbSet<pensum> pensums { get; set; }
         public virtual DbSet<periodo> periodoes { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<profesore> profesores { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tipoaula> tipoaulas { get; set; }
         public virtual DbSet<usuarios_roles> usuarios_roles { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }

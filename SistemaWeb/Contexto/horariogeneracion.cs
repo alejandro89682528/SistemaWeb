@@ -18,8 +18,5 @@ namespace SistemaWeb.Contexto
         public string cod_carrera { get; set; }
         public string tipo_ciclo { get; set; }
         public string fecha_ini { get; set; }
-        public string cod_dpto { get; set; }
-        public string semestr { get; set; }
-        public string año { get; set; }
     }
 }

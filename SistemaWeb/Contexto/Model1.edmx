@@ -146,17 +146,8 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
           <Property Name="fecha_ini" Type="varchar" MaxLength="45" />
           <Property Name="cod_asig" Type="int" Nullable="false" />
           <Property Name="cod_aula" Type="int" Nullable="false" />
-          <Property Name="cod_grupo" Type="int" Nullable="false" />
+          <Property Name="cod_grupo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="inss" Type="varchar" MaxLength="45" Nullable="false" />
-        </EntityType>
-        <EntityType Name="horario_vista">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="cod_depar" Type="nchar" MaxLength="10" />
-          <Property Name="carrera" Type="nchar" MaxLength="10" />
-          <Property Name="año_estudio" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="horariogeneracion">
           <Key>
@@ -166,9 +157,6 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
           <Property Name="cod_carrera" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tipo_ciclo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="fecha_ini" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="cod_dpto" Type="nchar" MaxLength="10" />
-          <Property Name="semestr" Type="nchar" MaxLength="10" />
-          <Property Name="año" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="inportarcion">
           <Key>
@@ -179,10 +167,22 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
           <Property Name="cod_dpto" Type="int" />
           <Property Name="cod_asignatura" Type="int" />
           <Property Name="cod_carrera" Type="int" Nullable="false" />
-          <Property Name="grupo" Type="int" Nullable="false" />
+          <Property Name="grupo" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="hora_grupo" Type="int" Nullable="false" />
           <Property Name="tipo_ciclo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="tipo_grupo" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="lista_horario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_dpto" Type="int" />
+          <Property Name="cod_carrera" Type="int" />
+          <Property Name="tipo_ciclo" Type="int" />
+          <Property Name="año_estudio" Type="int" />
+          <Property Name="semestr" Type="varchar" MaxLength="10" />
+          <Property Name="año" Type="varchar" MaxLength="7" />
         </EntityType>
         <EntityType Name="materia">
           <Key>
@@ -242,16 +242,6 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.profesorDepartameto' no 
           <Property Name="direccion" Type="varchar" MaxLength="100" />
           <Property Name="foto_ruta" Type="varchar" MaxLength="200" />
           <Property Name="cod_dpto" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="tipoaula">
           <Key>
@@ -433,18 +423,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.aulaDp
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_horario_grupo">
-          <End Role="grupo" Type="Self.grupo" Multiplicity="1" />
-          <End Role="horario" Type="Self.horario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="grupo">
-              <PropertyRef Name="cod_grupo" />
-            </Principal>
-            <Dependent Role="horario">
-              <PropertyRef Name="cod_grupo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_horario_pensum">
           <End Role="pensum" Type="Self.pensum" Multiplicity="1" />
           <End Role="horario" Type="Self.horario" Multiplicity="*" />
@@ -615,37 +593,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="sistema_horarioModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="anolectivo" EntityType="Self.anolectivo" Schema="dbo" store:Type="Tables" />
@@ -661,15 +608,14 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <EntitySet Name="faculta" EntityType="Self.faculta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="horario" EntityType="Self.horario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="horario_vista" EntityType="Self.horario_vista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="horariogeneracion" EntityType="Self.horariogeneracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="inportarcion" EntityType="Self.inportarcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="lista_horario" EntityType="Self.lista_horario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pensum" EntityType="Self.pensum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="periodo" EntityType="Self.periodo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="profesores" EntityType="Self.profesores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tipoaula" EntityType="Self.tipoaula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios_roles" EntityType="Self.usuarios_roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
@@ -724,10 +670,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           </AssociationSet>
           <AssociationSet Name="FK_horario_aula" Association="Self.FK_horario_aula">
             <End Role="aula" EntitySet="aula" />
-            <End Role="horario" EntitySet="horario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_horario_grupo" Association="Self.FK_horario_grupo">
-            <End Role="grupo" EntitySet="grupo" />
             <End Role="horario" EntitySet="horario" />
           </AssociationSet>
           <AssociationSet Name="FK_horario_pensum" Association="Self.FK_horario_pensum">
@@ -892,15 +834,14 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <EntitySet Name="facultas" EntityType="sistema_horarioModel.faculta" />
           <EntitySet Name="grupoes" EntityType="sistema_horarioModel.grupo" />
           <EntitySet Name="horarios" EntityType="sistema_horarioModel.horario" />
-          <EntitySet Name="horario_vista" EntityType="sistema_horarioModel.horario_vista" />
           <EntitySet Name="horariogeneracions" EntityType="sistema_horarioModel.horariogeneracion" />
           <EntitySet Name="inportarcions" EntityType="sistema_horarioModel.inportarcion" />
+          <EntitySet Name="lista_horario" EntityType="sistema_horarioModel.lista_horario" />
           <EntitySet Name="materias" EntityType="sistema_horarioModel.materia" />
           <EntitySet Name="pensums" EntityType="sistema_horarioModel.pensum" />
           <EntitySet Name="periodoes" EntityType="sistema_horarioModel.periodo" />
           <EntitySet Name="Plans" EntityType="sistema_horarioModel.Plan" />
           <EntitySet Name="profesores" EntityType="sistema_horarioModel.profesore" />
-          <EntitySet Name="sysdiagrams" EntityType="sistema_horarioModel.sysdiagram" />
           <EntitySet Name="tipoaulas" EntityType="sistema_horarioModel.tipoaula" />
           <EntitySet Name="usuarios_roles" EntityType="sistema_horarioModel.usuarios_roles" />
           <EntitySet Name="Usuarios" EntityType="sistema_horarioModel.Usuario" />
@@ -968,10 +909,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <AssociationSet Name="FK_grupo_pensum" Association="sistema_horarioModel.FK_grupo_pensum">
             <End Role="pensum" EntitySet="pensums" />
             <End Role="grupo" EntitySet="grupoes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_horario_grupo" Association="sistema_horarioModel.FK_horario_grupo">
-            <End Role="grupo" EntitySet="grupoes" />
-            <End Role="horario" EntitySet="horarios" />
           </AssociationSet>
           <AssociationSet Name="FK_horario_pensum" Association="sistema_horarioModel.FK_horario_pensum">
             <End Role="pensum" EntitySet="pensums" />
@@ -1182,7 +1119,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="cod_asig" Type="Int32" Nullable="false" />
           <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_grupo_pensum" FromRole="grupo" ToRole="pensum" />
-          <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="grupo" ToRole="horario" />
         </EntityType>
         <EntityType Name="horario">
           <Key>
@@ -1194,22 +1130,12 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <Property Name="fecha_ini" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="cod_asig" Type="Int32" Nullable="false" />
           <Property Name="cod_aula" Type="Int32" Nullable="false" />
-          <Property Name="cod_grupo" Type="Int32" Nullable="false" />
+          <Property Name="cod_grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="aula" Relationship="sistema_horarioModel.FK_horario_aula" FromRole="horario" ToRole="aula" />
-          <NavigationProperty Name="grupo" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="horario" ToRole="grupo" />
           <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_horario_pensum" FromRole="horario" ToRole="pensum" />
           <NavigationProperty Name="periodo" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="horario" ToRole="periodo" />
           <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="horario" ToRole="profesore" />
-        </EntityType>
-        <EntityType Name="horario_vista">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="cod_depar" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="carrera" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="año_estudio" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="horariogeneracion">
           <Key>
@@ -1219,9 +1145,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <Property Name="cod_carrera" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="fecha_ini" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="cod_dpto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="semestr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="año" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="inportarcion">
           <Key>
@@ -1232,7 +1155,7 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <Property Name="cod_dpto" Type="Int32" />
           <Property Name="cod_asignatura" Type="Int32" />
           <Property Name="cod_carrera" Type="Int32" Nullable="false" />
-          <Property Name="grupo" Type="Int32" Nullable="false" />
+          <Property Name="grupo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="hora_grupo" Type="Int32" Nullable="false" />
           <Property Name="tipo_ciclo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="tipo_grupo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -1240,6 +1163,18 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_inportarcion_dpto" FromRole="inportarcion" ToRole="dpto" />
           <NavigationProperty Name="materia" Relationship="sistema_horarioModel.FK_inportarcion_materia" FromRole="inportarcion" ToRole="materia" />
           <NavigationProperty Name="profesore" Relationship="sistema_horarioModel.FK_inportarcion_profesores" FromRole="inportarcion" ToRole="profesore" />
+        </EntityType>
+        <EntityType Name="lista_horario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_dpto" Type="Int32" />
+          <Property Name="cod_carrera" Type="Int32" />
+          <Property Name="tipo_ciclo" Type="Int32" />
+          <Property Name="año_estudio" Type="Int32" />
+          <Property Name="semestr" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="año" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="materia">
           <Key>
@@ -1305,16 +1240,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
           <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="profesore" ToRole="dpto" />
           <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="profesore" ToRole="horario" />
           <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_profesores" FromRole="profesore" ToRole="inportarcion" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="tipoaula">
           <Key>
@@ -1565,18 +1490,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_horario_grupo">
-          <End Type="sistema_horarioModel.grupo" Role="grupo" Multiplicity="1" />
-          <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="grupo">
-              <PropertyRef Name="cod_grupo" />
-            </Principal>
-            <Dependent Role="horario">
-              <PropertyRef Name="cod_grupo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_horario_pensum">
           <End Type="sistema_horarioModel.pensum" Role="pensum" Multiplicity="1" />
           <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
@@ -1671,30 +1584,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="sistema_horarioModelStoreContainer" CdmEntityContainer="sistema_horarioEntities3">
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram2" FunctionName="sistema_horarioModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram2" FunctionName="sistema_horarioModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram2" FunctionName="sistema_horarioModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition2" FunctionName="sistema_horarioModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagramdefinition2_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams2" FunctionName="sistema_horarioModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagrams2_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram2" FunctionName="sistema_horarioModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams2" FunctionName="sistema_horarioModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="sistema_horarioModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1844,22 +1733,9 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="horario_vista">
-            <EntityTypeMapping TypeName="sistema_horarioModel.horario_vista">
-              <MappingFragment StoreEntitySet="horario_vista">
-                <ScalarProperty Name="año_estudio" ColumnName="año_estudio" />
-                <ScalarProperty Name="carrera" ColumnName="carrera" />
-                <ScalarProperty Name="cod_depar" ColumnName="cod_depar" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="horariogeneracions">
             <EntityTypeMapping TypeName="sistema_horarioModel.horariogeneracion">
               <MappingFragment StoreEntitySet="horariogeneracion">
-                <ScalarProperty Name="año" ColumnName="año" />
-                <ScalarProperty Name="semestr" ColumnName="semestr" />
-                <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
                 <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
                 <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
                 <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
@@ -1878,6 +1754,19 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
                 <ScalarProperty Name="cod_asignatura" ColumnName="cod_asignatura" />
                 <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
                 <ScalarProperty Name="inss" ColumnName="inss" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lista_horario">
+            <EntityTypeMapping TypeName="sistema_horarioModel.lista_horario">
+              <MappingFragment StoreEntitySet="lista_horario">
+                <ScalarProperty Name="año" ColumnName="año" />
+                <ScalarProperty Name="semestr" ColumnName="semestr" />
+                <ScalarProperty Name="año_estudio" ColumnName="año_estudio" />
+                <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
+                <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
+                <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1940,17 +1829,6 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="sistema_horarioModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tipoaulas">
             <EntityTypeMapping TypeName="sistema_horarioModel.tipoaula">
               <MappingFragment StoreEntitySet="tipoaula">
@@ -1986,7 +1864,7 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

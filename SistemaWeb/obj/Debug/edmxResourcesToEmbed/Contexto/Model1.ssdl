@@ -167,6 +167,18 @@ advertencia 6013: La tabla o vista 'sistema_horario.dbo.aulaDpto' no tiene defin
     <Property Name="tipo_ciclo" Type="varchar" MaxLength="2" Nullable="false" />
     <Property Name="tipo_grupo" Type="varchar" MaxLength="10" />
   </EntityType>
+  <EntityType Name="lista_horario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_dpto" Type="int" />
+    <Property Name="cod_carrera" Type="int" />
+    <Property Name="tipo_ciclo" Type="int" />
+    <Property Name="año_estudio" Type="int" />
+    <Property Name="semestr" Type="varchar" MaxLength="10" />
+    <Property Name="año" Type="varchar" MaxLength="7" />
+  </EntityType>
   <EntityType Name="materia">
     <Key>
       <PropertyRef Name="cod_materia" />
@@ -593,6 +605,7 @@ error 6004: Una relación hace referencia a la tabla 'sistema_horario.dbo.profes
     <EntitySet Name="horario" EntityType="Self.horario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="horariogeneracion" EntityType="Self.horariogeneracion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="inportarcion" EntityType="Self.inportarcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lista_horario" EntityType="Self.lista_horario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pensum" EntityType="Self.pensum" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="periodo" EntityType="Self.periodo" Schema="dbo" store:Type="Tables" />

@@ -175,6 +175,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="lista_horario">
+      <EntityTypeMapping TypeName="sistema_horarioModel.lista_horario">
+        <MappingFragment StoreEntitySet="lista_horario">
+          <ScalarProperty Name="año" ColumnName="año" />
+          <ScalarProperty Name="semestr" ColumnName="semestr" />
+          <ScalarProperty Name="año_estudio" ColumnName="año_estudio" />
+          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
+          <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="materias">
       <EntityTypeMapping TypeName="sistema_horarioModel.materia">
         <MappingFragment StoreEntitySet="materia">

@@ -12,12 +12,14 @@ namespace SistemaWeb.Contexto
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class lista_horario
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public Nullable<int> cod_dpto { get; set; }
+        public Nullable<int> cod_carrera { get; set; }
+        public Nullable<int> tipo_ciclo { get; set; }
+        public Nullable<int> año_estudio { get; set; }
+        public string semestr { get; set; }
+        public string año { get; set; }
     }
 }
