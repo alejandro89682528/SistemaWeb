@@ -11,10 +11,11 @@ using System.Web.Mvc;
 
 namespace SistemaWeb.Controllers
 {
-    
+
     //[Authorize(Roles = "Admin")]
 
-    
+
+
     public class Horario_listaController : Controller
     {
         private lista_horario objlistaH;
@@ -46,12 +47,13 @@ namespace SistemaWeb.Controllers
       
 
         [HttpPost]
-        public ActionResult BusquedaFilter()
+        public ActionResult BusquedaFilter(string cod_dpto)
         {
+            string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
             var p = objlistaH.cod_dpto;
             /* var idDept = Int32.Parse(depeto); */
-            ViewBag.Message = "envio correcto ", p;
-            
+           //ViewBag.Message = "ESTO ES UNA PRUEVA",p;
+            ViewData["Nombre"] = message;
             return View();
         }
        

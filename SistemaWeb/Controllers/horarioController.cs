@@ -292,7 +292,7 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDA7; con.Open();
                                 cmd7.CommandText = "UPDATE [dbo].[inportarcion] SET [hora_grupo] = " + hora_grupo + " WHERE id = " + cod_impor + "";
                                 cmd7.CommandType = CommandType.Text;
-                                cmd7.Connection = con;
+                                    cmd7.Connection = con;
                                 sqlDA7 = new SqlDataAdapter(cmd7);
                                 sqlDA7.Fill(dataTable7);
                                 con.Close();

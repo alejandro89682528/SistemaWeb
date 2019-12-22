@@ -64,7 +64,7 @@ namespace SistemaWeb.Controllers
         }
 
         private void InsertExceldata(string fileepath, string filename, int id, String ciclo, String confirmacion)
-        {
+        { 
 
 
             string fullpath = Server.MapPath("/excelfolder/") + filename;
@@ -78,6 +78,8 @@ namespace SistemaWeb.Controllers
             DataSet ds = new DataSet();
             OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
             Econ.Close();
+
+
             oda.Fill(ds);
             DataTable dt = ds.Tables[0];
 
