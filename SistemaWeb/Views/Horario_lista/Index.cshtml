@@ -66,6 +66,14 @@
                 </div>
 
             </div>
+             @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+            $(function () {
+              alert("@ViewBag.Message")
+            });
+                </script>
+            }
 
             <div>
                 

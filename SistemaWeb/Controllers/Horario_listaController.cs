@@ -19,6 +19,8 @@ namespace SistemaWeb.Controllers
     public class Horario_listaController : Controller
     {
         private lista_horario objlistaH;
+        public object MessageBoxIcon { get; private set; }
+        public object MessageBox { get; private set; }
 
         public Horario_listaController()
         {
@@ -42,20 +44,48 @@ namespace SistemaWeb.Controllers
 
             return View();
         }
-
-
-      
-
+        /*
         [HttpPost]
-        public ActionResult BusquedaFilter(string cod_dpto)
+        public ActionResult Index()
         {
-            string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
-            var p = objlistaH.cod_dpto;
-            /* var idDept = Int32.Parse(depeto); */
+            return View();
+        } */
+
+
+        
+        [HttpPost]
+        public ActionResult Index(string cod_dpto, string cod_carrera, string tipo_ciclo, string año_estudio)
+        {
+            int depar = Int32.Parse(cod_dpto);
+            int carrera = Int32.Parse(cod_carrera);
+           int ciclo = Int32.Parse(tipo_ciclo);
+            int año = Int32.Parse(año_estudio);
+            objlistaH.cod_dpto = depar;
+            objlistaH.cod_carrera = carrera;
+            objlistaH.tipo_ciclo = ciclo;
+            objlistaH.año_estudio = año;
+           // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
+           //var p = objlistaH.cod_dpto;
+           //var idDept = Int32.Parse(depeto); 
            //ViewBag.Message = "ESTO ES UNA PRUEVA",p;
-            ViewData["Nombre"] = message;
+           //ViewData["Nombre"] = message;
+
+
             return View();
         }
-       
+
+        [HttpPost]
+        public ActionResult BusquedaFilter()
+        {
+            string  depar;
+            //depar = objlistaH.cod_dpto;
+           // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
+             var p = objlistaH.cod_dpto;
+            
+            //var idDept = Int32.Parse(depeto); 
+            ViewBag.Message = "se a efectuado todos los canvios correctamente!"+ p;
+            //ViewData["Nombre"] = message;
+            return View();
+        }
     }
 }
