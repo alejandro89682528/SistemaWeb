@@ -16,5 +16,6 @@ namespace SistemaWeb.Contexto
     {
         public int cod_ano { get; set; }
         public string ano { get; set; }
+        public string activo { get; set; }
     }
 }

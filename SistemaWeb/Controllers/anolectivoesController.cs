@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -10,111 +11,114 @@ using SistemaWeb.Contexto;
 
 namespace SistemaWeb.Controllers
 {
-    [Authorize]
     public class anolectivoesController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
 
         // GET: anolectivoes
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
-            return View(db.anolectivoes.ToList());
+
+         
+            ViewBag.activo = new SelectList("SINO");
+            return View(await db.anolectivoes.ToListAsync());
         }
 
         // GET: anolectivoes/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            anolectivo anolectivo = db.anolectivoes.Find(id);
+            anolectivo anolectivo = await db.anolectivoes.FindAsync(id);
             if (anolectivo == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(anolectivo);
+            return View(anolectivo);
         }
 
         // GET: anolectivoes/Create
         public ActionResult Create()
         {
-            return PartialView();
+            ViewBag.activo = new SelectList("SI","NO");
+            return View();
         }
 
         // POST: anolectivoes/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
+        public async Task<ActionResult> Create([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
         {
             if (ModelState.IsValid)
             {
                 db.anolectivoes.Add(anolectivo);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return PartialView(anolectivo);
+            return View(anolectivo);
         }
 
         // GET: anolectivoes/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            anolectivo anolectivo = db.anolectivoes.Find(id);
+            anolectivo anolectivo = await db.anolectivoes.FindAsync(id);
             if (anolectivo == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(anolectivo);
+            return View(anolectivo);
         }
 
         // POST: anolectivoes/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
+        public async Task<ActionResult> Edit([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(anolectivo).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return PartialView(anolectivo);
+            return View(anolectivo);
         }
 
         // GET: anolectivoes/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            anolectivo anolectivo = db.anolectivoes.Find(id);
+            anolectivo anolectivo = await db.anolectivoes.FindAsync(id);
             if (anolectivo == null)
             {
                 return HttpNotFound();
             }
-            return PartialView(anolectivo);
+            return View(anolectivo);
         }
 
         // POST: anolectivoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            anolectivo anolectivo = db.anolectivoes.Find(id);
+            anolectivo anolectivo = await db.anolectivoes.FindAsync(id);
             db.anolectivoes.Remove(anolectivo);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

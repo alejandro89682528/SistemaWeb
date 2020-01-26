@@ -1,6 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="sistema_horarioModelStoreContainer" CdmEntityContainer="sistema_horarioEntities3">
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram3" FunctionName="sistema_horarioModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram3" FunctionName="sistema_horarioModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram3" FunctionName="sistema_horarioModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition3" FunctionName="sistema_horarioModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagramdefinition3_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams3" FunctionName="sistema_horarioModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="sistema_horarioModel.sp_helpdiagrams3_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram3" FunctionName="sistema_horarioModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams3" FunctionName="sistema_horarioModel.Store.sp_upgraddiagrams" />
     <EntitySetMapping Name="C__MigrationHistory">
       <EntityTypeMapping TypeName="sistema_horarioModel.C__MigrationHistory">
         <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -14,6 +38,7 @@
     <EntitySetMapping Name="anolectivoes">
       <EntityTypeMapping TypeName="sistema_horarioModel.anolectivo">
         <MappingFragment StoreEntitySet="anolectivo">
+          <ScalarProperty Name="activo" ColumnName="activo" />
           <ScalarProperty Name="ano" ColumnName="ano" />
           <ScalarProperty Name="cod_ano" ColumnName="cod_ano" />
         </MappingFragment>
@@ -150,9 +175,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="horario_vista">
+      <EntityTypeMapping TypeName="sistema_horarioModel.horario_vista">
+        <MappingFragment StoreEntitySet="horario_vista">
+          <ScalarProperty Name="año_estudio" ColumnName="año_estudio" />
+          <ScalarProperty Name="carrera" ColumnName="carrera" />
+          <ScalarProperty Name="cod_depar" ColumnName="cod_depar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="horariogeneracions">
       <EntityTypeMapping TypeName="sistema_horarioModel.horariogeneracion">
         <MappingFragment StoreEntitySet="horariogeneracion">
+          <ScalarProperty Name="año" ColumnName="año" />
+          <ScalarProperty Name="semestr" ColumnName="semestr" />
+          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
           <ScalarProperty Name="fecha_ini" ColumnName="fecha_ini" />
           <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
           <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
@@ -171,19 +209,6 @@
           <ScalarProperty Name="cod_asignatura" ColumnName="cod_asignatura" />
           <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
           <ScalarProperty Name="inss" ColumnName="inss" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="lista_horario">
-      <EntityTypeMapping TypeName="sistema_horarioModel.lista_horario">
-        <MappingFragment StoreEntitySet="lista_horario">
-          <ScalarProperty Name="año" ColumnName="año" />
-          <ScalarProperty Name="semestr" ColumnName="semestr" />
-          <ScalarProperty Name="año_estudio" ColumnName="año_estudio" />
-          <ScalarProperty Name="tipo_ciclo" ColumnName="tipo_ciclo" />
-          <ScalarProperty Name="cod_carrera" ColumnName="cod_carrera" />
-          <ScalarProperty Name="cod_dpto" ColumnName="cod_dpto" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -243,6 +268,17 @@
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="inss" ColumnName="inss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="sistema_horarioModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

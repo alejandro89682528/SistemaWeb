@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<SistemaWeb.Contexto.anolectivo>
 
 @{
-    ViewBag.Title = "Index";
+
 
     if (ViewBag.displayRole == 0)
     {
@@ -15,102 +15,34 @@
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
+
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Año
+            @Html.DisplayNameFor(model => model.ano)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ano)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.cod_ano }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.cod_ano }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.cod_ano })
-
-                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/anoelectivoes/Edit/@item.cod_ano', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
-                <a href="#" data-toggle="modal" data-target="#visualDetalle" onclick="loadData('/anoelectivoes/Details/@item.cod_ano', 'contentdetalle')">  <Span class='btn btn-info'> Detalles </Span></a>
-                <a href="#" data-toggle="modal" class='btn btn-danger' data-target="#visualEliminar" onclick="loadData('/anoelectivoes/Delete/@item.cod_ano', 'contenteliminar')">  <Span class='glyphicon glyphicon-th-list'></Span> Eliminar</a>
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ano)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cod_ano }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cod_ano }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cod_ano })
+        </td>
+    </tr>
+}
 
 </table>
-
-<div class="modal" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar carrera nueva</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="contentdialog">
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="modal" id="visualEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Actualizar carrera</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="contentedit">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="visualDetalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Detalles de carrera</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="contentdetalle">
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal" id="visualEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Eliminar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="contenteliminar">
-            </div>
-        </div>
-    </div>
-</div>
-

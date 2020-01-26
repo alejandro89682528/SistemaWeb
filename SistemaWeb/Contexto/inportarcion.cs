@@ -19,7 +19,7 @@ namespace SistemaWeb.Contexto
         public Nullable<int> cod_dpto { get; set; }
         public Nullable<int> cod_asignatura { get; set; }
         public int cod_carrera { get; set; }
-        public string grupo { get; set; }
+        public int grupo { get; set; }
         public int hora_grupo { get; set; }
         public string tipo_ciclo { get; set; }
         public string tipo_grupo { get; set; }

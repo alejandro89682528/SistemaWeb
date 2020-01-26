@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -18,14 +19,14 @@ namespace SistemaWeb.Controllers
 
     public class Horario_listaController : Controller
     {
-        private lista_horario objlistaH;
+      //  private lista_horario objlistaH;
         public object MessageBoxIcon { get; private set; }
         public object MessageBox { get; private set; }
 
         public Horario_listaController()
         {
-            objlistaH = new lista_horario();
-           
+        //    objlistaH = new lista_horario();
+
         }
         // GET: Horario_lista
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
@@ -52,38 +53,49 @@ namespace SistemaWeb.Controllers
         } */
 
 
-        
+            /*
         [HttpPost]
         public ActionResult Index(string cod_dpto, string cod_carrera, string tipo_ciclo, string año_estudio)
         {
             int depar = Int32.Parse(cod_dpto);
             int carrera = Int32.Parse(cod_carrera);
-           int ciclo = Int32.Parse(tipo_ciclo);
+            int ciclo = Int32.Parse(tipo_ciclo);
             int año = Int32.Parse(año_estudio);
-            objlistaH.cod_dpto = depar;
-            objlistaH.cod_carrera = carrera;
-            objlistaH.tipo_ciclo = ciclo;
-            objlistaH.año_estudio = año;
-           // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
-           //var p = objlistaH.cod_dpto;
-           //var idDept = Int32.Parse(depeto); 
-           //ViewBag.Message = "ESTO ES UNA PRUEVA",p;
-           //ViewData["Nombre"] = message;
+            // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
+            //var p = objlistaH.cod_dpto;
+            //var idDept = Int32.Parse(depeto); 
+            //ViewBag.Message = "ESTO ES UNA PRUEVA",p;
+            //ViewData["Nombre"] = message;
 
 
             return View();
-        }
+        } */
 
         [HttpPost]
-        public ActionResult BusquedaFilter()
+        public ActionResult BusquedaFilter(string cod_dpto, string cod_carrera, string tipo_ciclo, string año_estudio)
         {
-            string  depar;
-            //depar = objlistaH.cod_dpto;
-           // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
-             var p = objlistaH.cod_dpto;
+
+            int depar = Int32.Parse(cod_dpto);
+            int carrera = Int32.Parse(cod_carrera);
+            int ciclo = Int32.Parse(tipo_ciclo);
+            int año = Int32.Parse(año_estudio);
             
+            //consultar lista de 
+            SqlCommand cmd = new SqlCommand();
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter sqlDA; con.Open();
+            cmd.CommandText = "select p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  from horario h, grupo g, materia m, profesores p, dpto d, carrera c, periodo pe, aula a, Pensum pen, dia dia where h.cod_grupo=g.cod_grupo and h.inss=p.inss and h.cod_asig=pen.cod_asig and m.cod_materia=pen.cod_materia and pe.cod_periodo = h.cod_periodo and h.cod_aula = a.cod_aula and h.cod_dias=dia.id;";
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+            sqlDA = new SqlDataAdapter(cmd);
+            sqlDA.Fill(dataTable);
+            con.Close();
+            //depar = objlistaH.cod_dpto;
+            // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
+            // var p = objlistaH.cod_dpto;
+
             //var idDept = Int32.Parse(depeto); 
-            ViewBag.Message = "se a efectuado todos los canvios correctamente!"+ p;
+            //ViewBag.Message = "se a efectuado todos los canvios correctamente!" + p;
             //ViewData["Nombre"] = message;
             return View();
         }

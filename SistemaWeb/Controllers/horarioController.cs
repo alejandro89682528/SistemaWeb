@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace SistemaWeb.Controllers
 {
-   // [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class horarioController : Controller
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
@@ -31,10 +31,10 @@ namespace SistemaWeb.Controllers
         [HttpPost]
         public ActionResult Index(string cod_carrera, string tipo_ciclo)
         {
-        
+
             var idCarrera = Int32.Parse(cod_carrera);
             var semestre = Int32.Parse(tipo_ciclo);
-            ValidarHorario(idCarrera, semestre );
+            ValidarHorario(idCarrera, semestre);
 
             return Index();
         }
@@ -112,15 +112,15 @@ namespace SistemaWeb.Controllers
             int A = 0;
             //int aulas = aulaaleatoria.Next(0, dataTable3.Rows.Count + 1);
             //bariable de control de semana
-             
-                
-                //while para control de aulas 
-                // while (A < dataTable3.Rows.Count)
-                do
-                {
-                    //A++;
 
-                
+
+            //while para control de aulas 
+            // while (A < dataTable3.Rows.Count)
+            do
+            {
+                //A++;
+
+
                 //consultarn lista de datos de inportacion de cada de cada carrera
                 SqlCommand cmd1 = new SqlCommand();
                 DataTable dataTable1 = new DataTable();
@@ -150,29 +150,29 @@ namespace SistemaWeb.Controllers
 
                 //for para la lista de clases
                 while (i < dataTable1.Rows.Count)
-                    {
+                {
 
-                   
+
 
                     int D = diasaleatorios.Next(0, dataTable.Rows.Count);
-                        int id_dias = Convert.ToInt32(dataTable.Rows[D].ItemArray[0].ToString());
-                        String dias = dataTable.Rows[D].ItemArray[1].ToString();
+                    int id_dias = Convert.ToInt32(dataTable.Rows[D].ItemArray[0].ToString());
+                    String dias = dataTable.Rows[D].ItemArray[1].ToString();
 
-                        int aulas = aulaaleatoria.Next(0, dataTable3.Rows.Count);
-                        int cod_aulas = Convert.ToInt32(dataTable3.Rows[aulas].ItemArray[0].ToString());
-                        String aula = dataTable3.Rows[aulas].ItemArray[1].ToString();
+                    int aulas = aulaaleatoria.Next(0, dataTable3.Rows.Count);
+                    int cod_aulas = Convert.ToInt32(dataTable3.Rows[aulas].ItemArray[0].ToString());
+                    String aula = dataTable3.Rows[aulas].ItemArray[1].ToString();
 
 
-                        String ciclo = dataTable1.Rows[i].ItemArray[0].ToString();
-                        int cod_asignatura = Convert.ToInt32(dataTable1.Rows[i].ItemArray[1].ToString());
-                        String inss = dataTable1.Rows[i].ItemArray[2].ToString();
-                        //int cod_dpto = Convert.ToInt32(dataTable1.Rows[i].ItemArray[3].ToString());                
-                        int cod_carrera = Convert.ToInt32(dataTable1.Rows[i].ItemArray[4].ToString());
-                        String grupo = dataTable1.Rows[i].ItemArray[5].ToString();
-                        int hora_grupo = Convert.ToInt32(dataTable1.Rows[i].ItemArray[6].ToString());
-                        //String hora_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
-                        String tipo_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
-                        int cod_pemsul = Convert.ToInt32(dataTable1.Rows[i].ItemArray[8].ToString());
+                    String ciclo = dataTable1.Rows[i].ItemArray[0].ToString();
+                    int cod_asignatura = Convert.ToInt32(dataTable1.Rows[i].ItemArray[1].ToString());
+                    String inss = dataTable1.Rows[i].ItemArray[2].ToString();
+                    //int cod_dpto = Convert.ToInt32(dataTable1.Rows[i].ItemArray[3].ToString());                
+                    int cod_carrera = Convert.ToInt32(dataTable1.Rows[i].ItemArray[4].ToString());
+                    String grupo = dataTable1.Rows[i].ItemArray[5].ToString();
+                    int hora_grupo = Convert.ToInt32(dataTable1.Rows[i].ItemArray[6].ToString());
+                    //String hora_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
+                    String tipo_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
+                    int cod_pemsul = Convert.ToInt32(dataTable1.Rows[i].ItemArray[8].ToString());
                     int cod_impor = Convert.ToInt32(dataTable1.Rows[i].ItemArray[9].ToString());
 
                     //si y while pára controlar periodos
@@ -183,7 +183,7 @@ namespace SistemaWeb.Controllers
                         break;
                     }
 
-                   if(hora_grupo == 1)
+                    if (hora_grupo == 1)
                     {
                         //ViewBag.Message = "hora grupo del inicio es " + hora_grupo;
                         while (control_periodos < dataTable2.Rows.Count)
@@ -224,7 +224,7 @@ namespace SistemaWeb.Controllers
                                 SqlCommand cmd7 = new SqlCommand();
                                 DataTable dataTable7 = new DataTable();
                                 SqlDataAdapter sqlDA7; con.Open();
-                                cmd7.CommandText = "UPDATE [dbo].[inportarcion] SET [hora_grupo] = "+ hora_grupo +" WHERE id = "+ cod_impor +"";
+                                cmd7.CommandText = "UPDATE [dbo].[inportarcion] SET [hora_grupo] = " + hora_grupo + " WHERE id = " + cod_impor + "";
                                 cmd7.CommandType = CommandType.Text;
                                 cmd7.Connection = con;
                                 sqlDA7 = new SqlDataAdapter(cmd7);
@@ -247,7 +247,8 @@ namespace SistemaWeb.Controllers
                             }
                         }
 
-                } else
+                    }
+                    else
                     {
 
 
@@ -292,7 +293,7 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDA7; con.Open();
                                 cmd7.CommandText = "UPDATE [dbo].[inportarcion] SET [hora_grupo] = " + hora_grupo + " WHERE id = " + cod_impor + "";
                                 cmd7.CommandType = CommandType.Text;
-                                    cmd7.Connection = con;
+                                cmd7.Connection = con;
                                 sqlDA7 = new SqlDataAdapter(cmd7);
                                 sqlDA7.Fill(dataTable7);
                                 con.Close();
@@ -324,7 +325,7 @@ namespace SistemaWeb.Controllers
                         }
 
                     }
-                    
+
 
                     if ((i + 1) == dataTable1.Rows.Count)
                     {
@@ -338,11 +339,11 @@ namespace SistemaWeb.Controllers
 
                     i++;
 
-                    }
+                }
 
-                } while (total_hora != 0);
-                           
+            } while (total_hora != 0);
 
-            }
+
         }
     }
+}
