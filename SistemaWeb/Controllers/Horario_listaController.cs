@@ -84,20 +84,21 @@ namespace SistemaWeb.Controllers
             SqlCommand cmd = new SqlCommand();
             DataTable dataTable = new DataTable();
             SqlDataAdapter sqlDA; con.Open();
-            cmd.CommandText = "select p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  from horario h, grupo g, materia m, profesores p, dpto d, carrera c, periodo pe, aula a, Pensum pen, dia dia where h.cod_grupo=g.cod_grupo and h.inss=p.inss and h.cod_asig=pen.cod_asig and m.cod_materia=pen.cod_materia and pe.cod_periodo = h.cod_periodo and h.cod_aula = a.cod_aula and h.cod_dias=dia.id;";
+            cmd.CommandText = "select p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  from horario h, grupo g, materia m, profesores p, dpto d, carrera c, periodo pe, aula a, Pensum pen, dia dia where h.cod_grupo=g.cod_grupo and h.inss=p.inss and h.cod_asig=pen.cod_asig and m.cod_materia=pen.cod_materia and pe.cod_periodo = h.cod_periodo and h.cod_aula = a.cod_aula and h.cod_dias=dia.id and c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ ciclo + " and pen.anio_est="+ año +";";
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
             sqlDA = new SqlDataAdapter(cmd);
             sqlDA.Fill(dataTable);
             con.Close();
+            
             //depar = objlistaH.cod_dpto;
             // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
             // var p = objlistaH.cod_dpto;
 
-            //var idDept = Int32.Parse(depeto); 
+            //var idDept.. = Int32.Parse(depeto); 
             //ViewBag.Message = "se a efectuado todos los canvios correctamente!" + p;
             //ViewData["Nombre"] = message;
-            return View();
+            return View(dataTable);
         }
     }
 }
