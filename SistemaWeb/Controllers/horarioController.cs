@@ -152,7 +152,10 @@ namespace SistemaWeb.Controllers
                 while (i < dataTable1.Rows.Count)
                 {
 
-
+                    /*
+                     optener los valores de grupo y pasarlo aun for para saver los grupos 
+                     que hay y guardarlo en grupo como en horario 
+                     * */
 
                     int D = diasaleatorios.Next(0, dataTable.Rows.Count);
                     int id_dias = Convert.ToInt32(dataTable.Rows[D].ItemArray[0].ToString());
