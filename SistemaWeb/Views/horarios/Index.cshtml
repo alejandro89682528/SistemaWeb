@@ -2,20 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-
-
-    if (ViewBag.displayRole == 0)
-    {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    }
-    else if (ViewBag.displayRole == 1)
-    {
-        Layout = "~/Views/Shared/_LayoutManager.cshtml";
-    }
-    else if (ViewBag.displayRole == 2)
-    {
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
 }
 
 <h2>Index</h2>
@@ -32,10 +18,10 @@
             @Html.DisplayNameFor(model => model.fecha_ini)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cod_grupo)
+            @Html.DisplayNameFor(model => model.aula.nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.aula.nombre)
+            @Html.DisplayNameFor(model => model.grupo.nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.pensum.anio_est)
@@ -58,10 +44,10 @@
             @Html.DisplayFor(modelItem => item.fecha_ini)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.cod_grupo)
+            @Html.DisplayFor(modelItem => item.aula.nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.aula.nombre)
+            @Html.DisplayFor(modelItem => item.grupo.nombre)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.pensum.anio_est)

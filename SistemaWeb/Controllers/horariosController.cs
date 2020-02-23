@@ -11,7 +11,6 @@ using SistemaWeb.Contexto;
 
 namespace SistemaWeb.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class horariosController : Controller
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
@@ -19,9 +18,7 @@ namespace SistemaWeb.Controllers
         // GET: horarios
         public async Task<ActionResult> Index()
         {
-            ViewBag.displayRole = TempData["infoRol"];
-            TempData.Keep("infoRol");
-            var horarios = db.horarios.Include(h => h.aula).Include(h => h.pensum).Include(h => h.periodo).Include(h => h.profesore);
+            var horarios = db.horarios.Include(h => h.aula).Include(h => h.grupo).Include(h => h.pensum).Include(h => h.periodo).Include(h => h.profesore);
             return View(await horarios.ToListAsync());
         }
 
@@ -44,6 +41,7 @@ namespace SistemaWeb.Controllers
         public ActionResult Create()
         {
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre");
+            ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre");
             ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est");
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1");
             ViewBag.inss = new SelectList(db.profesores, "inss", "cedula");
@@ -65,6 +63,7 @@ namespace SistemaWeb.Controllers
             }
 
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
+            ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
             ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
             ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);
@@ -84,6 +83,7 @@ namespace SistemaWeb.Controllers
                 return HttpNotFound();
             }
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
+            ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
             ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
             ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);
@@ -104,6 +104,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
+            ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
             ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
             ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);

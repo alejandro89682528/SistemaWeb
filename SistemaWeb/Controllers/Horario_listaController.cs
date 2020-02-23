@@ -90,15 +90,32 @@ namespace SistemaWeb.Controllers
             sqlDA = new SqlDataAdapter(cmd);
             sqlDA.Fill(dataTable);
             con.Close();
-            
+            /* Corregido select
+p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  
+from
+horario h inner join grupo g on h.cod_grupo=g.cod_grupo inner join pensum pen on h.cod_asig=pen.cod_asig inner join materia m on m.cod_materia=pen.cod_materia
+inner join  profesores p on h.inss=p.inss inner join dpto d on p.cod_dpto=d.cod_dpto inner join plan pl on pen.cod_plan=pl.cod_plan inner join carrera c on c.cod_carrera=pl.cod_carrera inner join periodo pe pe.cod_periodo=h.cod_periodo
+ inner join aula a on h.cod_aula=a.cod_aula inner join  dia dd on dd.id=h.cod_dias
+where
+c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ ciclo + " and pen.anio_est="+ año +""; */
             //depar = objlistaH.cod_dpto;
             // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
             // var p = objlistaH.cod_dpto;
 
             //var idDept.. = Int32.Parse(depeto); 
-            //ViewBag.Message = "se a efectuado todos los canvios correctamente!" + p;
+            ViewBag.Tabla =dataTable;
             //ViewData["Nombre"] = message;
-            return View(dataTable);
+
+            /*
+             * 
+             * @foreach (DataRow row in Model.Rows)
+{
+    Hacer algo ...
+    < a > @row["campo1"].ToString() </ a >< br />
+    < a > @row["campo2"].ToString() </ a >< br />
+}
+        */
+            return View();
         }
     }
 }

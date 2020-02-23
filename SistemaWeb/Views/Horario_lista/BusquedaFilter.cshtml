@@ -1,6 +1,5 @@
-﻿@model SistemaWeb.Contexto.horariogeneracion
-
-@{
+﻿@{
+    var dt = ViewBag.Tabla;
 
     if (ViewBag.displayRole == 0)
     {
@@ -18,7 +17,34 @@
     ViewBag.Title = "Horario";
 }
 
-<table class="table" >
+<table class="table">
+
+    <tr>
+        <th>
+            Lunes
+        </th>
+        <th>
+            Martes
+        </th>
+        <th>
+            Miercoles
+        </th>
+        <th>
+            Jueves
+        </th>
+        <th>
+            Viernes
+        </th>
+        <th></th>
+    </tr>
 
 
-</table>
+    @foreach (var H in dt.Rows)
+    {
+    <td>
+        @H.Rows[0].ItemArray[1].ToString(0)
+    </td>
+    }
+
+
+    </table>

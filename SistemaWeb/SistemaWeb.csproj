@@ -689,11 +689,6 @@
     <Content Include="Views\RolesAdmin\Details.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
-    <Content Include="Views\horarios\Create.cshtml" />
-    <Content Include="Views\horarios\Delete.cshtml" />
-    <Content Include="Views\horarios\Details.cshtml" />
-    <Content Include="Views\horarios\Edit.cshtml" />
-    <Content Include="Views\horarios\Index.cshtml" />
     <Content Include="Views\materias\BusquedaFilter.cshtml" />
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Delete.cshtml" />
@@ -716,6 +711,11 @@
     <Content Include="Views\anolectivoes\Details.cshtml" />
     <Content Include="Views\anolectivoes\Edit.cshtml" />
     <Content Include="Views\anolectivoes\Index.cshtml" />
+    <Content Include="Views\horarios\Create.cshtml" />
+    <Content Include="Views\horarios\Delete.cshtml" />
+    <Content Include="Views\horarios\Details.cshtml" />
+    <Content Include="Views\horarios\Edit.cshtml" />
+    <Content Include="Views\horarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
