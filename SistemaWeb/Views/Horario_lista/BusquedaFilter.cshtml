@@ -17,9 +17,17 @@
     ViewBag.Title = "Horario";
 }
 
+<center>
+    <h1>Horario de Clases</h1>
+</center>
 <table class="table">
 
     <tr>
+
+        <th>
+            Hora
+        </th>
+
         <th>
             Lunes
         </th>
@@ -35,16 +43,238 @@
         <th>
             Viernes
         </th>
-        <th></th>
+
     </tr>
 
 
     @foreach (var H in dt.Rows)
     {
-    <td>
-        @H.Rows[0].ItemArray[1].ToString(0)
-    </td>
+  
+        <tr>
+        @H[0].ToString()
+        @H[1].ToString()
+            <td>
+
+                7:00 a 8:00
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola</td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+                8:00 a 9:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+                9:00 a 10:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                10:00 a 11:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                11:00 a 12:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                12:00 a 1:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                1:00 a 2:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                2:00 a 3:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+        <tr>
+            <td>
+
+
+                3:00 a 4:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+
+
+        <tr>
+            <td>
+
+
+                4:00 a 5:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+
+
+                5:00 a 6:00
+
+
+            </td>
+            <td></td>
+
+            <td></td>
+
+            <td> hola </td>
+
+            <td>como</td>
+
+            <td>esta</td>
+
+        </tr>
+
     }
 
 
-    </table>
+
+</table>

@@ -42,9 +42,9 @@ namespace SistemaWeb.Controllers
         {
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre");
             ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre");
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est");
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia");
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1");
-            ViewBag.inss = new SelectList(db.profesores, "inss", "cedula");
+            ViewBag.inss = new SelectList(db.profesores, "inss", "nombre");
             return View();
         }
 
@@ -64,9 +64,9 @@ namespace SistemaWeb.Controllers
 
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
             ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
-            ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);
+            ViewBag.inss = new SelectList(db.profesores, "inss", "nombre", horario.inss);
             return View(horario);
         }
 
@@ -84,9 +84,9 @@ namespace SistemaWeb.Controllers
             }
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
             ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
-            ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);
+            ViewBag.inss = new SelectList(db.profesores, "inss", "nombre", horario.inss);
             return View(horario);
         }
 
@@ -105,9 +105,9 @@ namespace SistemaWeb.Controllers
             }
             ViewBag.cod_aula = new SelectList(db.aulas, "cod_aula", "nombre", horario.cod_aula);
             ViewBag.cod_grupo = new SelectList(db.grupoes, "cod_grupo", "nombre", horario.cod_grupo);
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", horario.cod_asig);
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia", horario.cod_asig);
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1", horario.cod_periodo);
-            ViewBag.inss = new SelectList(db.profesores, "inss", "cedula", horario.inss);
+            ViewBag.inss = new SelectList(db.profesores, "inss", "nombre", horario.inss);
             return View(horario);
         }
 

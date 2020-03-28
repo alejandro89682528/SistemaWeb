@@ -43,7 +43,7 @@ namespace SistemaWeb.Controllers
         // GET: grupoes/Create
         public ActionResult Create()
         {
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est");
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia");
             return View();
         }
 
@@ -61,7 +61,7 @@ namespace SistemaWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", grupo.cod_asig);
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia", grupo.cod_asig);
             return View(grupo);
         }
 
@@ -77,7 +77,7 @@ namespace SistemaWeb.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "anio_est", grupo.cod_asig);
+            ViewBag.cod_asig = new SelectList(db.pensums, "cod_asig", "Cod_materia", grupo.cod_asig);
             return View(grupo);
         }
 

@@ -84,7 +84,8 @@ namespace SistemaWeb.Controllers
             SqlCommand cmd = new SqlCommand();
             DataTable dataTable = new DataTable();
             SqlDataAdapter sqlDA; con.Open();
-            cmd.CommandText = "select p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  from horario h, grupo g, materia m, profesores p, dpto d, carrera c, periodo pe, aula a, Pensum pen, dia dia where h.cod_grupo=g.cod_grupo and h.inss=p.inss and h.cod_asig=pen.cod_asig and m.cod_materia=pen.cod_materia and pe.cod_periodo = h.cod_periodo and h.cod_aula = a.cod_aula and h.cod_dias=dia.id and c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ ciclo + " and pen.anio_est="+ año +";";
+          //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmd.CommandText = "select p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dd.dias  from horario h inner join grupo g on h.cod_grupo = g.cod_grupo inner join pensum pen on h.cod_asig = pen.cod_asig inner join materia m on m.cod_materia = pen.cod_materia  inner join  profesores p on h.inss = p.inss inner join dpto d on p.cod_dpto = d.cod_dpto inner join plans pl on pen.cod_plan = pl.cod_plan inner join carrera c on c.cod_carrera = pl.cod_carrera inner join periodo pe on pe.cod_periodo = h.cod_periodo inner join aula a on h.cod_aula = a.cod_aula inner join  dia dd on dd.id = h.cod_dias where c.cod_carrera = 2 and d.cod_dpto = 3 and pen.ciclo = 5 and pen.anio_est = 3 order by id;" ;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
             sqlDA = new SqlDataAdapter(cmd);
