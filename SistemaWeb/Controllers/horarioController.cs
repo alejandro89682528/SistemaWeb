@@ -165,7 +165,7 @@ namespace SistemaWeb.Controllers
                     int cod_aulas = Convert.ToInt32(dataTable3.Rows[aulas].ItemArray[0].ToString());
                     String aula = dataTable3.Rows[aulas].ItemArray[1].ToString();
 
-
+                    
                     String ciclo = dataTable1.Rows[i].ItemArray[0].ToString();
                     int cod_asignatura = Convert.ToInt32(dataTable1.Rows[i].ItemArray[1].ToString());
                     String inss = dataTable1.Rows[i].ItemArray[2].ToString();

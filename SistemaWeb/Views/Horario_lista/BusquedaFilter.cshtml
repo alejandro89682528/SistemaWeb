@@ -1,5 +1,20 @@
 ﻿@{
+    /* foreach (var H in dt.Rows) foreach (var H in dt.Rows)*/
+
     var dt = ViewBag.Tabla;
+
+    for (int i = 0; i < dt.Rows.Count; i++)
+    {
+        var col1 = dt.Rows[i].ItemArray[0].ToString();
+        var col2 = dt.Rows[i].ItemArray[1].ToString();
+        var col3 = dt.Rows[i].ItemArray[2].ToString();
+        var col4 = dt.Rows[i].ItemArray[3].ToString();
+        var col5 = dt.Rows[i].ItemArray[4].ToString();
+
+
+        // @H[1].ToString()
+    }
+
 
     if (ViewBag.displayRole == 0)
     {
@@ -17,9 +32,12 @@
     ViewBag.Title = "Horario";
 }
 
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <center>
     <h1>Horario de Clases</h1>
 </center>
+
 <table class="table">
 
     <tr>
@@ -46,235 +64,244 @@
 
     </tr>
 
+ 
 
-    @foreach (var H in dt.Rows)
-    {
-  
-        <tr>
-        @H[0].ToString()
-        @H[1].ToString()
-            <td>
 
-                7:00 a 8:00
+    <tr>
 
-            </td>
-            <td></td>
+        
 
-            <td></td>
+        <td>
 
-            <td> hola</td>
+            7:00 a 8:00
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td> </td>
 
-        </tr>
+        <td> hola</td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
-                8:00 a 9:00
+        <td>esta</td>
 
+    </tr>
 
-            </td>
-            <td></td>
+    <tr>
+        <td>
 
-            <td></td>
+            8:00 a 9:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
-                9:00 a 10:00
+        <td>esta</td>
 
+    </tr>
 
-            </td>
-            <td></td>
+    <tr>
+        <td>
 
-            <td></td>
+            9:00 a 10:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
+        <td>esta</td>
 
-                10:00 a 11:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            10:00 a 11:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
+        <td>esta</td>
 
-                11:00 a 12:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            11:00 a 12:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
+        <td>esta</td>
 
-                12:00 a 1:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            12:00 a 1:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
+        <td>esta</td>
 
-                1:00 a 2:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            1:00 a 2:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
+        <td> hola </td>
 
+        <td>como</td>
 
-        </tr>
+        <td>esta</td>
 
-        <tr>
-            <td>
 
 
-                2:00 a 3:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            2:00 a 3:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-        <tr>
-            <td>
+        <td>como</td>
 
+        <td>esta</td>
 
-                3:00 a 4:00
+    </tr>
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            3:00 a 4:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
+        <td>como</td>
 
+        <td>esta</td>
 
-        <tr>
-            <td>
+    </tr>
 
 
-                4:00 a 5:00
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            4:00 a 5:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
+        <td>como</td>
 
-        <tr>
-            <td>
+        <td>esta</td>
 
+    </tr>
 
-                5:00 a 6:00
 
+    <tr>
+        <td>
 
-            </td>
-            <td></td>
 
-            <td></td>
+            5:00 a 6:00
 
-            <td> hola </td>
 
-            <td>como</td>
+        </td>
+        <td></td>
 
-            <td>esta</td>
+        <td></td>
 
-        </tr>
+        <td> hola </td>
 
-    }
+        <td>como</td>
 
+        <td>esta</td>
 
+    </tr>
+
+    
 
 </table>
+<div id="resultado"></div>
+<script>
+    $(function () {
+        $('table tr td').click(function () {
+            var columna = $(this).index();
+            var fila = $(this).parent('tr').index;
+            var contenido = $(this).html();
+            $('#resultado').html('Fila:' + fila + 'Columna:' + columna + 'Comtenido:' + contenido +);
+        });
+    });
+</script>
