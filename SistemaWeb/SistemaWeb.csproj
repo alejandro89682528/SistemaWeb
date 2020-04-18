@@ -54,6 +54,9 @@
       <HintPath>..\packages\GregHijCalendar.1.0.0\lib\net40\GregHijCalendar.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -496,6 +499,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="import.aspx" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -529,6 +536,7 @@
     <Content Include="reportes\DataSetMateria.xsc">
       <DependentUpon>DataSetMateria.xsd</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="reportes\DataSetMateria.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

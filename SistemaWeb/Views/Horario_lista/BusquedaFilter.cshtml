@@ -1,19 +1,17 @@
-﻿@{
+﻿
+@{
+    /**/
+
     /* foreach (var H in dt.Rows) foreach (var H in dt.Rows)*/
 
-    var dt = ViewBag.Tabla;
+    /* Forma de prueva acer un for con un ciclo de periodo y para optener todos los periodos en una tabla luego trabajar por colunna de dias con sus ciclos correspondientes  */
 
-    for (int i = 0; i < dt.Rows.Count; i++)
-    {
-        var col1 = dt.Rows[i].ItemArray[0].ToString();
-        var col2 = dt.Rows[i].ItemArray[1].ToString();
-        var col3 = dt.Rows[i].ItemArray[2].ToString();
-        var col4 = dt.Rows[i].ItemArray[3].ToString();
-        var col5 = dt.Rows[i].ItemArray[4].ToString();
-
-
-        // @H[1].ToString()
-    }
+    var dt1 = ViewBag.TablaL;
+    var dt2 = ViewBag.TablaM;
+    var dt3 = ViewBag.TablaMI;
+    var dt4 = ViewBag.TablaJ;
+    var dt5 = ViewBag.TablaV;
+    var periodo = ViewBag.Tabla1;
 
 
     if (ViewBag.displayRole == 0)
@@ -64,244 +62,136 @@
 
     </tr>
 
- 
 
+    @{for (int i = 0; i < periodo.Rows.Count; i++)
+        {
+            //var col1 = @dt.Rows[i].ItemArray[0].ToString();
+            //var col2 = @dt.Rows[i].ItemArray[1].ToString();
+            //var col3 = @dt.Rows[i].ItemArray[2].ToString();
+            //var col4 = @dt.Rows[i].ItemArray[3].ToString();
+            //var col5 = @dt.Rows[i].ItemArray[4].ToString();
+            //var col6 = @dt.Rows[i].ItemArray[5].ToString();
+
+            // @H[1].ToString()
+
+            <tr>
+                <td>
+
+                    @periodo.Rows[i].ItemArray[1].ToString();
+
+                </td>
+                <td>
+                    @for (int L = 0; L < dt1.Rows.Count; L++)
+                        {
+                        if (@dt1.Rows[L].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString()) {
+                            @dt1.Rows[L].ItemArray[0].ToString(); <br />
+                            @dt1.Rows[L].ItemArray[1].ToString(); <br />
+                            @dt1.Rows[L].ItemArray[2].ToString(); <br />
+                            @dt1.Rows[L].ItemArray[3].ToString(); <br />
+                     
+                            //@dt1.Rows[i].ItemArray[5].ToString();
+                        }
+                        else
+                        {
 
-    <tr>
+                        }
 
-        
+                    }
 
-        <td>
 
-            7:00 a 8:00
+                </td>
 
-        </td>
-        <td></td>
+                <td>
+                    @for (int M = 0; M < dt2.Rows.Count; M++)
+                    {
+                        if (@dt2.Rows[M].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
+                        {
+                            @dt2.Rows[M].ItemArray[0].ToString(); <br />
+                            @dt2.Rows[M].ItemArray[1].ToString(); <br />
+                            @dt2.Rows[M].ItemArray[2].ToString(); <br />
+                            @dt2.Rows[M].ItemArray[3].ToString(); <br />
 
-        <td> </td>
+                            //@dt1.Rows[i].ItemArray[5].ToString();
+                        }
+                        else
+                        {
 
-        <td> hola</td>
+                        }
 
-        <td>como</td>
+                    }
+                </td>
 
-        <td>esta</td>
+                <td>
 
-    </tr>
+                    @for (int MI = 0; MI < dt3.Rows.Count; MI++)
+                    {
+                        if (@dt3.Rows[MI].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
+                        {
+                            @dt3.Rows[MI].ItemArray[0].ToString(); <br />
+                            @dt3.Rows[MI].ItemArray[1].ToString(); <br />
+                            @dt3.Rows[MI].ItemArray[2].ToString(); <br />
+                            @dt3.Rows[MI].ItemArray[3].ToString(); <br />
 
-    <tr>
-        <td>
+                            //@dt1.Rows[i].ItemArray[5].ToString();
+                        }
+                        else
+                        {
 
-            8:00 a 9:00
+                        }
 
+                    }
+                </td>
 
-        </td>
-        <td></td>
+                <td>
 
-        <td></td>
+                    @for (int J = 0; J < dt4.Rows.Count; J++)
+                    {
+                        if (@dt4.Rows[J].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
+                        {
+                            @dt4.Rows[J].ItemArray[0].ToString(); <br />
+                            @dt4.Rows[J].ItemArray[1].ToString(); <br />
+                            @dt4.Rows[J].ItemArray[2].ToString(); <br />
+                            @dt4.Rows[J].ItemArray[3].ToString(); <br />
 
-        <td> hola </td>
+                            //@dt1.Rows[i].ItemArray[5].ToString();
+                        }
+                        else
+                        {
 
-        <td>como</td>
+                        }
 
-        <td>esta</td>
+                    }
+                </td>
 
-    </tr>
+                <td>
 
-    <tr>
-        <td>
 
-            9:00 a 10:00
+                    @for (int V = 0; V < dt5.Rows.Count; V++)
+                    {
+                        if (@dt5.Rows[V].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
+                        {
+                            @dt5.Rows[V].ItemArray[0].ToString(); <br />
+                            @dt5.Rows[V].ItemArray[1].ToString(); <br />
+                            @dt5.Rows[V].ItemArray[2].ToString(); <br />
+                            @dt5.Rows[V].ItemArray[3].ToString(); <br />
 
+                            //@dt1.Rows[i].ItemArray[5].ToString();
+                        }
+                        else
+                        {
 
-        </td>
-        <td></td>
+                        }
 
-        <td></td>
+                    }
+                </td>
 
-        <td> hola </td>
+            </tr>
 
-        <td>como</td>
 
-        <td>esta</td>
+        }
+    }
 
-    </tr>
 
-    <tr>
-        <td>
 
-
-            10:00 a 11:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-    <tr>
-        <td>
-
-
-            11:00 a 12:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-    <tr>
-        <td>
-
-
-            12:00 a 1:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-    <tr>
-        <td>
-
-
-            1:00 a 2:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-
-
-    </tr>
-
-    <tr>
-        <td>
-
-
-            2:00 a 3:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-    <tr>
-        <td>
-
-
-            3:00 a 4:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-
-
-    <tr>
-        <td>
-
-
-            4:00 a 5:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-
-    <tr>
-        <td>
-
-
-            5:00 a 6:00
-
-
-        </td>
-        <td></td>
-
-        <td></td>
-
-        <td> hola </td>
-
-        <td>como</td>
-
-        <td>esta</td>
-
-    </tr>
-
-    
 
 </table>
-<div id="resultado"></div>
-<script>
-    $(function () {
-        $('table tr td').click(function () {
-            var columna = $(this).index();
-            var fila = $(this).parent('tr').index;
-            var contenido = $(this).html();
-            $('#resultado').html('Fila:' + fila + 'Columna:' + columna + 'Comtenido:' + contenido +);
-        });
-    });
-</script>
