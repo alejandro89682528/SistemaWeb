@@ -5,33 +5,32 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7d4817ed35de4bb3ab16ff5287668e8c" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="sistema_horarioModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="1.75" />
-        <EntityTypeShape EntityType="sistema_horarioModel.anolectivo" Width="1.5" PointX="3.75" PointY="12.75" />
-        <EntityTypeShape EntityType="sistema_horarioModel.AspNetRole" Width="1.5" PointX="10.75" PointY="9.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserClaim" Width="1.5" PointX="13" PointY="20.125" />
-        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserLogin" Width="1.5" PointX="13" PointY="17.5" />
-        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserRole" Width="1.5" PointX="13" PointY="13.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUser" Width="1.5" PointX="10.75" PointY="12.25" />
-        <EntityTypeShape EntityType="sistema_horarioModel.aula" Width="1.5" PointX="8.25" PointY="8.75" />
+        <EntityTypeShape EntityType="sistema_horarioModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="1.5" />
+        <EntityTypeShape EntityType="sistema_horarioModel.anolectivo" Width="1.5" PointX="10.75" PointY="9.5" />
+        <EntityTypeShape EntityType="sistema_horarioModel.AspNetRole" Width="1.5" PointX="13.75" PointY="10.25" />
+        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserClaim" Width="1.5" PointX="13" PointY="12.875" />
+        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserLogin" Width="1.5" PointX="13" PointY="21" />
+        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUserRole" Width="1.5" PointX="13" PointY="16.125" />
+        <EntityTypeShape EntityType="sistema_horarioModel.AspNetUser" Width="1.5" PointX="10.75" PointY="13.125" />
+        <EntityTypeShape EntityType="sistema_horarioModel.aula" Width="1.5" PointX="8.25" PointY="10.875" />
         <EntityTypeShape EntityType="sistema_horarioModel.carrera" Width="1.5" PointX="0.75" PointY="1.875" />
-        <EntityTypeShape EntityType="sistema_horarioModel.dia" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="sistema_horarioModel.dia" Width="1.5" PointX="8.25" PointY="8.5" />
         <EntityTypeShape EntityType="sistema_horarioModel.dpto" Width="1.5" PointX="1.5" PointY="8.875" />
         <EntityTypeShape EntityType="sistema_horarioModel.faculta" Width="1.5" PointX="1.5" PointY="13.25" />
         <EntityTypeShape EntityType="sistema_horarioModel.grupo" Width="1.5" PointX="8.25" PointY="5" />
-        <EntityTypeShape EntityType="sistema_horarioModel.horario" Width="1.5" PointX="10.5" PointY="4.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.horario_vista" Width="1.5" PointX="7.75" PointY="12.75" />
-        <EntityTypeShape EntityType="sistema_horarioModel.horariogeneracion" Width="1.5" PointX="12.75" PointY="1.75" />
+        <EntityTypeShape EntityType="sistema_horarioModel.horario" Width="1.5" PointX="10.5" PointY="4.125" />
+        <EntityTypeShape EntityType="sistema_horarioModel.horario_vista" Width="1.5" PointX="12.75" PointY="1.5" />
+        <EntityTypeShape EntityType="sistema_horarioModel.horariogeneracion" Width="1.5" PointX="12.75" PointY="4.5" />
         <EntityTypeShape EntityType="sistema_horarioModel.inportarcion" Width="1.5" PointX="3" PointY="4.375" />
         <EntityTypeShape EntityType="sistema_horarioModel.materia" Width="1.5" PointX="0.75" PointY="5.25" />
         <EntityTypeShape EntityType="sistema_horarioModel.pensum" Width="1.5" PointX="6" PointY="4.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.periodo" Width="1.5" PointX="8.25" PointY="2.375" />
+        <EntityTypeShape EntityType="sistema_horarioModel.periodo" Width="1.5" PointX="8.25" PointY="2.25" />
         <EntityTypeShape EntityType="sistema_horarioModel.Plan" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="sistema_horarioModel.profesore" Width="1.5" PointX="0.75" PointY="16.25" />
-        <EntityTypeShape EntityType="sistema_horarioModel.sysdiagram" Width="1.5" PointX="12.75" PointY="5.75" />
-        <EntityTypeShape EntityType="sistema_horarioModel.tipoaula" Width="1.5" PointX="6" PointY="9.5" />
-        <EntityTypeShape EntityType="sistema_horarioModel.usuarios_roles" Width="1.5" PointX="13" PointY="10.375" />
-        <EntityTypeShape EntityType="sistema_horarioModel.Usuario" Width="1.5" PointX="14.75" PointY="1.75" />
-        <EntityTypeShape EntityType="sistema_horarioModel.componente" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="sistema_horarioModel.tipoaula" Width="1.5" PointX="6" PointY="11.625" />
+        <EntityTypeShape EntityType="sistema_horarioModel.usuarios_roles" Width="1.5" PointX="16" PointY="14.125" />
+        <EntityTypeShape EntityType="sistema_horarioModel.Usuario" Width="1.5" PointX="3.75" PointY="14.5" />
+        <EntityTypeShape EntityType="sistema_horarioModel.componente" Width="1.5" PointX="3.75" PointY="9.5" />
         <AssociationConnector Association="sistema_horarioModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
         <AssociationConnector Association="sistema_horarioModel.FK_usuarios_roles_AspNetRoles" />
         <AssociationConnector Association="sistema_horarioModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
@@ -44,6 +43,7 @@
         <AssociationConnector Association="sistema_horarioModel.cod_dpto" />
         <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_carrera" />
         <AssociationConnector Association="sistema_horarioModel.FK_Plans_carrera" />
+        <AssociationConnector Association="sistema_horarioModel.FK_horario_dia" />
         <AssociationConnector Association="sistema_horarioModel.cod_faculta" />
         <AssociationConnector Association="sistema_horarioModel.FK_inportarcion_dpto" />
         <AssociationConnector Association="sistema_horarioModel.FK_profesores_dpto" />

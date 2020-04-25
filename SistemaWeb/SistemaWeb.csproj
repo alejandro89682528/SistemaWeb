@@ -57,6 +57,9 @@
     <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
     </Reference>
+    <Reference Include="SQLBackup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLBackup.1.1.0\lib\SQLBackup.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -316,9 +319,6 @@
     <Compile Include="Contexto\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contexto\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Contexto\tipoaula.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -353,6 +353,10 @@
     <Compile Include="Controllers\PlansController.cs" />
     <Compile Include="Controllers\profesoresController.cs" />
     <Compile Include="Controllers\pruevamensajeController.cs" />
+    <Compile Include="Controllers\ReporAulaController.cs" />
+    <Compile Include="Controllers\ReporCarreraController.cs" />
+    <Compile Include="Controllers\ReporGrupoController.cs" />
+    <Compile Include="Controllers\ReporProfresoresController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\tipoaulasController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
@@ -724,6 +728,14 @@
     <Content Include="Views\horarios\Details.cshtml" />
     <Content Include="Views\horarios\Edit.cshtml" />
     <Content Include="Views\horarios\Index.cshtml" />
+    <Content Include="Views\ReporProfresores\Index.cshtml" />
+    <Content Include="Views\ReporProfresores\BusquedaProfesorHorario.cshtml" />
+    <Content Include="Views\ReporAula\Index.cshtml" />
+    <Content Include="Views\ReporAula\BusquedaAulaHorario.cshtml" />
+    <Content Include="Views\ReporGrupo\Index.cshtml" />
+    <Content Include="Views\ReporGrupo\BusquedaGrupoHorario.cshtml" />
+    <Content Include="Views\ReporCarrera\Index.cshtml" />
+    <Content Include="Views\ReporCarrera\BusquedaCarreraHorario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

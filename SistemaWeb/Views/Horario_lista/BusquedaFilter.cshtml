@@ -82,13 +82,14 @@
                 </td>
                 <td>
                     @for (int L = 0; L < dt1.Rows.Count; L++)
+                    {
+                        if (@dt1.Rows[L].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
-                        if (@dt1.Rows[L].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString()) {
                             @dt1.Rows[L].ItemArray[0].ToString(); <br />
                             @dt1.Rows[L].ItemArray[1].ToString(); <br />
                             @dt1.Rows[L].ItemArray[2].ToString(); <br />
                             @dt1.Rows[L].ItemArray[3].ToString(); <br />
-                     
+
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }
                         else
@@ -195,3 +196,9 @@
 
 
 </table>
+
+
+<div>
+    <input type="button" value="imprimir" href="" />
+</div>
+

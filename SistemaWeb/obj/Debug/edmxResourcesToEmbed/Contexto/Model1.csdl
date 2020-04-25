@@ -143,7 +143,6 @@
     <EntitySet Name="periodoes" EntityType="sistema_horarioModel.periodo" />
     <EntitySet Name="Plans" EntityType="sistema_horarioModel.Plan" />
     <EntitySet Name="profesores" EntityType="sistema_horarioModel.profesore" />
-    <EntitySet Name="sysdiagrams" EntityType="sistema_horarioModel.sysdiagram" />
     <EntitySet Name="tipoaulas" EntityType="sistema_horarioModel.tipoaula" />
     <EntitySet Name="usuarios_roles" EntityType="sistema_horarioModel.usuarios_roles" />
     <EntitySet Name="Usuarios" EntityType="sistema_horarioModel.Usuario" />
@@ -195,6 +194,10 @@
     <AssociationSet Name="FK_Plans_carrera" Association="sistema_horarioModel.FK_Plans_carrera">
       <End Role="carrera" EntitySet="carreras" />
       <End Role="Plan" EntitySet="Plans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_horario_dia" Association="sistema_horarioModel.FK_horario_dia">
+      <End Role="dia" EntitySet="dias" />
+      <End Role="horario" EntitySet="horarios" />
     </AssociationSet>
     <AssociationSet Name="cod_faculta" Association="sistema_horarioModel.cod_faculta">
       <End Role="faculta" EntitySet="facultas" />
@@ -403,6 +406,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="dias" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_dia" FromRole="dia" ToRole="horario" />
   </EntityType>
   <EntityType Name="dpto">
     <Key>
@@ -451,7 +455,9 @@
     <Property Name="cod_aula" Type="Int32" Nullable="false" />
     <Property Name="cod_grupo" Type="Int32" Nullable="false" />
     <Property Name="inss" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="cod_ano" Type="Int32" Nullable="false" />
     <NavigationProperty Name="aula" Relationship="sistema_horarioModel.FK_horario_aula" FromRole="horario" ToRole="aula" />
+    <NavigationProperty Name="dia" Relationship="sistema_horarioModel.FK_horario_dia" FromRole="horario" ToRole="dia" />
     <NavigationProperty Name="grupo" Relationship="sistema_horarioModel.FK_horario_grupo" FromRole="horario" ToRole="grupo" />
     <NavigationProperty Name="pensum" Relationship="sistema_horarioModel.FK_horario_pensum" FromRole="horario" ToRole="pensum" />
     <NavigationProperty Name="periodo" Relationship="sistema_horarioModel.FK_horario_periodo" FromRole="horario" ToRole="periodo" />
@@ -477,6 +483,8 @@
     <Property Name="cod_dpto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="semestr" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <Property Name="año" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="profesor" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="aula" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="inportarcion">
     <Key>
@@ -560,16 +568,6 @@
     <NavigationProperty Name="dpto" Relationship="sistema_horarioModel.FK_profesores_dpto" FromRole="profesore" ToRole="dpto" />
     <NavigationProperty Name="horarios" Relationship="sistema_horarioModel.FK_horario_profesores" FromRole="profesore" ToRole="horario" />
     <NavigationProperty Name="inportarcions" Relationship="sistema_horarioModel.FK_inportarcion_profesores" FromRole="profesore" ToRole="inportarcion" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="tipoaula">
     <Key>
@@ -763,6 +761,18 @@
       </Principal>
       <Dependent Role="Plan">
         <PropertyRef Name="cod_carrera" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_horario_dia">
+    <End Type="sistema_horarioModel.dia" Role="dia" Multiplicity="0..1" />
+    <End Type="sistema_horarioModel.horario" Role="horario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="horario">
+        <PropertyRef Name="cod_dias" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

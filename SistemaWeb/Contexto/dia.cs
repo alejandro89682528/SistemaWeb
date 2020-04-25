@@ -14,7 +14,16 @@ namespace SistemaWeb.Contexto
     
     public partial class dia
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public dia()
+        {
+            this.horarios = new HashSet<horario>();
+        }
+    
         public int id { get; set; }
         public string dias { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<horario> horarios { get; set; }
     }
 }

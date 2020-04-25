@@ -22,8 +22,10 @@ namespace SistemaWeb.Contexto
         public int cod_aula { get; set; }
         public int cod_grupo { get; set; }
         public string inss { get; set; }
+        public int cod_ano { get; set; }
     
         public virtual aula aula { get; set; }
+        public virtual dia dia { get; set; }
         public virtual grupo grupo { get; set; }
         public virtual pensum pensum { get; set; }
         public virtual periodo periodo { get; set; }

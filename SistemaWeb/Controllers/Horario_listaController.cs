@@ -188,14 +188,15 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
         */
             return View();
         }
+
+        public ActionResult PrintAllEmployee()
+        {
+            
+
+            return new ActionAsPdf("BusquedaFilter", new { FileName = "Horario.pdf" });
+        }
     }
-/*
-    public ActionResult Print()
-    {
+    
 
-
-        // code to get the PDF
-    //ActionAsPdf pdf = new ActionAsPdf("Index", trainee) { FileName = "Bulletin.pdf" };
-        return ViewAsImage();
-    } */
+  
 }

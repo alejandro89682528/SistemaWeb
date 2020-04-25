@@ -21,5 +21,7 @@ namespace SistemaWeb.Contexto
         public string cod_dpto { get; set; }
         public string semestr { get; set; }
         public string año { get; set; }
+        public string profesor { get; set; }
+        public string aula { get; set; }
     }
 }
