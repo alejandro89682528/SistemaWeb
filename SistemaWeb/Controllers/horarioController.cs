@@ -82,18 +82,32 @@ namespace SistemaWeb.Controllers
             con.Close();
 
             //consultar total de la suma de horas 
+            /*
+            SqlCommand cmd40 = new SqlCommand();
+            DataTable dataTable40 = new DataTable();
+            SqlDataAdapter sqlDA40; con.Open();
+            cmd40.CommandText = "select sum(i.hora_grupo) from pensum p, inportarcion i, grupo g, carrera c, plans pl where pl.cod_carrera = c.cod_carrera and pl.cod_plan = p.cod_plan and g.cod_asig = p.cod_asig and p.cod_materia = i.cod_asignatura  and i.tipo_ciclo = '" + semestre + "' and i.cod_carrera='" + idCarrera + "';"; 
+            cmd40.CommandType = CommandType.Text;
+            cmd40.Connection = con;
+            sqlDA40 = new SqlDataAdapter(cmd40);
+            sqlDA40.Fill(dataTable40);
+            con.Close();
+            int total_hora = Convert.ToInt32(dataTable40.Rows[0].ItemArray[0].ToString());
+            */
+
+            //consultar total de la suma de grupo
             SqlCommand cmd4 = new SqlCommand();
             DataTable dataTable4 = new DataTable();
             SqlDataAdapter sqlDA4; con.Open();
-            cmd4.CommandText = "select sum(hora_grupo), sum(grupo) from inportarcion  where tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "';";
+            cmd4.CommandText = "select sum(grupo) from inportarcion where tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "';"; 
             cmd4.CommandType = CommandType.Text;
             cmd4.Connection = con;
             sqlDA4 = new SqlDataAdapter(cmd4);
             sqlDA4.Fill(dataTable4);
             con.Close();
-            int total_hora = Convert.ToInt32(dataTable4.Rows[0].ItemArray[0].ToString());
-            int total_grupo = Convert.ToInt32(dataTable4.Rows[0].ItemArray[1].ToString());
-
+            
+            int total_grupo = Convert.ToInt32(dataTable4.Rows[0].ItemArray[0].ToString());
+            int total_hora = 0;
             // bariables aleatorias
             Random aulaaleatoria = new Random();
             Random diasaleatorios = new Random();
@@ -123,25 +137,11 @@ namespace SistemaWeb.Controllers
             {
                 //A++;
 
-
-                //nueva consulta para generacion de horario de grupo y horario y impor
-
-                SqlCommand cmd1HO = new SqlCommand();
-                DataTable dataTableHO = new DataTable();
-                SqlDataAdapter sqlDA1HO; con.Open();
-                cmd1HO.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig, i.id, i.Tipo_ciclo, g.cod_grupo from pensum p, inportarcion i, grupo g, carrera c, plans pl where p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and g.cod_asig = p.cod_asig and  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = 1 and c.cod_carrera= 2 order by p.ciclo, i.grupo;v";
-                // cmd1.CommandText = "select * from inportarcion where cod_carrera='" + idCarrera + "';";
-                cmd1HO.CommandType = CommandType.Text;
-                cmd1HO.Connection = con;
-                sqlDA1HO = new SqlDataAdapter(cmd1HO);
-                sqlDA1HO.Fill(dataTableHO);
-                con.Close();
-
                 //consultarn lista de datos de inportacion de cada de cada carrera
                 SqlCommand cmd1 = new SqlCommand();
                 DataTable dataTable1 = new DataTable();
-                SqlDataAdapter sqlDA1; con.Open();
-                cmd1.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig, i.id, i.Tipo_ciclo from pensum p, inportarcion i where  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = '" + semestre + "' and cod_carrera='" + idCarrera + "' order by p.ciclo, i.grupo;";
+                SqlDataAdapter sqlDA1; con.Open();               
+                cmd1.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig, i.id, i.Tipo_ciclo from pensum p, inportarcion i, carrera c, plans pl where i.cod_carrera = c.cod_carrera and p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = '" + semestre + "' and i.cod_carrera = '" + idCarrera + "' order by p.ciclo, i.grupo;";
                 // cmd1.CommandText = "select * from inportarcion where cod_carrera='" + idCarrera + "';";
                 cmd1.CommandType = CommandType.Text;
                 cmd1.Connection = con;
@@ -191,19 +191,9 @@ namespace SistemaWeb.Controllers
                 String tipo_grup = dataTable1.Rows[g].ItemArray[7].ToString();
                 int tipo_ciclo = Convert.ToInt32(dataTable1.Rows[g].ItemArray[10].ToString());
                 int cod_impo = Convert.ToInt32(dataTable1.Rows[g].ItemArray[9].ToString());
+                int cod_pensum = Convert.ToInt32(dataTable1.Rows[g].ItemArray[8].ToString());
+                int hora_grupo = Convert.ToInt32(dataTable1.Rows[g].ItemArray[6].ToString());
 
-
-
-                    //consultar grupos 
-                    SqlCommand cmdg2 = new SqlCommand();
-                    DataTable dataTableg2 = new DataTable();
-                    SqlDataAdapter sqlDAg2; con.Open();
-                    cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + ";";
-                    cmdg2.CommandType = CommandType.Text;
-                    cmdg2.Connection = con;
-                    sqlDAg2 = new SqlDataAdapter(cmdg2);
-                    sqlDAg2.Fill(dataTableg2);
-                    con.Close();
 
 
 
@@ -212,8 +202,21 @@ namespace SistemaWeb.Controllers
                         g++;
                     }
                     if (grup != 0) { 
+
+
+
                     if (tipo_grup == "Teorico")
                     {
+                            //consultar grupos 
+                            SqlCommand cmdg2 = new SqlCommand();
+                            DataTable dataTableg2 = new DataTable();
+                            SqlDataAdapter sqlDAg2; con.Open();
+                            cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + " and nombre like 'gt%';";
+                            cmdg2.CommandType = CommandType.Text;
+                            cmdg2.Connection = con;
+                            sqlDAg2 = new SqlDataAdapter(cmdg2);
+                            sqlDAg2.Fill(dataTableg2);
+                            con.Close();
 
                             if (dataTableg2.Rows.Count == 0)
                             {
@@ -221,19 +224,19 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombre1 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombre1 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
-
+                                grup--;
+                                total_grupo--;
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -248,19 +251,20 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombre2 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombre2 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -275,19 +279,20 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombre3 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombre3 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -301,51 +306,66 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombre4 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombre4 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
                                 sqlDAg1.Fill(dataTableg1);
                                 con.Close();
+
                             }
 
                             g++;
 
                         }
-                        if (tipo_grup == "Practica")
+                        if (tipo_grup == "Practico")
                         {
 
+                            //consultar grupos 
+                            SqlCommand cmdg2 = new SqlCommand();
+                            DataTable dataTableg2 = new DataTable();
+                            SqlDataAdapter sqlDAg2; con.Open();
+                            cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + " and nombre like 'gp%';";
+                            cmdg2.CommandType = CommandType.Text;
+                            cmdg2.Connection = con;
+                            sqlDAg2 = new SqlDataAdapter(cmdg2);
+                            sqlDAg2.Fill(dataTableg2);
+                            con.Close();
+
+
                             if (dataTableg2.Rows.Count == 0)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombrep1 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombrep1 + "', " + tipo_ciclo + ", "+ hora_grupo +", '"+ tipo_grup +"')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -360,19 +380,20 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombrep2 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombrep2 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -387,19 +408,20 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombrep3 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombrep3 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -413,19 +435,21 @@ namespace SistemaWeb.Controllers
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
                                 con.Open();
                                 String sqlg = "";
-                                sqlg = "INSERT INTO grupos (capacidad, cod_asig, nombre, Tipo_ciclo) VALUES (" + capasidad + ", " + cod_asig + ", " + nombrep4 + ", " + tipo_ciclo + ")";
+                                sqlg = "INSERT INTO grupo (capacidad, cod_asig, nombre, Tipo_ciclo, hora_grupo, tipo_grupo) VALUES (" + capasidad + ", " + cod_pensum + ", '" + nombrep4 + "', " + tipo_ciclo + ", " + hora_grupo + ", '" + tipo_grup + "')";
                                 cmdg = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand = new SqlCommand(sqlg, con);
                                 sqlDAg.InsertCommand.ExecuteNonQuery();
                                 cmdg.Dispose();
                                 con.Close();
-                                total_gru = grup--;
+                                grup--;
+                                total_grupo--;
+
 
 
                                 SqlCommand cmdg1 = new SqlCommand();
                                 DataTable dataTableg1 = new DataTable();
                                 SqlDataAdapter sqlDAg1; con.Open();
-                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + total_gru + " WHERE id = " + cod_impo + "";
+                                cmdg1.CommandText = "UPDATE [dbo].[inportarcion] SET [grupo] = " + grup + " WHERE id = " + cod_impo + "";
                                 cmdg1.CommandType = CommandType.Text;
                                 cmdg1.Connection = con;
                                 sqlDAg1 = new SqlDataAdapter(cmdg1);
@@ -436,6 +460,7 @@ namespace SistemaWeb.Controllers
                             g++;
                         }
 
+                      
                     }
                     if ((g + 1) == dataTable2.Rows.Count)
                     {
@@ -455,8 +480,38 @@ namespace SistemaWeb.Controllers
 
                 
                 }
+
+                // consultar total de la suma de horas
+                SqlCommand cmd40 = new SqlCommand();
+                DataTable dataTable40 = new DataTable();
+                SqlDataAdapter sqlDA40; con.Open();
+               // cmd40.CommandText = "select sum(i.hora_grupo) from pensum p, inportarcion i, grupo g, carrera c, plans pl where pl.cod_carrera = c.cod_carrera and pl.cod_plan = p.cod_plan and g.cod_asig = p.cod_asig and p.cod_materia = i.cod_asignatura  and i.tipo_ciclo = '" + semestre + "' and i.cod_carrera='" + idCarrera + "';";
+                cmd40.CommandText = "select sum(i.hora_grupo) from pensum p, inportarcion i, grupo g, carrera c, plans pl where i.tipo_grupo = g.tipo_grupo and p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and g.cod_asig = p.cod_asig and  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = "+ semestre +" and i.cod_carrera = " + idCarrera +";";
+                cmd40.CommandType = CommandType.Text;
+                cmd40.Connection = con;
+                sqlDA40 = new SqlDataAdapter(cmd40);
+                sqlDA40.Fill(dataTable40);
+                con.Close();
+               total_hora = Convert.ToInt32(dataTable40.Rows[0].ItemArray[0].ToString());
+
+                //nueva consulta para generacion de horario de grupo y horario y impor
+                //consulta correcta
+                //select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig, i.id, i.Tipo_ciclo, g.cod_grupo from pensum p, inportarcion i, grupo g, carrera c, plans pl where i.tipo_grupo = g.tipo_grupo and p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and g.cod_asig = p.cod_asig and  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = 1 and i.cod_carrera = 2 order by p.ciclo, i.grupo;
+                SqlCommand cmd1HO = new SqlCommand();
+                DataTable dataTableHO = new DataTable();
+                SqlDataAdapter sqlDA1HO; con.Open();
+                cmd1HO.CommandText = "select p.ciclo, p.cod_materia, i.inss, i.cod_dpto, i.cod_carrera, i.grupo, i.hora_grupo, i.tipo_grupo, p.cod_asig, i.id, i.Tipo_ciclo, g.cod_grupo from pensum p, inportarcion i, grupo g, carrera c, plans pl where i.tipo_grupo = g.tipo_grupo and p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and g.cod_asig = p.cod_asig and  p.cod_materia = i.cod_asignatura and i.tipo_ciclo = '" + semestre + "' and i.cod_carrera = '" + idCarrera + "' order by p.ciclo, i.grupo;";
+                // cmd1.CommandText = "select * from inportarcion where cod_carrera='" + idCarrera + "';";
+                cmd1HO.CommandType = CommandType.Text;
+                cmd1HO.Connection = con;
+                sqlDA1HO = new SqlDataAdapter(cmd1HO);
+                sqlDA1HO.Fill(dataTableHO);
+                con.Close();
+
+
+
                 //for para la lista de clases
-                while (i < dataTable1.Rows.Count)
+                while (i < dataTableHO.Rows.Count)
                 {
 
                     /*
@@ -473,17 +528,18 @@ namespace SistemaWeb.Controllers
                     String aula = dataTable3.Rows[aulas].ItemArray[1].ToString();
 
                     
-                    String ciclo = dataTable1.Rows[i].ItemArray[0].ToString();
-                    int cod_asignatura = Convert.ToInt32(dataTable1.Rows[i].ItemArray[1].ToString());
-                    String inss = dataTable1.Rows[i].ItemArray[2].ToString();
+                    String ciclo = dataTableHO.Rows[i].ItemArray[0].ToString();
+                    int cod_asignatura = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[1].ToString());
+                    String inss = dataTableHO.Rows[i].ItemArray[2].ToString();
                     //int cod_dpto = Convert.ToInt32(dataTable1.Rows[i].ItemArray[3].ToString());                
-                    int cod_carrera = Convert.ToInt32(dataTable1.Rows[i].ItemArray[4].ToString());
-                    String grupo = dataTable1.Rows[i].ItemArray[5].ToString();
-                    int hora_grupo = Convert.ToInt32(dataTable1.Rows[i].ItemArray[6].ToString());
+                    int cod_carrera = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[4].ToString());
+                    String grupo = dataTableHO.Rows[i].ItemArray[5].ToString();
+                    int hora_grupo = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[6].ToString());
                     //String hora_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
-                    String tipo_grupo = dataTable1.Rows[i].ItemArray[7].ToString();
-                    int cod_pemsul = Convert.ToInt32(dataTable1.Rows[i].ItemArray[8].ToString());
-                    int cod_impor = Convert.ToInt32(dataTable1.Rows[i].ItemArray[9].ToString());
+                    String tipo_grupo = dataTableHO.Rows[i].ItemArray[7].ToString();
+                    int cod_pemsul = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[8].ToString());
+                    int cod_impor = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[9].ToString());
+                    int cod_grupo = Convert.ToInt32(dataTableHO.Rows[i].ItemArray[11].ToString());
 
                     //si y while pára controlar periodos
 
@@ -522,7 +578,7 @@ namespace SistemaWeb.Controllers
                                 con.Open();
                                 String sql = "";
 
-                                sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + grupo + "', '" + id_periodo + "', '14/04/2019', '" + inss + "')";
+                                sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss, cod_ano) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + grupo + "', '" + id_periodo + "', '26/04/2020', '" + inss + "', " + cod_grupo +", 2)";
                                 //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                                 cmdI = new SqlCommand(sql, con);
                                 sqlDAI.InsertCommand = new SqlCommand(sql, con);
@@ -589,7 +645,7 @@ namespace SistemaWeb.Controllers
                                 con.Open();
                                 String sql = "";
 
-                                sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + grupo + "', '" + id_periodo + "', '14/04/2019', '" + inss + "')";
+                                sql = "INSERT INTO horario (cod_asig, cod_aula, cod_dias, cod_grupo, cod_periodo, fecha_ini, inss, cod_ano) VALUES ('" + cod_pemsul + "', " + cod_aulas + ", " + id_dias + ", '" + cod_grupo + "', '" + id_periodo + "', '26/04/2020', '" + inss + "', 2)";
                                 //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                                 cmdI = new SqlCommand(sql, con);
                                 sqlDAI.InsertCommand = new SqlCommand(sql, con);

@@ -710,3 +710,4 @@ C:\Users\aleja\source\repos\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.csproj.Co
 C:\Users\aleja\source\repos\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.dll
 C:\Users\aleja\source\repos\SistemaWeb\SistemaWeb\obj\Debug\SistemaWeb.pdb
 C:\Users\aleja\source\repos\SistemaWeb\SistemaWeb\bin\Rotativa.dll
+C:\Users\aleja\source\repos\SistemaWeb\SistemaWeb\bin\SQLBackup.dll

@@ -10,7 +10,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
-
+using SistemaWeb.clases;
 
 namespace SistemaWeb.Controllers
 {
@@ -42,14 +42,16 @@ namespace SistemaWeb.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult BusquedaProfesorHorario(string cod_dpto, string profesor, string tipo_ciclo, string año_estudio)
+      
+        public ActionResult BusquedaProfesorHorario(horariogeneracion ph)
         {
+            TempData["ph"] = ph;
+           
 
-            int depar = Int32.Parse(cod_dpto);
-            string profe = profesor;
-            int ciclo = Int32.Parse(tipo_ciclo);
-            int año = Int32.Parse(año_estudio);
+            int depar = Int32.Parse(ph.cod_dpto);
+            string profe = ph.profesor;
+            int ciclo = Int32.Parse(ph.tipo_ciclo);
+            int año = Int32.Parse(ph.año_estudio);
 
             //consultar lista de horarios lunes
             SqlCommand cmd = new SqlCommand();
@@ -126,18 +128,19 @@ namespace SistemaWeb.Controllers
 
 
             /* Corregido select
-p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  
-from
-horario h inner join grupo g on h.cod_grupo=g.cod_grupo inner join pensum pen on h.cod_asig=pen.cod_asig inner join materia m on m.cod_materia=pen.cod_materia
-inner join  profesores p on h.inss=p.inss inner join dpto d on p.cod_dpto=d.cod_dpto inner join plan pl on pen.cod_plan=pl.cod_plan inner join carrera c on c.cod_carrera=pl.cod_carrera inner join periodo pe pe.cod_periodo=h.cod_periodo
- inner join aula a on h.cod_aula=a.cod_aula inner join  dia dd on dd.id=h.cod_dias
-where
-c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ ciclo + " and pen.anio_est="+ año +""; */
+            p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  
+            from
+            horario h inner join grupo g on h.cod_grupo=g.cod_grupo inner join pensum pen on h.cod_asig=pen.cod_asig inner join materia m on m.cod_materia=pen.cod_materia
+            inner join  profesores p on h.inss=p.inss inner join dpto d on p.cod_dpto=d.cod_dpto inner join plan pl on pen.cod_plan=pl.cod_plan inner join carrera c on c.cod_carrera=pl.cod_carrera inner join periodo pe pe.cod_periodo=h.cod_periodo
+             inner join aula a on h.cod_aula=a.cod_aula inner join  dia dd on dd.id=h.cod_dias
+            where
+            c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ ciclo + " and pen.anio_est="+ año +""; */
             //depar = objlistaH.cod_dpto;
             // string message = HttpUtility.HtmlEncode("Store.Browse, Genre = " + cod_dpto);
             // var p = objlistaH.cod_dpto;
 
             //var idDept.. = Int32.Parse(depeto); 
+
             ViewBag.TablaL = dataTable;
             ViewBag.TablaM = dataTable2;
             ViewBag.TablaMI = dataTable3;
@@ -158,6 +161,12 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             return View();
         }
 
-
+        public ActionResult PrintAllEmployee()
+        {
+           var ph = TempData["ph"];
+            TempData.Keep();
+            return new ActionAsPdf("BusquedaProfesorHorario", ph){ FileName = "Horarioprofesor.pdf" };
+        }
+        /* */
     }
 }

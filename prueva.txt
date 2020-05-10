@@ -1,1 +1,8 @@
-jajaja
+las lineas de conexiones estan en web.conf 
+toda la referencia de  la base de datos se encuentra en la carpeta contexto con esas clases podemos axeder a la base de dato 
+y se manda allamar de siguiente forma using SistemaWeb.Contexto;
+private sistema_horarioEntities3 db = new sistema_horarioEntities3();
+
+
+ademas otra forma de conecion que yama de la siguiente manera;
+SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);

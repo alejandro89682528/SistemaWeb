@@ -40,14 +40,16 @@ namespace SistemaWeb.Controllers
         }
 
 
-        [HttpPost]
-        public ActionResult BusquedaCarreraHorario(string cod_dpto, string cod_carrera, string tipo_ciclo, string año_estudio)
+        
+        public ActionResult BusquedaCarreraHorario(horariogeneracion ph)
         {
+            TempData["ph"] = ph;           
+           
 
-            int depar = Int32.Parse(cod_dpto);
-            int carrer = Int32.Parse(cod_carrera);          
-            int ciclo = Int32.Parse(tipo_ciclo);
-            int año = Int32.Parse(año_estudio);
+            int depar = Int32.Parse(ph.cod_dpto);
+            int carrer = Int32.Parse(ph.cod_carrera);          
+            int ciclo = Int32.Parse(ph.tipo_ciclo);
+            int año = Int32.Parse(ph.año_estudio);
 
             //consultar lista de horarios lunes
             SqlCommand cmd = new SqlCommand();
@@ -154,6 +156,13 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
 }
         */
             return View();
+        }
+
+        public ActionResult PrintAllEmployee()
+        {
+            var ph = TempData["ph"];
+            TempData.Keep();
+            return new ActionAsPdf("BusquedaCarreraHorario", ph) { FileName = "HorarioCarrera.pdf" };
         }
 
     }

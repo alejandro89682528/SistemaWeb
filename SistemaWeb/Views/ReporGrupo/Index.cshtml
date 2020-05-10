@@ -29,7 +29,7 @@
     <div>
 
         <h2>Listar Horarios</h2>
-        <form action="/ReporGrupo/BusquedaGrupoHorario" method="post" enctype="multipart/form-data">
+        <form action="/ReporGrupo/BusquedaGrupoHorario" method="post" enctype="multipart/form-data" target="_blank">
 
             <div class="form-group">
                 Seleccionar departamento
@@ -53,7 +53,7 @@
                 Seleccionar Grupo
                 <div class="col-md-10">
                     @Html.DropDownList("cod_grupo", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.profesor, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.cod_grupo, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
                 Año
                 <div class="col-md-10">
                     @Html.DropDownList("año_estudio", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.año, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.año_estudio, "", new { @class = "text-danger" })
                 </div>
 
             </div>

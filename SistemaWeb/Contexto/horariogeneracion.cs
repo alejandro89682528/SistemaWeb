@@ -20,8 +20,9 @@ namespace SistemaWeb.Contexto
         public string fecha_ini { get; set; }
         public string cod_dpto { get; set; }
         public string semestr { get; set; }
-        public string año { get; set; }
+        public string año_estudio { get; set; }
         public string profesor { get; set; }
-        public string aula { get; set; }
+        public string cod_aula { get; set; }
+        public string cod_grupo { get; set; }
     }
 }

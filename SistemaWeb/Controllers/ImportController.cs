@@ -145,12 +145,24 @@ namespace SistemaWeb.Controllers
                     con.Close();
                     int cod_carrera = Convert.ToInt32(dataTable3.Rows[0].ItemArray[0].ToString());
 
+                    //pensum
+                    SqlCommand cmd4 = new SqlCommand();
+                    DataTable dataTable4 = new DataTable();
+                    SqlDataAdapter sqlDA4; con.Open();
+                    cmd4.CommandText = "select p.cod_asig from pensum p, carrera c, plans pl where  p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and c.cod_carrera = "+ cod_carrera +" and p.Cod_materia = "+ cod_materia  +";";
+                    cmd4.CommandType = CommandType.Text;
+                    cmd4.Connection = con;
+                    sqlDA4 = new SqlDataAdapter(cmd4);
+                    sqlDA4.Fill(dataTable4);
+                    con.Close();
+                    int cod_asig = Convert.ToInt32(dataTable4.Rows[0].ItemArray[0].ToString());
+
                     //insercion
                     SqlCommand cmd2;
                     SqlDataAdapter sqlDA2 = new SqlDataAdapter();
                     con.Open();
                     String sql = "";
-                    sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', " + id + ", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '" + ciclo + "', '" + tipogrupo + "')";
+                    sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo, cod_asig) VALUES ('" + inss + "', " + id + ", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '" + ciclo + "', '" + tipogrupo + "', '" + cod_asig +"')";
                     //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                     cmd2 = new SqlCommand(sql, con);
                     sqlDA2.InsertCommand = new SqlCommand(sql, con);
@@ -234,12 +246,25 @@ namespace SistemaWeb.Controllers
                         con.Close();
                         int cod_carrera = Convert.ToInt32(dataTable3.Rows[0].ItemArray[0].ToString());
 
+
+                        //pensum
+                        SqlCommand cmd4 = new SqlCommand();
+                        DataTable dataTable4 = new DataTable();
+                        SqlDataAdapter sqlDA4; con.Open();
+                        cmd4.CommandText = "select p.cod_asig from pensum p, carrera c, plans pl where  p.cod_plan = pl.cod_plan and pl.cod_carrera = c.cod_carrera and c.cod_carrera = " + cod_carrera + " and p.Cod_materia = " + cod_materia + ";";
+                        cmd4.CommandType = CommandType.Text;
+                        cmd4.Connection = con;
+                        sqlDA4 = new SqlDataAdapter(cmd4);
+                        sqlDA4.Fill(dataTable4);
+                        con.Close();
+                        int cod_asig = Convert.ToInt32(dataTable4.Rows[0].ItemArray[0].ToString());
+
                         //insercion
                         SqlCommand cmd2;
                         SqlDataAdapter sqlDA2 = new SqlDataAdapter();
                         con.Open();
                         String sql = "";
-                        sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo) VALUES ('" + inss + "', " + id + ", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '" + ciclo + "', '" + tipogrupo + "')";
+                        sql = "INSERT INTO inportarcion (inss, cod_dpto, cod_asignatura, cod_carrera, grupo, hora_grupo, tipo_ciclo, tipo_grupo, cod_asig) VALUES ('" + inss + "', " + id + ", " + cod_materia + ", " + cod_carrera + ", '" + grupo + "', '" + hora_grupo + "', '" + ciclo + "', '" + tipogrupo + "', '" + cod_asig + "')";
                         //cmd2.CommandText = "insert  into exportarcion values(null, '" + inss + "', 'cod_dpto', '" + cod_materia + "', '" + grupo + "', '" + cantidad + "', '" + anoestudio + "', 'tipo_ciclo', '" + tipogrupo + "')";
                         cmd2 = new SqlCommand(sql, con);
                         sqlDA2.InsertCommand = new SqlCommand(sql, con);

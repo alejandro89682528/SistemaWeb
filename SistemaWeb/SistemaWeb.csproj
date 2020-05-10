@@ -211,6 +211,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="clases\listado_horario.cs" />
+    <Compile Include="clases\editHorario.cs" />
     <Compile Include="Contexto\anolectivo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -337,6 +338,7 @@
     <Compile Include="Controllers\carrerasController.cs" />
     <Compile Include="Controllers\diasController.cs" />
     <Compile Include="Controllers\dptoesController.cs" />
+    <Compile Include="Controllers\EditHorarioProfesorController.cs" />
     <Compile Include="Controllers\facultasController.cs" />
     <Compile Include="Controllers\grupoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -736,6 +738,9 @@
     <Content Include="Views\ReporGrupo\BusquedaGrupoHorario.cshtml" />
     <Content Include="Views\ReporCarrera\Index.cshtml" />
     <Content Include="Views\ReporCarrera\BusquedaCarreraHorario.cshtml" />
+    <Content Include="Views\EditHorarioProfesor\Index.cshtml" />
+    <Content Include="Views\EditHorarioProfesor\EditProfesorHorario.cshtml" />
+    <Content Include="Views\EditHorarioProfesor\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
