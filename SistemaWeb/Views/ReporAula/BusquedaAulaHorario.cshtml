@@ -11,6 +11,7 @@
     var dt4 = ViewBag.TablaJ;
     var dt5 = ViewBag.TablaV;
     var periodo = ViewBag.Tabla1;
+    var todo = ViewBag.TablaTodo;
 
 
     if (ViewBag.displayRole == 0)
@@ -32,7 +33,7 @@
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <center>
-    <h1>Horario de Clases</h1>
+    <h1>Horario de Clases de la @todo.Rows[0].ItemArray[0].ToString()</h1>
 </center>
 
 <div>
@@ -89,7 +90,7 @@
                         if (@dt1.Rows[L].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
                             @dt1.Rows[L].ItemArray[0].ToString(); <br />
-                            @dt1.Rows[L].ItemArray[1].ToString(); <br />
+                           
                             @dt1.Rows[L].ItemArray[2].ToString(); <br />
                             @dt1.Rows[L].ItemArray[3].ToString(); <br />
 
@@ -111,7 +112,7 @@
                         if (@dt2.Rows[M].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
                             @dt2.Rows[M].ItemArray[0].ToString(); <br />
-                            @dt2.Rows[M].ItemArray[1].ToString(); <br />
+                           
                             @dt2.Rows[M].ItemArray[2].ToString(); <br />
                             @dt2.Rows[M].ItemArray[3].ToString(); <br />
 
@@ -132,7 +133,7 @@
                         if (@dt3.Rows[MI].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
                             @dt3.Rows[MI].ItemArray[0].ToString(); <br />
-                            @dt3.Rows[MI].ItemArray[1].ToString(); <br />
+                           
                             @dt3.Rows[MI].ItemArray[2].ToString(); <br />
                             @dt3.Rows[MI].ItemArray[3].ToString(); <br />
 
@@ -153,7 +154,7 @@
                         if (@dt4.Rows[J].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
                             @dt4.Rows[J].ItemArray[0].ToString(); <br />
-                            @dt4.Rows[J].ItemArray[1].ToString(); <br />
+                           
                             @dt4.Rows[J].ItemArray[2].ToString(); <br />
                             @dt4.Rows[J].ItemArray[3].ToString(); <br />
 
@@ -175,7 +176,7 @@
                         if (@dt5.Rows[V].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
                         {
                             @dt5.Rows[V].ItemArray[0].ToString(); <br />
-                            @dt5.Rows[V].ItemArray[1].ToString(); <br />
+                           
                             @dt5.Rows[V].ItemArray[2].ToString(); <br />
                             @dt5.Rows[V].ItemArray[3].ToString(); <br />
 

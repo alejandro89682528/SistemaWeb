@@ -68,15 +68,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/materiareporte/Index">reporte de materia de prueba</a>
-                            <a class="dropdown-item" href="/ReporProfresores/Index">Profesor y año electivo</a>
-                            <a class="dropdown-item" href="">Departamento</a>
-                            <a class="dropdown-item" href="">Aula y año</a>
-                            <a class="dropdown-item" href="">Carrera , año electivo y  ciclo</a>
-                            <a class="dropdown-item" href="">Componentes</a>
-                            <a class="dropdown-item" href="">General</a>
-                            <a class="dropdown-item" href="">% de uso de uso de aula</a>
-                            <a class="dropdown-item" href="">Uso de aula x horas</a>
-                            <a class="dropdown-item" href="">Aulas libres x hora</a>
+                            <a class="dropdown-item" href="/ReporProfresores/Index">Profesor</a>
+                            <a class="dropdown-item" href="/ReporGrupo/Index"">Grupo</a>
+                            <a class="dropdown-item" href="/ReporAula/Index">Aula</a>
+                            <a class="dropdown-item" href="/ReporCarrera/Index">Carrera</a>
+                           
 
                         </div>
                     </li>
@@ -113,12 +109,13 @@
   
 
 
-        <div class="container body-content">
-            @RenderBody()           
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Sistema horario</p>
-            </footer>
-        </div>
+    <div class="container body-content">
+       
+        @RenderBody()
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Sistema horario</p>
+        </footer>
+    </div>
 
        
 

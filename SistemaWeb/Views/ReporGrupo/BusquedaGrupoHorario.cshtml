@@ -10,6 +10,7 @@
     var dt3 = ViewBag.TablaMI;
     var dt4 = ViewBag.TablaJ;
     var dt5 = ViewBag.TablaV;
+    var todo = ViewBag.TablaTodo;
     var periodo = ViewBag.Tabla1;
 
 
@@ -32,7 +33,7 @@
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <center>
-    <h1>Horario de Clases</h1>
+    <h1>Horario de Clases del  @todo.Rows[0].ItemArray[0].ToString()  @todo.Rows[0].ItemArray[1].ToString()</h1>
 </center>
 
 <div>
@@ -91,7 +92,7 @@
                             @dt1.Rows[L].ItemArray[0].ToString(); <br />
                             @dt1.Rows[L].ItemArray[1].ToString(); <br />
                             @dt1.Rows[L].ItemArray[2].ToString(); <br />
-                            @dt1.Rows[L].ItemArray[3].ToString(); <br />
+                           
 
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }
@@ -113,7 +114,7 @@
                             @dt2.Rows[M].ItemArray[0].ToString(); <br />
                             @dt2.Rows[M].ItemArray[1].ToString(); <br />
                             @dt2.Rows[M].ItemArray[2].ToString(); <br />
-                            @dt2.Rows[M].ItemArray[3].ToString(); <br />
+                            
 
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }
@@ -134,7 +135,7 @@
                             @dt3.Rows[MI].ItemArray[0].ToString(); <br />
                             @dt3.Rows[MI].ItemArray[1].ToString(); <br />
                             @dt3.Rows[MI].ItemArray[2].ToString(); <br />
-                            @dt3.Rows[MI].ItemArray[3].ToString(); <br />
+                           
 
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }
@@ -155,7 +156,7 @@
                             @dt4.Rows[J].ItemArray[0].ToString(); <br />
                             @dt4.Rows[J].ItemArray[1].ToString(); <br />
                             @dt4.Rows[J].ItemArray[2].ToString(); <br />
-                            @dt4.Rows[J].ItemArray[3].ToString(); <br />
+                           
 
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }
@@ -177,7 +178,7 @@
                             @dt5.Rows[V].ItemArray[0].ToString(); <br />
                             @dt5.Rows[V].ItemArray[1].ToString(); <br />
                             @dt5.Rows[V].ItemArray[2].ToString(); <br />
-                            @dt5.Rows[V].ItemArray[3].ToString(); <br />
+                           
 
                             //@dt1.Rows[i].ItemArray[5].ToString();
                         }

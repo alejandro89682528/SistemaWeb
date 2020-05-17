@@ -45,6 +45,7 @@ namespace SistemaWeb.Controllers
         {
 
             int depar = Int32.Parse(cod_dpto);
+            string dpart = cod_dpto;
             string profe = profesor;
             int ciclo = Int32.Parse(tipo_ciclo);
             int año = Int32.Parse(año_estudio);
@@ -142,6 +143,7 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             ViewBag.TablaJ = dataTable4;
             ViewBag.TablaV = dataTable5;
             ViewBag.Tabla1 = dataTable1;
+            ViewBag.depart = dpart;
             //ViewData["Nombre"] = message;
 
             /*
@@ -156,30 +158,12 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             return View();
         }
 
-
+        
         public ActionResult edit()
         {
-            //int horario = Int32.Parse(cod_horario); string cod_horario
 
-
-
-            //consultar lista de horarios lunes
-            SqlCommand cmd = new SqlCommand();
-            DataTable dataTable = new DataTable();
-            SqlDataAdapter sqlDA; con.Open();
-            cmd.CommandText = "select *from dia;";
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = con;
-            sqlDA = new SqlDataAdapter(cmd);
-            sqlDA.Fill(dataTable);
-            con.Close();
-
-            ViewBag.cod_dia.DataSource = dataTable;
-            ViewBag.cod_dia.DisplayMember = "id";
-            ViewBag.cod_dia.ValueMember = "dias";
-
-            ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "content");
-            //ViewBag.cod_dia = new SelectList(db.dias, "id", "dias");
+            ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1");
+            ViewBag.cod_dia = new SelectList(db.dias, "id", "dias");
             ViewBag.profesor = new SelectList(db.profesores, "inss", "nombre");
 
             return PartialView();

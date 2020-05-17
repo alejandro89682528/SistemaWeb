@@ -18,13 +18,44 @@
 }
 
 
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Styles.Render("~/Content/luis")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Listas de horarios</title>
-    
+
+
+    <script>
+
+        function habilitar(value) {
+
+            if (value == true) {
+
+                // habilitamos
+
+                document.getElementById("id").disabled = false;
+
+            } else if (value == false) {
+
+                // deshabilitamos
+
+                document.getElementById("id").disabled = true;
+
+            }
+
+        }
+
+    </script>
+
 </head>
 <body>
 
@@ -46,15 +77,15 @@
                 <div class="form-group">
                     Todo los profesores
                     <div class="col-md-10">
-                        <input class="check-box" id="IsDiscounted" name="IsDiscounted" type="checkbox" value="true" />
+                        <input type="checkbox" id="check" onchange="habilitar(this.checked);" checked> Todo
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="id">
                     Seleccionar Profesores
                     <div class="col-md-10">
                         @Html.DropDownList("profesor", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.profesor, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.profesor, "", htmlAttributes: new { id = "MyId" })
                     </div>
 
                     <div class="form-group">
@@ -91,7 +122,7 @@
                     <input type="submit" value="Visualizar horario" />
                 </div>
             </form>
-            </center>
+        </center>
     </div>
 </body>
 </html>

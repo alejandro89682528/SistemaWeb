@@ -132,6 +132,22 @@ namespace SistemaWeb.Controllers
             con.Close();
 
 
+
+
+            //consultar lista de horarios todo
+            SqlCommand cmd6 = new SqlCommand();
+            DataTable dataTable6 = new DataTable();
+            SqlDataAdapter sqlDA6; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmd6.CommandText = "select g.nombre, m.nombre from grupo g, materia m, pensum p where g.cod_asig = p.cod_asig and p.cod_materia = m.cod_materia and g.cod_grupo= " + gru + ";";
+            cmd6.CommandType = CommandType.Text;
+            cmd6.Connection = con;
+            sqlDA6 = new SqlDataAdapter(cmd6);
+            sqlDA6.Fill(dataTable6);
+            con.Close();
+
+
+
             /* Corregido select
 p.nombre, a.nombre, m.nombre, g.nombre, pe.periodo, dia.dias  
 from
@@ -151,6 +167,7 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             ViewBag.TablaJ = dataTable4;
             ViewBag.TablaV = dataTable5;
             ViewBag.Tabla1 = dataTable1;
+            ViewBag.TablaTodo = dataTable6;
             //ViewData["Nombre"] = message;
 
             /*

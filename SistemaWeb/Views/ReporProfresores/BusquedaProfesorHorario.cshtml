@@ -10,6 +10,7 @@
     var dt3 = ViewBag.TablaMI;
     var dt4 = ViewBag.TablaJ;
     var dt5 = ViewBag.TablaV;
+    var todo = ViewBag.TablaTodo;
     var periodo = ViewBag.Tabla1;
 
 
@@ -32,7 +33,7 @@
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 <center>
-    <h1>Horario de Clases </h1>
+    <h1>Horario de Clases de  @todo.Rows[0].ItemArray[2].ToString()</h1>
 </center>
 
 <div>
