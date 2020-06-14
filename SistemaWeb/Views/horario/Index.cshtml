@@ -22,7 +22,10 @@
     <meta name="viewport" content="width=device-width" />
     <title>Generacion de Horario</title>
 </head>
+
+
 <body>
+
     <div>
 
         <h2>Generacion de horario</h2>
@@ -48,12 +51,32 @@
 
             <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 
-           
+            <asp:UpdateProgress runat="server" ID="idUpdateProgress"
+                                AssociatedUpdatePanelID="h" DynamicLayout="true">
+                <ProgressTemplate>
+                    <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <img id="idAjaxLoader" alt="Enviando ..." src="~/Imgs/Loading_2.gif" />
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
 
             <div>
-                <button type="submit">Genarar horario</button>
+                <button type="submit" id="h">Genarar horario</button>
             </div>
         </form>
     </div>
+
 </body>
 </html>
+
+<asp:UpdateProgress runat="server" ID="idUpdateProgress"
+                    AssociatedUpdatePanelID="h" DynamicLayout="true">
+    <ProgressTemplate>
+        <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+            <img id="idAjaxLoader" alt="Enviando ..." src="~/Imgs/Loading_2.gif" />
+        </div>
+    </ProgressTemplate>
+</asp:UpdateProgress>
+
+
+

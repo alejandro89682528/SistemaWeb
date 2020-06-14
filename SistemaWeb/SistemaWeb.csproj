@@ -305,6 +305,9 @@
     <Compile Include="Contexto\sp_helpdiagramdefinition3_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Contexto\sp_helpdiagramdefinition4_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contexto\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -317,7 +320,13 @@
     <Compile Include="Contexto\sp_helpdiagrams3_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Contexto\sp_helpdiagrams4_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Contexto\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexto\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Contexto\tipoaula.cs">
@@ -336,6 +345,7 @@
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\aulasController.cs" />
     <Compile Include="Controllers\carrerasController.cs" />
+    <Compile Include="Controllers\cofiguracionAñoController.cs" />
     <Compile Include="Controllers\diasController.cs" />
     <Compile Include="Controllers\dptoesController.cs" />
     <Compile Include="Controllers\EditHorarioProfesorController.cs" />
@@ -359,6 +369,7 @@
     <Compile Include="Controllers\ReporCarreraController.cs" />
     <Compile Include="Controllers\ReporGrupoController.cs" />
     <Compile Include="Controllers\ReporProfresoresController.cs" />
+    <Compile Include="Controllers\RespaldoController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\tipoaulasController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
@@ -504,6 +515,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="imgs\Loading_2.gif" />
     <Content Include="import.aspx" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
@@ -559,6 +571,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.js" />
     <Content Include="Scripts\jquery-ui-1.8.23.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -720,11 +734,6 @@
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\Horario_lista\BusquedaFilter.cshtml" />
-    <Content Include="Views\anolectivoes\Create.cshtml" />
-    <Content Include="Views\anolectivoes\Delete.cshtml" />
-    <Content Include="Views\anolectivoes\Details.cshtml" />
-    <Content Include="Views\anolectivoes\Edit.cshtml" />
-    <Content Include="Views\anolectivoes\Index.cshtml" />
     <Content Include="Views\horarios\Create.cshtml" />
     <Content Include="Views\horarios\Delete.cshtml" />
     <Content Include="Views\horarios\Details.cshtml" />
@@ -741,6 +750,15 @@
     <Content Include="Views\EditHorarioProfesor\Index.cshtml" />
     <Content Include="Views\EditHorarioProfesor\EditProfesorHorario.cshtml" />
     <Content Include="Views\EditHorarioProfesor\edit.cshtml" />
+    <Content Include="Views\Respaldo\Index.cshtml" />
+    <Content Include="Views\Respaldo\contenedor.cshtml" />
+    <Content Include="Views\cofiguracionAño\Index.cshtml" />
+    <Content Include="Views\Respaldo\restaurar.cshtml" />
+    <Content Include="Views\anolectivoes\Create.cshtml" />
+    <Content Include="Views\anolectivoes\Delete.cshtml" />
+    <Content Include="Views\anolectivoes\Details.cshtml" />
+    <Content Include="Views\anolectivoes\Edit.cshtml" />
+    <Content Include="Views\anolectivoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

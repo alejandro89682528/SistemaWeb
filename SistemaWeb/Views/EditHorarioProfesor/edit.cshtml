@@ -1,4 +1,4 @@
-﻿@model SistemaWeb.clases.editHorario
+﻿@model SistemaWeb.Contexto.horariogeneracion
 
 
 <div>
@@ -7,6 +7,15 @@
 
         <h2>Editar</h2>
         <form method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                Seleccionar Dia
+                <div class="col-md-10">
+                    @Html.DropDownList("id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
 
             <div class="form-group">
                 Seleccionar Periodo
@@ -18,13 +27,7 @@
             </div>
 
 
-            <div class="form-group">
-                Seleccionar Periodo
-                <div class="col-md-10">
-                    @Html.DropDownList("cod_dia", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.cod_dia, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            
 
             <div class="form-group">
                 seleccionar Profesor
@@ -37,7 +40,7 @@
 
             <div>
 
-                <input type="submit" value="Actualizar" />
+                <input type="submit" value="Actualizar"  />
             </div>
         </form>
     </center>

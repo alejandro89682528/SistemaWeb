@@ -24,5 +24,6 @@ namespace SistemaWeb.Contexto
         public string profesor { get; set; }
         public string cod_aula { get; set; }
         public string cod_grupo { get; set; }
+        public string cod_periodo { get; set; }
     }
 }

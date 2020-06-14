@@ -23,10 +23,12 @@ namespace SistemaWeb.Contexto
         public int hora_grupo { get; set; }
         public string tipo_ciclo { get; set; }
         public string tipo_grupo { get; set; }
+        public Nullable<int> cod_asig { get; set; }
     
         public virtual carrera carrera { get; set; }
         public virtual dpto dpto { get; set; }
         public virtual materia materia { get; set; }
+        public virtual pensum pensum { get; set; }
         public virtual profesore profesore { get; set; }
     }
 }

@@ -10,6 +10,8 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using SistemaWeb.clases;
 
 namespace SistemaWeb.Controllers
 {
@@ -32,6 +34,8 @@ namespace SistemaWeb.Controllers
             TempData.Keep("infoRol");
 
             ViewBag.cod_dpto = new SelectList(db.dptoes, "cod_dpto", "nombre");
+            //cod_dpto.DataBind();
+            //cod_dpto.Items.insert(0, new ListItem ("todo", "0"));
             ViewBag.profesor = new SelectList(db.profesores, "inss", "nombre");
             ViewBag.tipo_ciclo = new SelectList("12");
             ViewBag.año_estudio = new SelectList(db.anolectivoes, "cod_ano", "ano");
@@ -41,14 +45,16 @@ namespace SistemaWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditProfesorHorario(string cod_dpto, string profesor, string tipo_ciclo, string año_estudio)
+        public ActionResult EditProfesorHorario(horariogeneracion ph)
         {
 
-            int depar = Int32.Parse(cod_dpto);
-            string dpart = cod_dpto;
-            string profe = profesor;
-            int ciclo = Int32.Parse(tipo_ciclo);
-            int año = Int32.Parse(año_estudio);
+            TempData["ph"] = ph;
+
+            int depar = Int32.Parse(ph.cod_dpto);
+            string dpart = ph.cod_dpto;
+            string profe = ph.profesor;
+            int ciclo = Int32.Parse(ph.tipo_ciclo);
+            int año = Int32.Parse(ph.año_estudio);
 
             //consultar lista de horarios lunes
             SqlCommand cmd = new SqlCommand();
@@ -159,17 +165,84 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
         }
 
         
-        public ActionResult edit()
+        public ActionResult edit(string horario)
         {
 
+            if(horario != null)
+            {
+                String lista = horario;
+                /*if(Session["h"] !=null)
+                {
+
+                }
+                else
+                {
+                    lista = new List<string>();
+                }*/
+                //lista.Add(horario);
+                Session["h"] = lista;
+            }
+            // List
+
+            SqlCommand cmd1 = new SqlCommand();
+            DataTable dataTable1 = new DataTable();
+            SqlDataAdapter sqlDA1; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmd1.CommandText = "select id, dias from dia;";
+            cmd1.CommandType = CommandType.Text;
+            cmd1.Connection = con;
+            sqlDA1 = new SqlDataAdapter(cmd1);
+            sqlDA1.Fill(dataTable1);
+            con.Close();
+            for (int i = 0; i<dataTable1.Rows.Count; i++) { 
+            string id =dataTable1.Rows[i].ItemArray[0].ToString();
+            string dias = dataTable1.Rows[i].ItemArray[1].ToString();
+            ViewBag.id = new SelectList(id, dias);
+            }
+
+            
+            /*
+            var id = new[] { dataTable1 };
+            ViewBag.id = new SelectList(id, "id", "dias");
+            //int p = id;
+            /*
+            
+                        SqlCommand cmd = new SqlCommand();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "spsEstado";
+                        //cmd.Connection = conn;
+                        con.Open();
+                        cod_dia.DataSource = cmd.ExecuteReader();
+                        cod_dia.DataTextField = "nombre";
+                        cod_dia.DataValueField = "id";
+                        cod_dia.DataBind();
+                        cod_dia.Items.Insert(0, new ListItem("todo", "0")); */
+
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1");
-            ViewBag.cod_dia = new SelectList(db.dias, "id", "dias");
+            
+            //ViewBag.id = new SelectList(db.dias, "id", "dias");
             ViewBag.profesor = new SelectList(db.profesores, "inss", "nombre");
 
-            return PartialView();
+            return View();
         }
 
-        
 
-    }
+        [HttpPost]
+        public ActionResult edit(string cod_periodo, string id, string profesor)
+        {
+
+            var ph = TempData["ph"];
+            TempData.Keep();
+
+            int p = Int32.Parse(cod_periodo);
+            int i = Int32.Parse(id);
+            string pro = profesor;
+            string ho = (Session["h"]).ToString();
+
+            //
+            return View();
+        }
+
+
+        }
 }

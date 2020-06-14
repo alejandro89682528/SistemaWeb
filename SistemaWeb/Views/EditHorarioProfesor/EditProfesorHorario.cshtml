@@ -1,5 +1,6 @@
 ﻿@model SistemaWeb.Contexto.horariogeneracion
 @{
+       
     /**/
 
     /* foreach (var H in dt.Rows) foreach (var H in dt.Rows)*/
@@ -33,6 +34,7 @@
 }
 
 
+ @ViewBag.cod_dpto = (dpto);
 
 <script src="~/Scripts/jquery-3.3.1.js"></script>
 
@@ -80,6 +82,8 @@
 
                 // @H[1].ToString()
 
+
+
                 <tr>
                     <td>
 
@@ -119,7 +123,7 @@
                                 @dt2.Rows[M].ItemArray[2].ToString(); <br />
                                 @dt2.Rows[M].ItemArray[3].ToString(); <br />
 
-                                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/EditProfesorHorario/edit/@dt2.Rows[M].ItemArray[6].ToString();', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
+                                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/EditProfesorHorario/edit/', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
                                 //@dt1.Rows[i].ItemArray[5].ToString();
                             }
                             else
@@ -132,6 +136,7 @@
 
                     <td>
 
+
                         @for (int MI = 0; MI < dt3.Rows.Count; MI++)
                         {
                             if (@dt3.Rows[MI].ItemArray[4].ToString() == @periodo.Rows[i].ItemArray[1].ToString())
@@ -141,8 +146,11 @@
                                 @dt3.Rows[MI].ItemArray[2].ToString(); <br />
                                 @dt3.Rows[MI].ItemArray[3].ToString(); <br />
 
-                               
-                                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/EditHorarioProfesor/edit', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
+                                // @Html.ValidationMessageFor(model => model.id, "@dt3.Rows[MI].ItemArray[6].ToString()", new { @class = "text-danger" })
+                                //Model.id = Convert.ToInt32(@dt3.Rows[MI].ItemArray[6].ToString());
+                                @Html.ActionLink("Editar", "edit", "EditHorarioProfesor", new { horario = @dt3.Rows[MI].ItemArray[6].ToString() }, null)
+                                
+                                <a href="#" data-toggle="modal" data-target="#visualEditar" onclick="loadData('/EditProfesorHorario/edit/horario = @dt3.Rows[MI].ItemArray[6].ToString()', 'contentedit')">  <Span class='btn btn-warning'> Editar </Span></a>
                                 //@dt1.Rows[i].ItemArray[5].ToString();
 
                             }
@@ -152,6 +160,7 @@
                             }
 
                         }
+
                     </td>
 
                     <td>

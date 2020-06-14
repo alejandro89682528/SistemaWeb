@@ -19,6 +19,7 @@ namespace SistemaWeb.Contexto
         {
             this.grupoes = new HashSet<grupo>();
             this.horarios = new HashSet<horario>();
+            this.inportarcions = new HashSet<inportarcion>();
         }
     
         public int cod_asig { get; set; }
@@ -35,6 +36,8 @@ namespace SistemaWeb.Contexto
         public virtual ICollection<grupo> grupoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<horario> horarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<inportarcion> inportarcions { get; set; }
         public virtual materia materia { get; set; }
         public virtual Plan Plan { get; set; }
     }

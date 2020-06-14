@@ -8,11 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SistemaWeb.Contexto;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace SistemaWeb.Controllers
 {
     public class anolectivoesController : Controller
     {
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
 
         // GET: anolectivoes
@@ -21,8 +24,8 @@ namespace SistemaWeb.Controllers
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
 
-         
-            ViewBag.activo = new SelectList("SINO");
+            var activo = new[] { "si", "no" };
+            ViewBag.activo = new SelectList(activo);
             return View(await db.anolectivoes.ToListAsync());
         }
 
@@ -44,7 +47,8 @@ namespace SistemaWeb.Controllers
         // GET: anolectivoes/Create
         public ActionResult Create()
         {
-            ViewBag.activo = new SelectList("SI","NO");
+            var activo = new[] { "si", "no" };
+            ViewBag.activo = new SelectList(activo);
             return View();
         }
 
@@ -53,14 +57,33 @@ namespace SistemaWeb.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
+        public async Task<ActionResult> Create([Bind(Include = "cod_ano,ano,activo")] anolectivo anolectivo)
         {
+           
             if (ModelState.IsValid)
             {
                 db.anolectivoes.Add(anolectivo);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+               
+
+                string s = "si";
+                if (anolectivo.activo == s) { 
+                SqlCommand cmdg1 = new SqlCommand();
+                DataTable dataTableg1 = new DataTable();
+                SqlDataAdapter sqlDAg1; con.Open();
+                cmdg1.CommandText = "UPDATE [dbo].[anolectivo] SET [activo] = 'no' WHERE id != " + anolectivo.cod_ano + "";
+                cmdg1.CommandType = CommandType.Text;
+                cmdg1.Connection = con;
+                sqlDAg1 = new SqlDataAdapter(cmdg1);
+                sqlDAg1.Fill(dataTableg1);
+                con.Close();
+
+
+                    return RedirectToAction("Index");
+                }
             }
+
+
 
             return View(anolectivo);
         }
@@ -68,6 +91,9 @@ namespace SistemaWeb.Controllers
         // GET: anolectivoes/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
+            var activo = new[] { "si", "no" };
+            ViewBag.activo = new SelectList(activo);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,7 +111,7 @@ namespace SistemaWeb.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "cod_ano,ano")] anolectivo anolectivo)
+        public async Task<ActionResult> Edit([Bind(Include = "cod_ano,ano,activo")] anolectivo anolectivo)
         {
             if (ModelState.IsValid)
             {

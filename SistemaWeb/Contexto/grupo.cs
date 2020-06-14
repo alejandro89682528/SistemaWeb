@@ -25,6 +25,8 @@ namespace SistemaWeb.Contexto
         public int capacidad { get; set; }
         public string tipo_ciclo { get; set; }
         public int cod_asig { get; set; }
+        public Nullable<int> hora_grupo { get; set; }
+        public string tipo_grupo { get; set; }
     
         public virtual pensum pensum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

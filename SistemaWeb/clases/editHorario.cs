@@ -9,7 +9,7 @@ namespace SistemaWeb.clases
     {
         public string cod_horario { get; set; }
         public string profesor { get; set; }
-        public string cod_dia { get; set; }
+        public string id { get; set; }
         public string cod_periodo { get; set; }
     }
 }
