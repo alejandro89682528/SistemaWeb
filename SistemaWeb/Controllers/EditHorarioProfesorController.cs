@@ -194,34 +194,96 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             sqlDA1 = new SqlDataAdapter(cmd1);
             sqlDA1.Fill(dataTable1);
             con.Close();
-            for (int i = 0; i<dataTable1.Rows.Count; i++) { 
-            string id =dataTable1.Rows[i].ItemArray[0].ToString();
-            string dias = dataTable1.Rows[i].ItemArray[1].ToString();
-            ViewBag.id = new SelectList(id, dias);
-            }
 
-            
-            /*
-            var id = new[] { dataTable1 };
-            ViewBag.id = new SelectList(id, "id", "dias");
-            //int p = id;
-            /*
-            
-                        SqlCommand cmd = new SqlCommand();
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "spsEstado";
-                        //cmd.Connection = conn;
-                        con.Open();
-                        cod_dia.DataSource = cmd.ExecuteReader();
-                        cod_dia.DataTextField = "nombre";
-                        cod_dia.DataValueField = "id";
-                        cod_dia.DataBind();
-                        cod_dia.Items.Insert(0, new ListItem("todo", "0")); */
+
+            SqlCommand cmdl = new SqlCommand();
+            DataTable dataTablel = new DataTable();
+            SqlDataAdapter sqlDAl; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdl.CommandText = "select *from horario where cod_dias = 1;";
+            cmdl.CommandType = CommandType.Text;
+            cmdl.Connection = con;
+            sqlDAl = new SqlDataAdapter(cmdl);
+            sqlDAl.Fill(dataTablel);
+            con.Close();
+
+            SqlCommand cmdm = new SqlCommand();
+            DataTable dataTablem = new DataTable();
+            SqlDataAdapter sqlDAm; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdm.CommandText = "select *from horario where cod_dias = 2;";
+            cmdm.CommandType = CommandType.Text;
+            cmdm.Connection = con;
+            sqlDAm = new SqlDataAdapter(cmdm);
+            sqlDAm.Fill(dataTablem);
+            con.Close();
+
+            SqlCommand cmdmi = new SqlCommand();
+            DataTable dataTablemi = new DataTable();
+            SqlDataAdapter sqlDmi; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdmi.CommandText = "select *from horario where cod_dias = 3;";
+            cmdmi.CommandType = CommandType.Text;
+            cmdmi.Connection = con;
+            sqlDmi = new SqlDataAdapter(cmdmi);
+            sqlDmi.Fill(dataTablemi);
+            con.Close();
+
+            SqlCommand cmdj = new SqlCommand();
+            DataTable dataTablej = new DataTable();
+            SqlDataAdapter sqlDAj; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdj.CommandText = "select *from horario where cod_dias = 4;";
+            cmdj.CommandType = CommandType.Text;
+            cmdj.Connection = con;
+            sqlDAj = new SqlDataAdapter(cmdj);
+            sqlDAj.Fill(dataTablej);
+            con.Close();
+
+            SqlCommand cmdv = new SqlCommand();
+            DataTable dataTablev = new DataTable();
+            SqlDataAdapter sqlDAv; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdv.CommandText = "select *from horario where cod_dias = 5;";
+            cmdv.CommandType = CommandType.Text;
+            cmdv.Connection = con;
+            sqlDAv = new SqlDataAdapter(cmdv);
+            sqlDAv.Fill(dataTablev);
+            con.Close();
+
+
+            SqlCommand cmdp = new SqlCommand();
+            DataTable dataTablep = new DataTable();
+            SqlDataAdapter sqlDAp; con.Open();
+            //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+            cmdp.CommandText = "select *from periodo;";
+            cmdp.CommandType = CommandType.Text;
+            cmdp.Connection = con;
+            sqlDAp = new SqlDataAdapter(cmdp);
+            sqlDAp.Fill(dataTablep);
+            con.Close();
+            int pl = 0;
+            int pm = 0;
+            int pmi = 0;
+            int pj = 0;
+            int pv = 0;
+
+            while (pl < dataTablel.Rows.Count)
+            {
+                int periodoh = Convert.ToInt32(dataTablel.Rows[0].ItemArray[1].ToString());
+                int periodo = Convert.ToInt32(dataTablep.Rows[0].ItemArray[0].ToString());
+                
+
+            }
 
             ViewBag.cod_periodo = new SelectList(db.periodoes, "cod_periodo", "periodo1");
             
             //ViewBag.id = new SelectList(db.dias, "id", "dias");
             ViewBag.profesor = new SelectList(db.profesores, "inss", "nombre");
+
+
+
+
 
             return View();
         }
@@ -238,6 +300,8 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             int i = Int32.Parse(id);
             string pro = profesor;
             string ho = (Session["h"]).ToString();
+
+
 
             //
             return View();

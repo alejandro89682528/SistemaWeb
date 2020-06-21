@@ -59,19 +59,56 @@ namespace SistemaWeb.Controllers
 
 
 
-                return View();
+                return PartialView();
         }
 
         [HttpPost]
-        public ActionResult restaurar(HttpPostedFileBase file)
+        public ActionResult restaurar(HttpPostedFileBase file, string confirm_value)
         {
 
             string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
             string filepath = "/excelfolder/" + filename;
             file.SaveAs(Path.Combine(Server.MapPath("/excelfolder"), filename));
-            
+            string basehora = "sistema_horario";
+            string servidor = "DESKTOP-9J93P0Q\aleja";
 
-            return View();
+
+            
+            string sBackup = "RESTORE DATABASE " + basehora +
+                             " FROM DISK = '" + filepath + "'" +
+                             " WITH REPLACE";
+
+            SqlConnectionStringBuilder csb = new SqlConnectionStringBuilder();
+            csb.DataSource = servidor;
+            // Es mejor abrir la conexión con la base Master
+            csb.InitialCatalog = "master";
+            csb.IntegratedSecurity = true;
+            //csb.ConnectTimeout = 480; // el predeterminado es 15
+
+            using (SqlConnection con1 = new SqlConnection(csb.ConnectionString))
+            {
+                try
+                {
+                    con1.Open();
+
+                    SqlCommand cmdBackUp = new SqlCommand(sBackup, con1);
+                    cmdBackUp.ExecuteNonQuery();
+                    ViewBag.Message = "Se ha restaurado la copia de la base de datos";
+                                    //MessageBoxButtons.OK,
+                                    //MessageBoxIcon.Information);
+
+                    con1.Close();
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "Error al restaurar la base de datos";
+                                   // MessageBoxButtons.OK,
+                                   // MessageBoxIcon.Error);
+                }
+            }
+
+
+            return contenedor();
         }
 
 

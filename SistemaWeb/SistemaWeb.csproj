@@ -344,6 +344,7 @@
     <Compile Include="Controllers\AspNetUserRolesController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\aulasController.cs" />
+    <Compile Include="Controllers\bakucretaurarController.cs" />
     <Compile Include="Controllers\carrerasController.cs" />
     <Compile Include="Controllers\cofiguracionAñoController.cs" />
     <Compile Include="Controllers\diasController.cs" />
@@ -759,6 +760,7 @@
     <Content Include="Views\anolectivoes\Details.cshtml" />
     <Content Include="Views\anolectivoes\Edit.cshtml" />
     <Content Include="Views\anolectivoes\Index.cshtml" />
+    <Content Include="Views\bakucretaurar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

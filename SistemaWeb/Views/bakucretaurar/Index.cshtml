@@ -1,0 +1,56 @@
+﻿@{
+
+    if (ViewBag.displayRole == 0)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if (ViewBag.displayRole == 1)
+    {
+        Layout = "~/Views/Shared/_LayoutManager.cshtml";
+    }
+    else if (ViewBag.displayRole == 2)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    ViewBag.Title = "Respaldo";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Restaurar</title>
+</head>
+
+<center> <h1>Restaurar </h1>  </center>
+
+<body>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+            $(function () {
+              alert("@ViewBag.Message")
+            });
+            </script>
+        }
+        <div>
+            <input name="file" type="file" required />
+
+
+            <input type="submit" value="Import" />
+
+        </div>
+
+
+    </form>
+
+    </body>
+
+</html>
