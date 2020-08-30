@@ -17,6 +17,7 @@ namespace SistemaWeb.Controllers
 
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
         OleDbConnection Econ;
+        
 
         // GET: bakucretaurar
         public ActionResult Index()
@@ -26,6 +27,7 @@ namespace SistemaWeb.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Index(HttpPostedFileBase file)
         {
@@ -34,9 +36,41 @@ namespace SistemaWeb.Controllers
             string filepath = "/excelfolder/" + filename;
             file.SaveAs(Path.Combine(Server.MapPath("/excelfolder"), filename));
             string basehora = "sistema_horario";
-            string servidor = "DESKTOP-9J93P0Q\aleja";
+            string servidor = "DESKTOP-9J93P0Q";
+
+            string database = con.Database.ToString();
+
+            if (con.State != System.Data.ConnectionState.Open)
+            {
+                con.Open();
+            }
+            try
+            {
+               string sql1 = string.Format("ALTER DATABASE [" + database + "] SET DESKTOP-9J93P0Q\aleja WITH ROLLBACK IMMEDIATE");
+                SqlCommand bu2 = new SqlCommand(sql1, con);
+                bu2.ExecuteNonQuery();
+
+                string sql2 = "USE MASTER RESTORE DATABASE [" + database + "] FROM DISK '" + filepath + "' WITH REPLACE;";
+                SqlCommand bu3 = new SqlCommand(sql2, con);
+                bu3.ExecuteNonQuery();
+
+                string sql3 = string.Format("ALTER DATABASE [" + database + "] SET MULTI_USER");
+                SqlCommand bu4 = new SqlCommand(sql3, con);
+                bu4.ExecuteNonQuery();
+
+                ViewBag.Message = "La restauracion se a realisado correctamente";
+            }
+            catch
+            {
+                ViewBag.Message = "error";
+            }
 
 
+
+
+
+
+/*
 
             string sBackup = "RESTORE DATABASE " + basehora +
                              " FROM DISK = '" + filepath + "'" +
@@ -47,7 +81,7 @@ namespace SistemaWeb.Controllers
             // Es mejor abrir la conexión con la base Master
             csb.InitialCatalog = "master";
             csb.IntegratedSecurity = true;
-            csb.ConnectTimeout = 480; // el predeterminado es 15
+           // csb.ConnectTimeout = 480; // el predeterminado es 15
 
            using (SqlConnection con1 = new SqlConnection(csb.ConnectionString))
             {
@@ -71,6 +105,7 @@ namespace SistemaWeb.Controllers
                 }
             }
 
+    */
             return Index();
 
         }

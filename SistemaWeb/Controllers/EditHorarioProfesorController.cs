@@ -165,10 +165,12 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
         }
 
         
-        public ActionResult edit(string horario)
+        public ActionResult edit()
         {
 
-            if(horario != null)
+            string ho = (Session["le"]).ToString();
+            /*
+            if (horario != null)
             {
                 String lista = horario;
                 /*if(Session["h"] !=null)
@@ -178,10 +180,10 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
                 else
                 {
                     lista = new List<string>();
-                }*/
+                }
                 //lista.Add(horario);
                 Session["h"] = lista;
-            }
+            } */
             // List
 
             SqlCommand cmd1 = new SqlCommand();
@@ -299,7 +301,7 @@ c.cod_carrera = " + carrera +" and d.cod_dpto="+ depar + " and pen.ciclo="+ cicl
             int p = Int32.Parse(cod_periodo);
             int i = Int32.Parse(id);
             string pro = profesor;
-            string ho = (Session["h"]).ToString();
+            string ho = (Session["le"]).ToString();
 
 
 

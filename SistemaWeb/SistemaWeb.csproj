@@ -212,6 +212,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="clases\listado_horario.cs" />
     <Compile Include="clases\editHorario.cs" />
+    <Compile Include="clases\pemsun.cs" />
     <Compile Include="Contexto\anolectivo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -761,6 +762,7 @@
     <Content Include="Views\anolectivoes\Edit.cshtml" />
     <Content Include="Views\anolectivoes\Index.cshtml" />
     <Content Include="Views\bakucretaurar\Index.cshtml" />
+    <Content Include="Views\pensums\busqueda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

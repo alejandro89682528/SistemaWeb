@@ -42,6 +42,10 @@ namespace SistemaWeb.Controllers
 
         private void ValidarHorario(int idCarrera, int semestre)
         {
+            try
+            {
+
+            
             //consultar lista de dias
             SqlCommand cmd = new SqlCommand();
             DataTable dataTable = new DataTable();
@@ -202,14 +206,15 @@ namespace SistemaWeb.Controllers
                             SqlCommand cmdg2 = new SqlCommand();
                             DataTable dataTableg2 = new DataTable();
                             SqlDataAdapter sqlDAg2; con.Open();
-                            cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + " and nombre like 'gt%';";
+                            cmdg2.CommandText = "select count(cod_grupo) from grupo where cod_asig= " + cod_asig + " and Tipo_grupo = 'Teorico';";
+                            //cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + " and nombre like 'gt%';";
                             cmdg2.CommandType = CommandType.Text;
                             cmdg2.Connection = con;
                             sqlDAg2 = new SqlDataAdapter(cmdg2);
                             sqlDAg2.Fill(dataTableg2);
                             con.Close();
-
-                            if (dataTableg2.Rows.Count == 0)
+                                int contador = Convert.ToInt32(dataTableg2.Rows[0].ItemArray[0].ToString());
+                            if ( contador == 0)
                             {
 
                                 SqlCommand cmdg;
@@ -237,7 +242,7 @@ namespace SistemaWeb.Controllers
 
                             }
 
-                            if (dataTableg2.Rows.Count == 1)
+                            if (contador == 1)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -265,7 +270,7 @@ namespace SistemaWeb.Controllers
                             }
 
 
-                            if (dataTableg2.Rows.Count == 2)
+                            if (contador == 2)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -292,7 +297,7 @@ namespace SistemaWeb.Controllers
                                 con.Close();
                             }
 
-                            if (dataTableg2.Rows.Count == 3)
+                            if (contador == 3)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -330,15 +335,15 @@ namespace SistemaWeb.Controllers
                             SqlCommand cmdg2 = new SqlCommand();
                             DataTable dataTableg2 = new DataTable();
                             SqlDataAdapter sqlDAg2; con.Open();
-                            cmdg2.CommandText = "select cod_grupo, nombre, capacidad, tipo_ciclo, cod_asig from grupo where cod_asig= " + cod_asig + " and nombre like 'gp%';";
+                            cmdg2.CommandText = "select count(cod_grupo) from grupo where cod_asig= " + cod_asig + " and Tipo_grupo = 'Practico';";
                             cmdg2.CommandType = CommandType.Text;
                             cmdg2.Connection = con;
                             sqlDAg2 = new SqlDataAdapter(cmdg2);
                             sqlDAg2.Fill(dataTableg2);
                             con.Close();
 
-
-                            if (dataTableg2.Rows.Count == 0)
+                                int contador2 = Convert.ToInt32(dataTableg2.Rows[0].ItemArray[0].ToString());
+                                if (contador2 == 0)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -366,7 +371,7 @@ namespace SistemaWeb.Controllers
 
                             }
 
-                            if (dataTableg2.Rows.Count == 1)
+                            if (contador2 == 1)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -394,7 +399,7 @@ namespace SistemaWeb.Controllers
                             }
 
 
-                            if (dataTableg2.Rows.Count == 2)
+                            if (contador2 == 2)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -421,7 +426,7 @@ namespace SistemaWeb.Controllers
                                 con.Close();
                             }
 
-                            if (dataTableg2.Rows.Count == 3)
+                            if (contador2 == 3)
                             {
                                 SqlCommand cmdg;
                                 SqlDataAdapter sqlDAg = new SqlDataAdapter();
@@ -480,6 +485,8 @@ namespace SistemaWeb.Controllers
 
             do
             {
+
+               
                 //A++;
 
                 //consultarn lista de datos de inportacion de cada de cada carrera
@@ -988,6 +995,14 @@ namespace SistemaWeb.Controllers
             } while (total_hora != 0);
 
 
+                ViewBag.Message = "Se a generado el horario correctamente";
+
+            }
+            catch
+            {
+                ViewBag.Message = "no se an encontrado datos";
+
+            }
         }
     }
 }

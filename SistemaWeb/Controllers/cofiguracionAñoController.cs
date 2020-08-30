@@ -20,11 +20,24 @@ namespace SistemaWeb.Controllers
 
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
-            
-            ViewBag.activo = new SelectList("SINO");
 
-            return View(db.anolectivoes.ToListAsync());
+            ViewBag.cod_dpto = new SelectList(db.dptoes, "cod_dpto", "nombre");
+            ViewBag.cod_carrera = new SelectList(db.carreras, "cod_carrera", "nombre");
+            ViewBag.tipo_ciclo = new SelectList("12");
 
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult Index(string cod_carrera, string tipo_ciclo)
+        {
+
+            var idCarrera = Int32.Parse(cod_carrera);
+            var semestre = Int32.Parse(tipo_ciclo);
+            //ValidarHorario(idCarrera, semestre);
+
+            return Index();
         }
     }
 }

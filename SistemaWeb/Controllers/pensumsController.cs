@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,12 +17,51 @@ namespace SistemaWeb.Controllers
     {
         private sistema_horarioEntities3 db = new sistema_horarioEntities3();
 
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
         // GET: pensums
-        public ActionResult Index()
+
+        public ActionResult busqueda()
         {
             ViewBag.displayRole = TempData["infoRol"];
             TempData.Keep("infoRol");
+
+            ViewBag.cod_carrera = new SelectList(db.carreras, "cod_carrera", "nombre");
+            ViewBag.cod_plan = new SelectList(db.Plans, "cod_plan", "nombre");
+
+
+            return View();
+        }
+        public ActionResult Index(string cod_carrera, string cod_plan)
+        {
+            int carrera = Int32.Parse(cod_carrera);
+            int plans = Int32.Parse(cod_plan);
+
+            ViewBag.displayRole = TempData["infoRol"];
+            TempData.Keep("infoRol");
+
             var pensums = db.pensums.Include(p => p.materia).Include(p => p.Plan);
+            pensums = pensums.Where(j => j.cod_plan.Equals(plans));
+            
+            var Busquepemsums = from m in db.pensums select m;
+            if (plans != null)
+            {
+                Busquepemsums = Busquepemsums.Where(j => j.cod_plan.Equals(plans));
+            }
+            /*
+           //consultar lista de horarios lunes
+           SqlCommand cmd = new SqlCommand();
+           DataTable pensums = new DataTable();
+           SqlDataAdapter sqlDA; con.Open();
+           //  cmd.CommandText = "select c.nombre, d.nombre from dpto d, carrera c where c.cod_dpto = d.cod_dpto and c.cod_carrera = " + carrera +";";
+           cmd.CommandText = "select p.N_credito, p.ciclo, p.anio_est, p.prerrequisito1, p.prerrequisito2, p.cod_plan, p.cod_materia, p.total_horas from pensum p, plans pl, carrera c where p.cod_plan = pl.cod_plan and c.cod_carrera = pl.cod_carrera and p.cod_plan=" + plans + " and  pl.cod_carrera = "+ carrera +"";
+           cmd.Connection = con;
+           sqlDA = new SqlDataAdapter(cmd);
+           sqlDA.Fill(pensums);
+           con.Close();
+           // return View(pensums.ToList());
+           ViewBag.pensums = pensums;
+          // return View(); */
+
             return View(pensums.ToList());
         }
 

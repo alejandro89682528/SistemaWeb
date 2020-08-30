@@ -30,43 +30,81 @@
 
 
 <body>
+    
+        <div>
+            <center>
+                <h2>Generacion de horario</h2>
+            </center>
+            <form id="myform" enctype="multipart/form-data" method="post">
+                <center>
+                    <div class="form-group">
+                        Seleccionar Carrera
+                        <div class="col-md-10">
+                            @Html.DropDownList("cod_carrera", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
+                        </div>
 
-    <div>
+                    </div>
 
-        <h2>Generacion de horario</h2>
-        <form method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                Seleccionar Carrera
-                <div class="col-md-10">
-                    @Html.DropDownList("cod_carrera", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
-                </div>
+                    <div class="form-group">
+                        Semestre
+                        <div class="col-md-10">
+                            @Html.DropDownList("tipo_ciclo", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                        </div>
 
+                    </div>
+
+
+                    <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <script type="text/javascript">
+                        $(function () {
+                        alert("@ViewBag.Message")
+            });
+                        </script>
+                    }
+
+                    <div>
+                        <button type="submit" id="h">Genarar horario</button>
+                    </div>
+                </center>
+            </form>
+
+            <div style="text-align:center;display:none" id="loaderid">
+                <img src="~/imgs/Loading_2.gif" />
             </div>
 
-            <div class="form-group">
-                Semestre
-                <div class="col-md-10">
-                    @Html.DropDownList("tipo_ciclo", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
-                </div>
-
-            </div>
-
-
-            <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
-
-            <div>
-                <button type="submit" id="h">Genarar horario</button>
-            </div>
-        </form>
-    </div>
-
+        </div>
+    
 </body>
 </html>
 
 
 
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#h").click(function () {
+            $("#loaderid").show();
+            //var myformdata = $("#myform").serialize();
+            $.ajax({
+               // type: "POST",
+                //url: "horario/Index",
+               // data: myformdata,
+                success: function () {
+                    $("#loaderid").hide();
+
+                }
+            })
+        })
+    })
+
+</script>
 
 
 

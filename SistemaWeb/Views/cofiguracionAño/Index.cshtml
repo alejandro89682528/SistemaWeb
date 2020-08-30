@@ -1,8 +1,5 @@
-﻿@model IEnumerable<SistemaWeb.Contexto.anolectivo>
-
+﻿@model SistemaWeb.Contexto.horariogeneracion
 @{
-
-
     if (ViewBag.displayRole == 0)
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -15,41 +12,84 @@
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Horario";
 }
 
-<h2>Index</h2>
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ano)
-        </th>
+<!DOCTYPE html>
 
-        <th>
-            Estado
-        </th>
-    </tr>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Generacion de Horario</title>
+</head>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.activo)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.cod_ano }) |
-                @Html.ActionLink("Details", "Details", new { id = item.cod_ano }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.cod_ano })
-            </td>
-        </tr>
-    }
 
-</table>
+<body>
+
+    <div>
+
+        <h2>Generacion de horario</h2>
+
+        <form id="myform">
+            <div class="form-group">
+                Seleccionar Carrera
+                <div class="col-md-10">
+                    @Html.DropDownList("cod_carrera", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cod_carrera, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                Semestre
+                <div class="col-md-10">
+                    @Html.DropDownList("tipo_ciclo", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.tipo_ciclo, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+            <div>
+
+                <button type="submit" id="h">Genarar horario</button>
+
+            </div>
+
+        </form>
+
+        <div style="text-align:center;display:none" id="loaderid">
+            <img src="~/imgs/Loading_2.gif" />
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#h").click(function () {
+            $("#loaderid").show();
+            var myformdata = $("#myform").serialize();
+            $.ajax({
+                type: "POST",
+                url: "cofiguracionAño/Index",
+                data: myformdata,
+                success: function () {
+                    $("loaderid").hide();
+
+                }
+            })
+        })
+    })
+
+</script>
